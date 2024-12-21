@@ -2,7 +2,10 @@
 
 import useEventListener from "@/hooks/use-event";
 
-function playSound(event: KeyboardEvent | MouseEvent, type: "down" | "up") {
+async function playSound(
+  event: KeyboardEvent | MouseEvent,
+  type: "down" | "up",
+): Promise<void> {
   let sound: string | null = null;
 
   if (event instanceof KeyboardEvent) {
@@ -20,9 +23,15 @@ function playSound(event: KeyboardEvent | MouseEvent, type: "down" | "up") {
     sound = `${type}_mouse`;
   }
 
-  if (sound) {
-    const audio = new Audio(`/sounds/${sound}.mp3`);
-    audio.play();
+  if (!sound) return;
+
+  const audio: HTMLAudioElement = new Audio(`/sounds/${sound}.mp3`);
+  try {
+    await audio.play();
+  } catch (error) {
+    if (!(error instanceof Error)) return;
+    else if (error.message.includes("play() failed")) return;
+    else throw error;
   }
 }
 
