@@ -1,7 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {
+    webpackMemoryOptimizations: true,
+    authInterrupts: false,
+    cssChunking: true,
+    typedRoutes: true,
+    typedEnv: true,
+  },
+  devIndicators: {
+    buildActivity: true,
+    appIsrStatus: true,
+  }
 };
 
 export default nextConfig;
