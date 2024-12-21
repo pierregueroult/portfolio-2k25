@@ -2,10 +2,7 @@
 
 import useEventListener from "@/hooks/use-event";
 
-async function playSound(
-  event: KeyboardEvent | MouseEvent,
-  type: "down" | "up",
-): Promise<void> {
+async function playSound(event: KeyboardEvent | MouseEvent, type: "down" | "up"): Promise<void> {
   let sound: string | null = null;
 
   if (event instanceof KeyboardEvent) {
