@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 import "@/styles/globals.css";
+import TransitionProvider from "@/components/transition-provider";
 
 export const metadata: Metadata = {};
 
@@ -11,7 +12,7 @@ export default function RootLayout({ children }: RootLayoutProps): ReactNode {
   return (
     <html lang="en">
       <body className={`antialiased`} suppressHydrationWarning={true}>
-        {children}
+        <TransitionProvider>{children}</TransitionProvider>
       </body>
     </html>
   );
