@@ -11,7 +11,7 @@ export default function TransitionProvider({
   const pathname: string = usePathname();
 
   useEffect((): void => {
-    console.log("Pathname changed to", pathname);
+    // #TODO: Implement page transition logic
   }, [pathname]);
 
   return children;
