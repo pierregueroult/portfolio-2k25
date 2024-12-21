@@ -8,9 +8,9 @@ type TransitionProviderProps = Readonly<{ children: ReactNode }>;
 export default function TransitionProvider({
   children,
 }: TransitionProviderProps) {
-  const pathname = usePathname();
+  const pathname: string = usePathname();
 
-  useEffect(() => {
+  useEffect((): void => {
     console.log("Pathname changed to", pathname);
   }, [pathname]);
 
