@@ -1,6 +1,6 @@
-@import "tailwindcss";
-
 @import url("https://p.typekit.net/p.css?s=1&k=jys4hzk&ht=tk&f=37243&a=162621534&app=typekit&e=css");
+
+@import "tailwindcss";
 
 @font-face {
   font-family: "dimensions";
