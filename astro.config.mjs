@@ -5,6 +5,8 @@ import sitemap from "@astrojs/sitemap";
 import partytown from "@astrojs/partytown";
 import tailwindcss from "@tailwindcss/vite";
 
+import robotsTxt from "astro-robots-txt";
+
 export default defineConfig({
   site: "https://pierregueroult.dev",
   integrations: [
@@ -14,6 +16,7 @@ export default defineConfig({
       lastmod: new Date(),
     }),
     partytown(),
+    robotsTxt(),
   ],
   vite: {
     plugins: [tailwindcss()],
