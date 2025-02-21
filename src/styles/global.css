@@ -46,4 +46,5 @@
 @theme {
   --font-sans: "Geist", "Fallback for Geist", sans-serif;
   --font-mono: "Geist Mono", "Fallback for Geist Mono", monospace;
+  --font-accent: "dimensions", sans-serif;
 }

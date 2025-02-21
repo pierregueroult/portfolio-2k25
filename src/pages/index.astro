@@ -1,7 +1,52 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const letters: string[] = [
+  "P",
+  "i",
+  "e",
+  "r",
+  "r",
+  "e",
+  " ",
+  "G",
+  "u",
+  "e",
+  "r",
+  "o",
+  "u",
+  "l",
+  "t",
+];
 ---
 
 <Layout>
-  <p>Index page</p>
+  <div
+    class="font-accent text-[20rem] uppercase text-center leading-none flex items-center"
+  >
+    {letters.map((letter, index) => (
+      <span class="letter" style={`animation-delay: ${Math.random() * 0.5}s`}>
+        {letter}
+      </span>
+    ))}
+  </div>
+  <h1 class="sr-only">
+    Full-Stack Software Engineer - Pierre Guéroult - Paris, France
+  </h1>
 </Layout>
+
+<style>
+  @keyframes letter-enter-animations {
+    0% {
+      transform: scaleY(0);
+    }
+    100% {
+      transform: scaleY(1);
+    }
+  }
+
+  .letter {
+    animation: letter-enter-animations 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+      both;
+  }
+</style>

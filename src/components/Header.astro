@@ -1,0 +1,62 @@
+---
+type Link = {
+  name: string;
+  url: string;
+};
+
+const links: Link[] = [
+  {
+    name: "Home",
+    url: "/",
+  },
+  {
+    name: "Projects",
+    url: "/projects",
+  },
+  {
+    name: "Socials",
+    url: "/socials",
+  },
+];
+---
+
+<header
+  class="mx-auto max-w-4xl flex items-center justify-between pt-8 px-4 font-sans lowercase text-sm"
+>
+  <div class="flex items-center gap-2 flex-1 justify-start">
+    <date data-clock></date>
+    <span>/</span>
+    <span>Paris, France</span>
+  </div>
+
+  <nav>
+    <ul class="flex items-center justify-center gap-4 text-base">
+      {
+        links.map((link) => (
+          <li>
+            <a href={link.url}>
+              <kdb>[{link.name[0]}]</kdb>
+              {link.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+  <div class="flex-1 items-center justify-end flex gap-2">
+    <span>language</span>
+    <span>/</span>
+    <span>theme</span>
+  </div>
+</header>
+
+<script>
+  const clock = document.querySelector("[data-clock]");
+  const updateClock = () => {
+    if (!clock) return;
+    // 18:00:20 format
+    clock.textContent = new Date().toLocaleTimeString("en-GB");
+    setTimeout(updateClock, 1000);
+  };
+  updateClock();
+</script>
