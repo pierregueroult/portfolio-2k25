@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+@import url("https://p.typekit.net/p.css?s=1&k=jys4hzk&ht=tk&f=37243&a=162621534&app=typekit&e=css");
+
+@font-face {
+  font-family: "dimensions";
+  src:
+    url("https://use.typekit.net/af/2f3a80/00000000000000003b9b124d/27/l?primer=7fa3915bdafdf03041871920a205bef951d72bf64dd4c4460fb992e3ecc3a862&fvd=n4&v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/2f3a80/00000000000000003b9b124d/27/d?primer=7fa3915bdafdf03041871920a205bef951d72bf64dd4c4460fb992e3ecc3a862&fvd=n4&v=3")
+      format("woff"),
+    url("https://use.typekit.net/af/2f3a80/00000000000000003b9b124d/27/a?primer=7fa3915bdafdf03041871920a205bef951d72bf64dd4c4460fb992e3ecc3a862&fvd=n4&v=3")
+      format("opentype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+}
+
 @font-face {
   font-family: "Geist";
   src:
