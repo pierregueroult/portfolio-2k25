@@ -1,14 +1,10 @@
 {
-    "cSpell.words": [
-        "changefreq",
-        "lastmod",
-        "partytown"
-    ],
-    "eslint.validate": [
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "astro"
-    ],
+  "cSpell.words": ["changefreq", "lastmod", "partytown"],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "astro"
+  ]
 }
