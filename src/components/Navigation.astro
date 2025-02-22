@@ -1,0 +1,74 @@
+---
+type Link = {
+  name: string;
+  url: string;
+};
+
+const links: Link[] = [
+  {
+    name: "Home",
+    url: "/",
+  },
+  {
+    name: "Projects",
+    url: "/projects",
+  },
+  {
+    name: "Socials",
+    url: "/socials",
+  },
+];
+---
+
+<nav>
+  <ul class="flex items-center justify-center gap-4 text-sm">
+    {
+      links.map((link) => (
+        <li>
+          <a href={link.url}>
+            <kdb
+              data-shortcut-element
+              data-event-key={link.name[0].toLowerCase()}
+              data-event-target={link.url}
+            >
+              [{link.name[0]}]
+            </kdb>
+            {link.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<script>
+  const shortcuts = document.querySelectorAll("[data-shortcut-element]");
+  const shortcutMap = new Map();
+
+  shortcuts.forEach((shortcut) => {
+    const element = shortcut as HTMLElement;
+    const key = element.dataset.eventKey;
+    const target = element.dataset.eventTarget;
+
+    if (key && target) {
+      shortcutMap.set(key, target);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    const activeElement = document.activeElement;
+    if (
+      activeElement &&
+      (activeElement.tagName === "INPUT" ||
+        activeElement.tagName === "TEXTAREA" ||
+        (activeElement as HTMLElement).isContentEditable)
+    ) {
+      return;
+    }
+
+    const target = shortcutMap.get(event.key);
+    if (target) {
+      window.location.href = target;
+    }
+  });
+</script>

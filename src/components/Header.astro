@@ -1,52 +1,23 @@
 ---
-type Link = {
-  name: string;
-  url: string;
-};
+import Navigation from "./Navigation.astro";
 
-const links: Link[] = [
-  {
-    name: "Home",
-    url: "/",
-  },
-  {
-    name: "Projects",
-    url: "/projects",
-  },
-  {
-    name: "Socials",
-    url: "/socials",
-  },
-];
+
 
 const clockContent: string = new Date().toLocaleTimeString("en-GB");
 ---
 
 <header
-  class="mx-auto max-w-4xl flex items-center justify-between pt-8 px-4 font-sans lowercase text-sm"
+  class="mx-auto max-w-4xl flex items-center justify-between pt-8 px-4 lowercase text-sm"
 >
   <div class="flex items-center gap-2 flex-1 justify-start">
     <date data-clock>
       {clockContent}
     </date>
     <span>/</span>
-    <span>Paris, France</span>
+    <span>Paris,France</span>
   </div>
 
-  <nav>
-    <ul class="flex items-center justify-center gap-4 text-base">
-      {
-        links.map((link) => (
-          <li>
-            <a href={link.url}>
-              <kdb>[{link.name[0]}]</kdb>
-              {link.name}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
+  <Navigation />
   <div class="flex-1 items-center justify-end flex gap-2">
     <span>language</span>
     <span>/</span>
