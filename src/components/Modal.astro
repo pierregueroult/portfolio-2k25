@@ -1,0 +1,42 @@
+---
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<button id={`${id}-trigger`} class="cursor-pointer" data-modal-trigger>
+  <slot name="trigger" />
+</button>
+
+<dialog
+  id={id}
+  class="mx-auto my-auto backdrop:backdrop-blur-sm min-w-lg h-80 bg-background text-foreground backdrop:bg-foreground/20 rounded-lg relative"
+>
+  <button data-modal-close class="absolute top-4 right-4 cursor-pointer z-50">Close</button>
+  <main class="w-full h-full overflow-y-auto relative">
+    <slot name="content" />
+  </main>
+</dialog>
+
+<script>
+  const triggers = document.querySelectorAll("[data-modal-trigger]");
+  triggers.forEach((trigger) => {
+    const id: string = trigger.id.replace("-trigger", "");
+
+    const dialog = document.getElementById(id) as HTMLDialogElement | null;
+    if (!dialog) return;
+
+    trigger.addEventListener("click", () => {
+      dialog.showModal();
+    });
+
+    const close = dialog.querySelector("[data-modal-close]") as HTMLButtonElement | null;
+    if (!close) return;
+
+    close.addEventListener("click", () => {
+      dialog.close();
+    });
+  });
+</script>

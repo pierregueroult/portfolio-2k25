@@ -1,37 +1,28 @@
 ---
+import Modal from "./Modal.astro";
 import Navigation from "./Navigation.astro";
-
-
-
-const clockContent: string = new Date().toLocaleTimeString("en-GB");
+import Clock from "./Clock.astro";
+import Theme from "./Theme.astro";
 ---
 
-<header
-  class="mx-auto max-w-4xl flex items-center justify-between pt-8 px-4 lowercase text-sm"
->
-  <div class="flex items-center gap-2 flex-1 justify-start">
-    <date data-clock>
-      {clockContent}
-    </date>
+<header class="mx-auto max-w-4xl flex items-center justify-between pt-8 px-4 text-sm">
+  <div class="flex items-center gap-2 flex-1 justify-start lowercase">
+    <Clock />
     <span>/</span>
-    <span>Paris,France</span>
+    <a href="https://maps.app.goo.gl/ftMTNLp81F2gpX7LA" target="_blank" rel="
+      noopener noreferrer">Paris,France</a>
   </div>
 
   <Navigation />
   <div class="flex-1 items-center justify-end flex gap-2">
-    <span>language</span>
+    <Modal id="language-modal">
+      <div slot="trigger" class="lowercase">Language</div>
+      <span slot="content">content</span>
+    </Modal>
     <span>/</span>
-    <span>theme</span>
+    <Modal id="theme-modal">
+      <div slot="trigger" class="lowercase">Theme</div>
+      <Theme slot="content" />
+    </Modal>
   </div>
 </header>
-
-<script>
-  const clock = document.querySelector("[data-clock]");
-  const updateClock = () => {
-    if (!clock) return;
-    // 18:00:20 format
-    clock.textContent = new Date().toLocaleTimeString("en-GB");
-    setTimeout(updateClock, 1000);
-  };
-  updateClock();
-</script>

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@plugin 'tailwind-scrollbar';
+
 @font-face {
   font-family: "Dimensions";
   src:
@@ -71,16 +73,37 @@
       --color-accent: #f00;
     }
   }
-
   [data-theme="dark"] {
     --color-foreground: #fff;
     --color-background: #000;
     --color-accent: #f00;
   }
-
   [data-theme="light"] {
     --color-foreground: #000;
     --color-background: #fff;
     --color-accent: #f00;
+  }
+  [data-theme="arc-browser"] {
+    --color-foreground: var(--arc-palette-title);
+    --color-background: var(--arc-palette-background);
+    --color-accent: var(--arc-palette-foregroundPrimary);
+  }
+
+  [data-theme="pastel"] {
+    --color-foreground: #4f4f4f;
+    --color-background: #ffebef;
+    --color-accent: #b3c0ff;
+  }
+
+  [data-theme="solarized-light"] {
+    --color-foreground: #657b83;
+    --color-background: #fdf6e3;
+    --color-accent: #d33682;
+  }
+
+  [data-theme="solarized-dark"] {
+    --color-foreground: #839496;
+    --color-background: #002b36;
+    --color-accent: #b58900;
   }
 }

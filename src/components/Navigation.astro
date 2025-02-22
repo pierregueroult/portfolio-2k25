@@ -26,11 +26,7 @@ const links: Link[] = [
       links.map((link) => (
         <li>
           <a href={link.url} class="text-foreground">
-            <kdb
-              data-shortcut-element
-              data-event-key={link.name[0].toLowerCase()}
-              data-event-target={link.url}
-            >
+            <kdb data-shortcut-element data-event-key={link.name[0].toLowerCase()} data-event-target={link.url}>
               [{link.name[0]}]
             </kdb>
             {link.name}
@@ -57,9 +53,7 @@ const links: Link[] = [
     const activeElement = document.activeElement as HTMLElement | null;
     if (
       activeElement &&
-      (activeElement.tagName === "INPUT" ||
-        activeElement.tagName === "TEXTAREA" ||
-        activeElement.isContentEditable)
+      (activeElement.tagName === "INPUT" || activeElement.tagName === "TEXTAREA" || activeElement.isContentEditable)
     )
       return;
 
