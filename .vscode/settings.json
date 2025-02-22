@@ -12,5 +12,8 @@
     "typescript",
     "typescriptreact",
     "astro"
-  ]
+  ],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
 }

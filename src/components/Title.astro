@@ -1,6 +1,6 @@
 ---
 const letters: string[] = [
-  "P",
+"P",
   "i",
   "e",
   "r",
@@ -19,13 +19,13 @@ const letters: string[] = [
 ---
 
 <div
-  class="font-accent text-[20rem] uppercase text-center leading-none flex items-center not-[[data-title-ready]]:opacity-0"
+  class="font-accent text-[19rem] uppercase text-center leading-none flex items-center not-[[data-title-ready]]:opacity-0 w-full overflow-hidden justify-center"
   data-title-container
 >
   {
     letters.map((letter) => (
       <span
-        class="letter opacity-0"
+        class={`letter opacity-0 text-foreground ${letter === " " ? "min-w-[0.5ch]" : ""}`}
         style={`animation-delay: ${Math.random() * 0.5}s`}
       >
         {letter}

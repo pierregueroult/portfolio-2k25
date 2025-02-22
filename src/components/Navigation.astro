@@ -25,7 +25,7 @@ const links: Link[] = [
     {
       links.map((link) => (
         <li>
-          <a href={link.url}>
+          <a href={link.url} class="text-foreground">
             <kdb
               data-shortcut-element
               data-event-key={link.name[0].toLowerCase()}
@@ -48,27 +48,24 @@ const links: Link[] = [
   shortcuts.forEach((shortcut) => {
     const element = shortcut as HTMLElement;
     const key = element.dataset.eventKey;
-    const target = element.dataset.eventTarget;
+    const value = element.dataset.eventTarget;
 
-    if (key && target) {
-      shortcutMap.set(key, target);
-    }
+    if (key && value) shortcutMap.set(key, value);
   });
 
   document.addEventListener("keydown", (event) => {
-    const activeElement = document.activeElement;
+    const activeElement = document.activeElement as HTMLElement | null;
     if (
       activeElement &&
       (activeElement.tagName === "INPUT" ||
         activeElement.tagName === "TEXTAREA" ||
-        (activeElement as HTMLElement).isContentEditable)
-    ) {
+        activeElement.isContentEditable)
+    )
       return;
-    }
+
+    if (event.ctrlKey || event.metaKey) return;
 
     const target = shortcutMap.get(event.key);
-    if (target) {
-      window.location.href = target;
-    }
+    if (target) window.location.href = target;
   });
 </script>

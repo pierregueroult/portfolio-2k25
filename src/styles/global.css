@@ -1,5 +1,3 @@
-@import url("https://p.typekit.net/p.css?s=1&k=jys4hzk&ht=tk&f=37243&a=162621534&app=typekit&e=css");
-
 @import "tailwindcss";
 
 @font-face {
@@ -52,4 +50,37 @@
   --font-sans: "Geist", "Fallback for Geist", sans-serif;
   --font-mono: "Geist Mono", "Fallback for Geist Mono", monospace;
   --font-accent: "Dimensions", "Fallback for Dimensions", sans-serif;
+
+  --color-foreground: #fff;
+  --color-background: #000;
+  --color-accent: #f00;
+}
+
+@layer base {
+  @media (prefers-color-scheme: dark) {
+    [data-theme="system"] {
+      --color-foreground: #fff;
+      --color-background: #000;
+      --color-accent: #f00;
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    [data-theme="system"] {
+      --color-foreground: #000;
+      --color-background: #fff;
+      --color-accent: #f00;
+    }
+  }
+
+  [data-theme="dark"] {
+    --color-foreground: #fff;
+    --color-background: #000;
+    --color-accent: #f00;
+  }
+
+  [data-theme="light"] {
+    --color-foreground: #000;
+    --color-background: #fff;
+    --color-accent: #f00;
+  }
 }
