@@ -23,6 +23,9 @@
     local("Geist Mono"),
     url("/fonts/Geist[wght].woff2") format("woff2"),
     url("/fonts/Geist[wght].ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-stretch: normal;
 }
 
 @font-face {

@@ -39,4 +39,12 @@ const { id } = Astro.props;
       dialog.close();
     });
   });
+
+  window.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement;
+    if (target.tagName === "DIALOG") {
+      const dialog = target as HTMLDialogElement;
+      dialog.close();
+    }
+  });
 </script>

@@ -1,15 +1,45 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Title from "../components/Title.astro";
+import type { Person, WithContext } from "schema-dts";
+
+const jsonld: WithContext<Person> = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Pierre Guéroult",
+  url: "https://pierregueroult.dev",
+  image: "TODO",
+  jobTitle: "Software Developer Junior & CS Student",
+  nationality: "French",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Paris",
+    addressRegion: "Île-de-France",
+    addressCountry: "France",
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "IUT de Rouen",
+  },
+  email: "contact@pierregueroult.dev",
+  sameAs: [
+    "https://www.linkedin.com/in/pierregueroult",
+    "https://github.com/pierregueroult"
+  ]
+};
 ---
 
-<Layout>
+<Layout
+  title="Pierre Guéroult - Software Developer"
+  description="20-year-old web developer and CS student passionate about crafting sleek websites and automating workflows. Always exploring new tech, solving problems, and taking on challenges to make tech smarter, not harder."
+>
   <Title />
   <h1 class="sr-only">Full-Stack Software Engineer - Pierre Guéroult - Paris, France</h1>
   <p>
     20 year-old web developer & CS student. I love crafting sleek websites and automating workflows to make life easier.
     Passionate about clean code, problem-solving, and making tech work smarter, not harder. Always exploring new
     technologies, always up for a challenge. Whether it's web development, automation, or something completely out of my
-    comfort zone—I'm in.
+    comfort zone - I'm in.
   </p>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonld, null, 0)} />
 </Layout>
