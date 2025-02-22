@@ -1,52 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-const letters: string[] = [
-  "P",
-  "i",
-  "e",
-  "r",
-  "r",
-  "e",
-  " ",
-  "G",
-  "u",
-  "e",
-  "r",
-  "o",
-  "u",
-  "l",
-  "t",
-];
+import Title from "../components/Title.astro";
 ---
 
 <Layout>
-  <div
-    class="font-accent text-[20rem] uppercase text-center leading-none flex items-center"
-  >
-    {letters.map((letter, index) => (
-      <span class="letter" style={`animation-delay: ${Math.random() * 0.5}s`}>
-        {letter}
-      </span>
-    ))}
-  </div>
+  <Title />
   <h1 class="sr-only">
     Full-Stack Software Engineer - Pierre Guéroult - Paris, France
   </h1>
+  <p>
+    20-year-old web developer & CS student. I love crafting sleek websites and
+    automating workflows to make life easier. Passionate about clean code,
+    problem-solving, and making tech work smarter, not harder. Always exploring
+    new technologies, always up for a challenge. Whether it's web development,
+    automation, or something completely out of my comfort zone—I'm in.
+  </p>
 </Layout>
-
-<style>
-  @keyframes letter-enter-animations {
-    0% {
-      transform: scaleY(0);
-    }
-    100% {
-      transform: scaleY(1);
-    }
-  }
-
-  .letter {
-    animation: letter-enter-animations 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-      both;
-  }
-</style>

@@ -3,7 +3,7 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "dimensions";
+  font-family: "Dimensions";
   src:
     url("https://use.typekit.net/af/2f3a80/00000000000000003b9b124d/27/l?primer=7fa3915bdafdf03041871920a205bef951d72bf64dd4c4460fb992e3ecc3a862&fvd=n4&v=3")
       format("woff2"),
@@ -27,7 +27,6 @@
 @font-face {
   font-family: "Fallback for Geist";
   src: local("Arial");
-  /* TODO: Setup overrides, see https://developer.chrome.com/blog/font-fallbacks?hl=fr#:~:text=Arial%20is%20the%20recommended%20fallback,fallback%20font%20for%20serif%20fonts */
 }
 
 @font-face {
@@ -40,11 +39,15 @@
 @font-face {
   font-family: "Fallback for Geist Mono";
   src: local("Courier New");
-  /* TODO: Setup overrides, see https://developer.chrome.com/blog/font-fallbacks?hl=fr#:~:text=Arial%20is%20the%20recommended%20fallback,fallback%20font%20for%20serif%20fonts */
+}
+
+@font-face {
+  font-family: "Fallback for Dimensions";
+  src: local("Arial");
 }
 
 @theme {
   --font-sans: "Geist", "Fallback for Geist", sans-serif;
   --font-mono: "Geist Mono", "Fallback for Geist Mono", monospace;
-  --font-accent: "dimensions", sans-serif;
+  --font-accent: "Dimensions", "Fallback for Dimensions", sans-serif;
 }

@@ -1,5 +1,11 @@
 {
-  "cSpell.words": ["changefreq", "lastmod", "partytown", "runtine"],
+  "cSpell.words": [
+    "changefreq",
+    "fontfaceobserver",
+    "lastmod",
+    "partytown",
+    "runtine"
+  ],
   "eslint.validate": [
     "javascript",
     "javascriptreact",

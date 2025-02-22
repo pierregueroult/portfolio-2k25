@@ -18,13 +18,17 @@ const links: Link[] = [
     url: "/socials",
   },
 ];
+
+const clockContent: string = new Date().toLocaleTimeString("en-GB");
 ---
 
 <header
   class="mx-auto max-w-4xl flex items-center justify-between pt-8 px-4 font-sans lowercase text-sm"
 >
   <div class="flex items-center gap-2 flex-1 justify-start">
-    <date data-clock></date>
+    <date data-clock>
+      {clockContent}
+    </date>
     <span>/</span>
     <span>Paris, France</span>
   </div>
