@@ -21,30 +21,32 @@ const { id } = Astro.props;
 </dialog>
 
 <script>
-  const triggers = document.querySelectorAll("[data-modal-trigger]");
-  triggers.forEach((trigger) => {
-    const id: string = trigger.id.replace("-trigger", "");
+  document.addEventListener("astro:page-load", () => {
+    const triggers = document.querySelectorAll("[data-modal-trigger]");
+    triggers.forEach((trigger) => {
+      const id: string = trigger.id.replace("-trigger", "");
 
-    const dialog = document.getElementById(id) as HTMLDialogElement | null;
-    if (!dialog) return;
+      const dialog = document.getElementById(id) as HTMLDialogElement | null;
+      if (!dialog) return;
 
-    trigger.addEventListener("click", () => {
-      dialog.showModal();
+      trigger.addEventListener("click", () => {
+        dialog.showModal();
+      });
+
+      const close = dialog.querySelector("[data-modal-close]") as HTMLButtonElement | null;
+      if (!close) return;
+
+      close.addEventListener("click", () => {
+        dialog.close();
+      });
     });
 
-    const close = dialog.querySelector("[data-modal-close]") as HTMLButtonElement | null;
-    if (!close) return;
-
-    close.addEventListener("click", () => {
-      dialog.close();
+    window.addEventListener("click", (event) => {
+      const target = event.target as HTMLElement;
+      if (target.tagName === "DIALOG") {
+        const dialog = target as HTMLDialogElement;
+        dialog.close();
+      }
     });
-  });
-
-  window.addEventListener("click", (event) => {
-    const target = event.target as HTMLElement;
-    if (target.tagName === "DIALOG") {
-      const dialog = target as HTMLDialogElement;
-      dialog.close();
-    }
   });
 </script>

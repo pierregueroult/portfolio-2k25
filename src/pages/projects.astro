@@ -1,5 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import WithTitleLayout from "../layouts/WithTitleLayout.astro";
 ---
 
-<Layout />
+<Layout
+    title="Pierre Guéroult - Projects & Work"
+    description="Explore my latest web development projects, automation tools, and tech experiments. Always building, always learning."
+    keywords={["Pierre Guéroult", "projects", "web development", "automation", "portfolio", "coding", "software development", "tech", "CS student"]}
+>
+    <WithTitleLayout
+        title="Projects"
+        subtitle="Explore My Work"
+    >
+    <p>There will be my project</p>
+    </WithTitleLayout>
+</Layout>

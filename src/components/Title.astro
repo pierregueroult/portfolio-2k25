@@ -38,15 +38,17 @@ const letters: string[] = ["P", "i", "e", "r", "r", "e", " ", "G", "u", "e", "r"
 <script>
   import FontFaceObserver from "fontfaceobserver";
 
-  const font = new FontFaceObserver("Dimensions");
-  const container = document.querySelector("[data-title-container]");
+  document.addEventListener("astro:page-load", () => {
+    const font = new FontFaceObserver("Dimensions");
+    const container = document.querySelector("[data-title-container]");
 
-  font
-    .load()
-    .then(() => {
-      if (container) container.setAttribute("data-title-ready", "");
-    })
-    .catch(() => {
-      console.log("Font could not be loaded");
-    });
+    font
+      .load()
+      .then(() => {
+        if (container) container.setAttribute("data-title-ready", "");
+      })
+      .catch(() => {
+        console.log("Font could not be loaded");
+      });
+  });
 </script>

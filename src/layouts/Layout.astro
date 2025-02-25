@@ -1,16 +1,18 @@
 ---
 import "../styles/global.css";
 import Header from "../components/Header.astro";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
   title: string;
   description: string;
+  keywords?: string[];
 }
 
 const theme: string = Astro.cookies.get("theme")?.value || "system";
 
-const { title, description } = Astro.props;
-const keywords: string[] = [
+const { title, description, keywords } = Astro.props;
+const defaultKeywords: string[] = [
   "software developer",
   "coding projects",
   "development",
@@ -37,7 +39,7 @@ const keywords: string[] = [
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <meta name="viewport" content="width=device-width" />
-    <meta name="keywords" content={keywords.join(", ")} />
+    <meta name="keywords" content={keywords ? keywords.join(", ") : defaultKeywords.join(", ")} />
     <meta name="og:title" content={title} />
     <meta name="og:type" content="website" />
     <meta name="og:description" content={description} />
@@ -49,6 +51,7 @@ const keywords: string[] = [
     <meta name="twitter:image" content="TODO" />
     <meta name="robots" content="noindex, nofollow" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <ClientRouter />
   </head>
   <body class="font-mono bg-background text-foreground" data-theme={theme}>
     <Header />

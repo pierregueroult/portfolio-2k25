@@ -1,5 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import WithTitleLayout from "../layouts/WithTitleLayout.astro";
 ---
 
-<Layout />
+<Layout
+    title="Pierre Guéroult - Connect with Me"
+    description="Find and follow me across social media and professional networks. Stay updated on my latest projects, blog posts, and tech insights."
+    keywords={["Pierre Guéroult", "social links", "follow me", "developer social media", "connect", "tech network", "portfolio", "web developer", "CS student"]}
+>
+    <WithTitleLayout
+        title="Socials"
+        subtitle="Connect with Me"
+    >
+        <p>There will be my socials</p>
+    </WithTitleLayout>
+</Layout>

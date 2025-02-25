@@ -16,7 +16,7 @@
       type="text"
       autofocus
       placeholder="Search a theme"
-      class="font-mono flex w-full rounded-md py-4 text-md outline-none placeholder:text-foreground disabled:cursor-not-allowed disabled:opacity-50 placeholder:text-foreground/50"
+      class="font-mono flex w-full rounded-md py-4 text-md outline-none disabled:cursor-not-allowed disabled:opacity-50 placeholder:text-foreground/50"
       data-theme-search
     />
   </div>
@@ -38,113 +38,117 @@
 </template>
 
 <script>
-  const input = document.querySelector("[data-theme-search]") as HTMLInputElement | null;
-  const defaultResult = document.querySelector("[data-theme-default-result]") as HTMLUListElement | null;
-  const specialResult = document.querySelector("[data-theme-special-result]") as HTMLUListElement | null;
+  document.addEventListener("astro:page-load", () => {
+    const input = document.querySelector("[data-theme-search]") as HTMLInputElement | null;
+    const defaultResult = document.querySelector("[data-theme-default-result]") as HTMLUListElement | null;
+    const specialResult = document.querySelector("[data-theme-special-result]") as HTMLUListElement | null;
 
-  const modal = document.querySelector("#theme-modal");
+    const modal = document.querySelector("#theme-modal");
 
-  if (modal)
-    new MutationObserver(() => modal?.hasAttribute("open") && setThemesInLists()).observe(modal, { attributes: true });
-
-  if (input) input.addEventListener("input", () => filterThemes(input.value));
-
-  function setThemesInLists(): void {
-    const currentSystemTheme: string = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-
-    const isArcUser: boolean =
-      getComputedStyle(document.documentElement).getPropertyValue("--arc-palette-title") !== "";
-
-    const themes: {
-      title: string;
-      value: string;
-      isSpecial?: true;
-      svg: string;
-    }[] = [
-      {
-        title: `System (${currentSystemTheme})`,
-        value: "system",
-        svg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 lucide lucide-laptop"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></svg>`,
-      },
-      {
-        title: "Light",
-        value: "light",
-        svg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`,
-      },
-      {
-        title: "Dark",
-        value: "dark",
-        svg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`,
-      },
-      {
-        title: "Pastel",
-        value: "pastel",
-        isSpecial: true,
-        svg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 lucide lucide-pencil"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>`,
-      },
-      {
-        title: "Solarized (light)",
-        value: "solarized-light",
-        isSpecial: true,
-        svg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 lucide lucide-eclipse"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 1 0 10 10"/></svg>`,
-      },
-      {
-        title: "Solarized (dark)",
-        value: "solarized-dark",
-        isSpecial: true,
-        svg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 lucide lucide-eclipse"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 1 0 10 10"/></svg>`,
-      },
-    ];
-
-    if (isArcUser)
-      themes.unshift({
-        title: "Arc",
-        value: "arc-browser",
-        isSpecial: true,
-        svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="currentColor" fill="none" class="size-4"><path d="M13.5061 13.6018C12.905 13.788 12.2654 13.8885 11.602 13.8885C9.12036 13.8885 6.96846 12.4842 5.93046 10.431C5.48592 9.55161 4.39999 9.19282 3.50496 9.62957C2.60993 10.0663 2.24474 11.1332 2.68928 12.0126C4.3146 15.2277 7.69305 17.444 11.602 17.444C12.8475 17.444 14.0394 17.2191 15.138 16.8084" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /><path d="M18.2384 14.9501C20.013 13.3865 21.2128 11.2053 21.4889 8.75026C21.5987 7.77436 20.8824 6.89583 19.8891 6.78801C18.8958 6.68019 18.0016 7.38391 17.8919 8.35981C17.7555 9.57212 17.2644 10.6794 16.5229 11.5793" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /><path d="M11.5473 3.99976C12.2327 3.99976 12.8592 4.38021 13.1658 4.98249L19.4989 17.427C19.9458 18.3052 19.5835 19.373 18.6897 19.8121C17.7958 20.2512 16.7089 19.8953 16.262 19.0171L11.5473 9.75278L9.6037 13.5719C8.41018 13.1819 7.37371 12.4516 6.61386 11.4964L9.92887 4.98249C10.2354 4.38021 10.8619 3.99976 11.5473 3.99976Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /><path d="M6.8326 19.0171C6.38568 19.8953 5.29878 20.2512 4.40494 19.8121C3.5111 19.373 3.1488 18.3052 3.59572 17.427L4.89047 14.8828C5.78379 15.686 6.82705 16.3313 7.97447 16.7733L6.8326 19.0171Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>`,
+    if (modal)
+      new MutationObserver(() => modal?.hasAttribute("open") && setThemesInLists()).observe(modal, {
+        attributes: true,
       });
 
-    if (defaultResult && specialResult) {
-      defaultResult.innerHTML = "";
-      specialResult.innerHTML = "";
+    if (input) input.addEventListener("input", () => filterThemes(input.value));
 
-      themes.forEach((theme) => {
-        const template = document.querySelector("#theme-result") as HTMLTemplateElement;
-        const clone = template.content.cloneNode(true) as HTMLElement;
-        const themeButton = clone.querySelector("button");
-        const themeItem = clone.querySelector("li");
+    function setThemesInLists(): void {
+      const currentSystemTheme: string = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
-        if (!themeButton || !themeItem) return;
+      const isArcUser: boolean =
+        getComputedStyle(document.documentElement).getPropertyValue("--arc-palette-title") !== "";
 
-        themeItem.dataset.themeName = theme.title;
-        themeButton.innerHTML = `${theme.svg} ${theme.title}`;
-        themeButton.addEventListener("click", () => setTheme(theme.value));
+      const themes: {
+        title: string;
+        value: string;
+        isSpecial?: true;
+        svg: string;
+      }[] = [
+        {
+          title: `System (${currentSystemTheme})`,
+          value: "system",
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 lucide lucide-laptop"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></svg>`,
+        },
+        {
+          title: "Light",
+          value: "light",
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`,
+        },
+        {
+          title: "Dark",
+          value: "dark",
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`,
+        },
+        {
+          title: "Pastel",
+          value: "pastel",
+          isSpecial: true,
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 lucide lucide-pencil"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>`,
+        },
+        {
+          title: "Solarized (light)",
+          value: "solarized-light",
+          isSpecial: true,
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 lucide lucide-eclipse"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 1 0 10 10"/></svg>`,
+        },
+        {
+          title: "Solarized (dark)",
+          value: "solarized-dark",
+          isSpecial: true,
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 lucide lucide-eclipse"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 1 0 10 10"/></svg>`,
+        },
+      ];
 
-        if (theme.isSpecial) {
-          specialResult?.appendChild(clone);
-        } else {
-          defaultResult?.appendChild(clone);
-        }
-      });
+      if (isArcUser)
+        themes.unshift({
+          title: "Arc (beta)",
+          value: "arc-browser",
+          isSpecial: true,
+          svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="currentColor" fill="none" class="size-4"><path d="M13.5061 13.6018C12.905 13.788 12.2654 13.8885 11.602 13.8885C9.12036 13.8885 6.96846 12.4842 5.93046 10.431C5.48592 9.55161 4.39999 9.19282 3.50496 9.62957C2.60993 10.0663 2.24474 11.1332 2.68928 12.0126C4.3146 15.2277 7.69305 17.444 11.602 17.444C12.8475 17.444 14.0394 17.2191 15.138 16.8084" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /><path d="M18.2384 14.9501C20.013 13.3865 21.2128 11.2053 21.4889 8.75026C21.5987 7.77436 20.8824 6.89583 19.8891 6.78801C18.8958 6.68019 18.0016 7.38391 17.8919 8.35981C17.7555 9.57212 17.2644 10.6794 16.5229 11.5793" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /><path d="M11.5473 3.99976C12.2327 3.99976 12.8592 4.38021 13.1658 4.98249L19.4989 17.427C19.9458 18.3052 19.5835 19.373 18.6897 19.8121C17.7958 20.2512 16.7089 19.8953 16.262 19.0171L11.5473 9.75278L9.6037 13.5719C8.41018 13.1819 7.37371 12.4516 6.61386 11.4964L9.92887 4.98249C10.2354 4.38021 10.8619 3.99976 11.5473 3.99976Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /><path d="M6.8326 19.0171C6.38568 19.8953 5.29878 20.2512 4.40494 19.8121C3.5111 19.373 3.1488 18.3052 3.59572 17.427L4.89047 14.8828C5.78379 15.686 6.82705 16.3313 7.97447 16.7733L6.8326 19.0171Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>`,
+        });
+
+      if (defaultResult && specialResult) {
+        defaultResult.innerHTML = "";
+        specialResult.innerHTML = "";
+
+        themes.forEach((theme) => {
+          const template = document.querySelector("#theme-result") as HTMLTemplateElement;
+          const clone = template.content.cloneNode(true) as HTMLElement;
+          const themeButton = clone.querySelector("button");
+          const themeItem = clone.querySelector("li");
+
+          if (!themeButton || !themeItem) return;
+
+          themeItem.dataset.themeName = theme.title;
+          themeButton.innerHTML = `${theme.svg} ${theme.title}`;
+          themeButton.addEventListener("click", () => setTheme(theme.value));
+
+          if (theme.isSpecial) {
+            specialResult?.appendChild(clone);
+          } else {
+            defaultResult?.appendChild(clone);
+          }
+        });
+      }
     }
-  }
 
-  function setTheme(value: string): void {
-    document.body.dataset.theme = value;
-    document.cookie = `theme=${value}; path=/; max-age=31536000`;
-  }
-
-  function filterThemes(value: string): void {
-    const defaultThemes = document.querySelectorAll("[data-theme-default-result] li");
-    const specialThemes = document.querySelectorAll("[data-theme-special-result] li");
-
-    function filterThemeItem(themeItem: Element): void {
-      const themeName = (themeItem as HTMLLIElement).dataset.themeName || "";
-      const isMatch = themeName.toLowerCase().includes(value.toLowerCase());
-      (themeItem as HTMLLIElement).style.display = isMatch ? "block" : "none";
+    function setTheme(value: string): void {
+      document.body.dataset.theme = value;
+      document.cookie = `theme=${value}; path=/; max-age=31536000`;
     }
 
-    defaultThemes.forEach(filterThemeItem);
-    specialThemes.forEach(filterThemeItem);
-  }
+    function filterThemes(value: string): void {
+      const defaultThemes = document.querySelectorAll("[data-theme-default-result] li");
+      const specialThemes = document.querySelectorAll("[data-theme-special-result] li");
+
+      function filterThemeItem(themeItem: Element): void {
+        const themeName = (themeItem as HTMLLIElement).dataset.themeName || "";
+        const isMatch = themeName.toLowerCase().includes(value.toLowerCase());
+        (themeItem as HTMLLIElement).style.display = isMatch ? "block" : "none";
+      }
+
+      defaultThemes.forEach(filterThemeItem);
+      specialThemes.forEach(filterThemeItem);
+    }
+  });
 </script>
