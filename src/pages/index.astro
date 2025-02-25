@@ -22,10 +22,7 @@ const jsonld: WithContext<Person> = {
     name: "IUT de Rouen",
   },
   email: "contact@pierregueroult.dev",
-  sameAs: [
-    "https://www.linkedin.com/in/pierregueroult",
-    "https://github.com/pierregueroult"
-  ]
+  sameAs: ["https://www.linkedin.com/in/pierregueroult", "https://github.com/pierregueroult"],
 };
 ---
 
@@ -36,10 +33,10 @@ const jsonld: WithContext<Person> = {
   <Title />
   <h1 class="sr-only">Full-Stack Software Engineer - Pierre Guéroult - Paris, France</h1>
   <p>
-    20 year-old web developer & Computer Science Student. I love crafting sleek websites and automating workflows to make life easier.
-    Passionate about clean code, problem-solving, and making tech work smarter, not harder. Always exploring new
-    technologies, always up for a challenge. Whether it's web development, automation, or something completely out of my
-    comfort zone - I'm in.
+    20 year-old web developer & Computer Science Student. I love crafting sleek websites and automating workflows to
+    make life easier. Passionate about clean code, problem-solving, and making tech work smarter, not harder. Always
+    exploring new technologies, always up for a challenge. Whether it's web development, automation, or something
+    completely out of my comfort zone - I'm in.
   </p>
   <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonld, null, 0)} />
 </Layout>
