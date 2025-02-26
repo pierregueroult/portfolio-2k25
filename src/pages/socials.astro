@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ListLayout from "../layouts/ListLayout.astro";
 import WithTitleLayout from "../layouts/WithTitleLayout.astro";
+import { socials, featured, type Social } from "../data/socials";
 ---
 
 <Layout
@@ -18,7 +20,83 @@ import WithTitleLayout from "../layouts/WithTitleLayout.astro";
     "CS student",
   ]}
 >
-  <WithTitleLayout title="Socials" subtitle="Connect with Me">
-    <p>There will be my socials</p>
+  <WithTitleLayout
+    title="My Socials - Let's Stay Connected"
+    subtitle="Find me on social and professional platforms to follow my projects and connect over web development and automation."
+  >
+    <ListLayout title="Featured">
+      {
+        featured.map((social: Social) => (
+          <li class="group mt-4">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={social.link}
+              class="flex items-center justify-between group-hover:text-accent font-medium transition-colors"
+              title={social.title}
+            >
+              <div>
+                <h3>{social.link}</h3>
+                <p class="text-xs text-foreground/50 mr-4">{social.description}</p>
+              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="group-hover:rotate-45 transition-transform"
+              >
+                <>
+                  <path d="M7 7h10v10" />
+                  <path d="M7 17 17 7" />
+                </>
+              </svg>
+            </a>
+          </li>
+        ))
+      }
+    </ListLayout>
+    <ListLayout title="Socials Links">
+      {
+        socials.map((social: Social) => (
+          <li class="group mt-4">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={social.link}
+              class="flex items-center justify-between group-hover:text-accent font-medium transition-colors"
+              title={social.title}
+            >
+              <div>
+                <h3>{social.link}</h3>
+                <p class="text-xs text-foreground/50 mr-4">{social.description}</p>
+              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="group-hover:rotate-45 transition-transform"
+              >
+                <>
+                  <path d="M7 7h10v10" />
+                  <path d="M7 17 17 7" />
+                </>
+              </svg>
+            </a>
+          </li>
+        ))
+      }
+    </ListLayout>
   </WithTitleLayout>
 </Layout>

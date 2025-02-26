@@ -1,0 +1,24 @@
+---
+interface Props {
+  title: string;
+  all?: string;
+}
+
+const { title, all } = Astro.props;
+---
+
+<div class="mt-8 mb-4">
+  <h3 class="text-2xl font-mono">
+    <span class="text-accent font-sans mr-2">✦</span>{title}
+  </h3>
+  <ul>
+    <slot />
+  </ul>
+  {
+    all && (
+      <a href={all} class="text-sm text-accent hover:text-accent-hover">
+        {all}
+      </a>
+    )
+  }
+</div>

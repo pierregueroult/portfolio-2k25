@@ -1,6 +1,9 @@
 ---
+import ProjectItem from "../components/ProjectItem.astro";
 import Layout from "../layouts/Layout.astro";
+import ListLayout from "../layouts/ListLayout.astro";
 import WithTitleLayout from "../layouts/WithTitleLayout.astro";
+import { projects, type Project } from "../data/projects";
 ---
 
 <Layout
@@ -18,7 +21,21 @@ import WithTitleLayout from "../layouts/WithTitleLayout.astro";
     "CS student",
   ]}
 >
-  <WithTitleLayout title="Projects" subtitle="Explore My Work">
-    <p>There will be my project</p>
+  <WithTitleLayout
+    title="Projects, Creations and contributions"
+    subtitle="Here are some of the projects I've led, built, or contributed to. I focus on creating developer tools, automation solutions, and innovative web applications that improve efficiency, streamline workflows, and push the boundaries of technology."
+  >
+    <ListLayout title="Projects">
+      {
+        projects.map((project: Project) => (
+          <ProjectItem
+            title={project.name}
+            subtitle={project.role}
+            text={project.description}
+            links={project.links}
+          />
+        ))
+      }
+    </ListLayout>
   </WithTitleLayout>
 </Layout>

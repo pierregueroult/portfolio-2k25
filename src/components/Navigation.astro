@@ -25,7 +25,7 @@ const links: Link[] = [
     {
       links.map((link) => (
         <li>
-          <a href={link.url} class="text-foreground">
+          <a href={link.url} class="text-foreground hover:text-accent relative after:absolute after:w-0 after:-bottom-0.5 hover:after:w-full after:h-px after:bg-accent after:left-0">
             <kdb data-shortcut-element data-event-key={link.name[0].toLowerCase()} data-event-target={link.url}>
               [{link.name[0]}]
             </kdb>
