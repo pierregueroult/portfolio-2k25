@@ -38,8 +38,10 @@ const links: Link[] = [
 </nav>
 
 <script>
+  import { navigate } from "astro:transitions/client";
+
   const shortcuts = document.querySelectorAll("[data-shortcut-element]");
-  const shortcutMap = new Map();
+  const shortcutMap: Map<string, string>= new Map();
 
   shortcuts.forEach((shortcut) => {
     const element = shortcut as HTMLElement;
@@ -60,6 +62,6 @@ const links: Link[] = [
     if (event.ctrlKey || event.metaKey) return;
 
     const target = shortcutMap.get(event.key);
-    if (target) window.location.href = target;
+    if (target) navigate(target);
   });
 </script>
