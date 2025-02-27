@@ -4,6 +4,7 @@ import Title from "../components/Title.astro";
 import type { Person, WithContext } from "schema-dts";
 import ListLayout from "../layouts/ListLayout.astro";
 import { works, type Work } from "../data/works";
+import { schools, type School } from "../data/schools";
 
 const jsonld: WithContext<Person> = {
   "@context": "https://schema.org",
@@ -61,7 +62,7 @@ const jsonld: WithContext<Person> = {
                   <div class="text-foreground/60 text-sm flex gap-2">
                     <h4>- {item.role}</h4>
                     <p class="lowercase">
-                      (From
+                      ( From
                       <date>{item.period[0].toLocaleDateString("en-US", { month: "long", year: "numeric" })}</date>
                       to
                       <date>
@@ -79,6 +80,28 @@ const jsonld: WithContext<Person> = {
           </li>
         );
       })
+    }
+  </ListLayout>
+  <ListLayout title="Schools">
+    {
+      schools.map((school: School) => (
+        <li class="mt-4">
+          <h3 class="text-lg">{school.name}</h3>
+          <div class="text-foreground/60 text-sm flex gap-2">
+            <h4 class="text-foreground/60 text-sm">- {school.school} </h4>
+            <p class="lowercase">
+              ( from <date>{school.period[0].toLocaleDateString("en-US", { month: "long", year: "numeric" })}</date> to
+              <date>
+                {school.period[1] === "now"
+                  ? "right now"
+                  : school.period[1].toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+              </date>
+              )
+            </p>
+          </div>
+          <p class="text-sm">{school.description}</p>
+        </li>
+      ))
     }
   </ListLayout>
   <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonld, null, 0)} />
