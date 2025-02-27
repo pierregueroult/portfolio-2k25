@@ -12,10 +12,13 @@ summary: "SonarQube is an open-source platform developed by SonarSource for cont
 # SonarQube: A Complete Guide to Deployment, Integration, and Usage
 
 ## Introduction
+
 SonarQube is a powerful open-source platform for continuous code quality and security analysis. It provides static code analysis to detect bugs, vulnerabilities, and code smells across multiple languages.
 
 ---
+
 ## 📌 Prerequisites
+
 Before installing SonarQube, ensure you have the following:
 
 - **Java 17+** (OpenJDK or Oracle JDK)
@@ -24,8 +27,11 @@ Before installing SonarQube, ensure you have the following:
 - **At least 2GB RAM** for smooth execution
 
 ---
+
 ## 🏗️ Installing SonarQube Server
+
 ### 🔹 Using Docker
+
 ```bash
 docker run -d --name sonarqube \
   -p 9000:9000 \
@@ -34,6 +40,7 @@ docker run -d --name sonarqube \
 ```
 
 ### 🔹 Manual Installation
+
 1. **Download SonarQube:**
    ```bash
    wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.3.zip
@@ -50,14 +57,19 @@ docker run -d --name sonarqube \
    - Password: `admin`
 
 ---
+
 ## ⚙️ Configuring SonarQube
+
 ### 🔹 Database Configuration (PostgreSQL)
+
 Modify `sonar.properties` file:
+
 ```properties
 sonar.jdbc.username=sonarqube
 sonar.jdbc.password=your_password
 sonar.jdbc.url=jdbc:postgresql://localhost:5432/sonarqube
 ```
+
 Restart the SonarQube server for changes to take effect.
 
 ```bash
@@ -65,8 +77,11 @@ Restart the SonarQube server for changes to take effect.
 ```
 
 ---
+
 ## 🚀 Running Sonar Scanner
+
 ### 🔹 Install Scanner
+
 ```bash
 wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-5.0.zip
 unzip sonar-scanner-5.0.zip
@@ -74,6 +89,7 @@ export PATH=$PATH:/your/path/sonar-scanner/bin
 ```
 
 ### 🔹 Analyze a Project
+
 1. Create a `sonar-project.properties` file:
    ```properties
    sonar.projectKey=MyProject
@@ -87,27 +103,39 @@ export PATH=$PATH:/your/path/sonar-scanner/bin
    ```
 
 ---
+
 ## 🔌 IDE Integration
+
 ### 🔹 SonarLint for VS Code & IntelliJ
+
 SonarLint helps developers detect issues within their IDE before pushing code.
+
 - Install the **SonarLint** extension in your IDE
 - Connect to SonarQube server for synchronized rules
 - Run **Code Analysis** directly inside your IDE
 
 ---
+
 ## 🔥 Advanced Features
+
 ### ✅ **Quality Gates**
+
 Set up rules to automatically fail builds if code does not meet quality standards.
 
 ### 🔐 **Security Analysis**
+
 Detect vulnerabilities using **OWASP, SAST, and CWE rules**.
 
 ### 📊 **Custom Dashboards & Reports**
+
 Generate in-depth reports on code quality, duplications, and hotspots.
 
 ---
+
 ## 🌍 CI/CD Integration
+
 ### 🔹 GitHub Actions Example
+
 ```yaml
 name: SonarQube Analysis
 on:
@@ -128,7 +156,9 @@ jobs:
 ```
 
 ---
+
 ## 📌 Conclusion
+
 SonarQube is a must-have tool for improving code quality and security in any project. Whether running manually, in Docker, or integrated with CI/CD, it provides valuable insights to maintain clean and secure code.
 
 🚀 **Start using SonarQube today to enhance your code quality!**

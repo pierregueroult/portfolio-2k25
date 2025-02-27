@@ -17,19 +17,22 @@ const { Content } = await render(post);
 
 <Layout title={post.data.title} description={post.data.summary}>
   <article class="mt-8 max-w-4xl">
-    <Content 
-      components={{...components}}
-    />
+    <Content components={{ ...components }} />
   </article>
   <footer class="mt-8">
-    {prev && (
-      <a href={`/blog/${prev.data.slug}`} class="text-blue-500">
-        ← {prev.data.title}
-      </a>
-    )}
-    {next && (
-      <a href={`/blog/${next.data.slug}`} class="text-blue-500 float-right">
-        {next.data.title} →
-      </a>
-    )}
+    {
+      prev && (
+        <a href={`/blog/${prev.data.slug}`} class="text-blue-500">
+          ← {prev.data.title}
+        </a>
+      )
+    }
+    {
+      next && (
+        <a href={`/blog/${next.data.slug}`} class="text-blue-500 float-right">
+          {next.data.title} →
+        </a>
+      )
+    }
+  </footer>
 </Layout>

@@ -1,6 +1,5 @@
 type SchoolDate = Date | "now";
 
-
 export type School = {
   name: string;
   school: string;
@@ -17,6 +16,7 @@ export const schools: School[] = [
     city: "Rouen",
     country: "France",
     period: [new Date("2022/09"), "now"],
-    description: "I specialize in Web Development and Interactive Systems, focusing on front-end and back-end development, UI/UX design, and interactive media."
+    description:
+      "I specialize in Web Development and Interactive Systems, focusing on front-end and back-end development, UI/UX design, and interactive media.",
   },
 ];

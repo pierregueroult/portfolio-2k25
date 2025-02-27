@@ -9,15 +9,13 @@ const slug = Astro.params.slug;
 
 const index = posts.findIndex((post) => post.data.slug === slug);
 
-
-if(index === -1) {
+if (index === -1) {
   return new Response(null, { status: 404 });
 }
 
 const post = posts[index];
 const prev = posts[index - 1] || null;
 const next = posts[index + 1] || null;
-
 ---
 
 <BlogLayout {post} {prev} {next} />

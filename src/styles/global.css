@@ -75,13 +75,13 @@
       --color-accent: #007aff;
     }
   }
-  
+
   [data-theme="dark"] {
     --color-foreground: #e0e0e0;
     --color-background: #0d1b2a;
     --color-accent: #ff7b00;
   }
-  
+
   [data-theme="light"] {
     --color-foreground: #2d2d2d;
     --color-background: #f5f5f5;
