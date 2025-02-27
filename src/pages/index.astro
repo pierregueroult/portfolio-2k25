@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Title from "../components/Title.astro";
 import type { Person, WithContext } from "schema-dts";
 import ListLayout from "../layouts/ListLayout.astro";
+import { works, type Work } from "../data/works";
 
 const jsonld: WithContext<Person> = {
   "@context": "https://schema.org",
@@ -40,7 +41,42 @@ const jsonld: WithContext<Person> = {
     completely out of my comfort zone - I'm in.
   </h2>
   <ListLayout title="Works">
-    aa
+    {
+      works.map((work: Work) => {
+        if ("role" in work) {
+          // looking for a job part
+          return <li class="mt-4">
+            <h3 class="text-sm lowercase">Looking for {work.role} near {work.place}</h3>
+          </li>
+        }
+        return (
+          <li class="mt-4">
+            <h3 class="text-lg">{work.place}</h3>
+            <ul>
+              {work.works.map((item) => (
+                <li class="mt-2 first-of-type:mt-1">
+                  <div class="text-foreground/60 text-sm flex gap-2">
+                    <h4>- {item.role}</h4>
+                    <p class="lowercase">
+                      (From
+                      <date>{item.period[0].toLocaleDateString("en-US", { month: "long", year: "numeric" })}</date>
+                      to
+                      <date>
+                        {item.period[1] === "now"
+                          ? "right now"
+                          : item.period[1].toLocaleDateString("en-US", { month: "long", year: "numeric" })}</date>)
+                    </p>
+                  </div>
+                  <p class="text-sm">
+                    {item.description}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </li>
+        );
+      })
+    }
   </ListLayout>
   <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonld, null, 0)} />
 </Layout>
