@@ -5,25 +5,39 @@ import Clock from "./Clock.astro";
 import Theme from "./Theme.astro";
 ---
 
-<header class="mx-auto max-w-4xl flex items-center justify-between pt-8 px-4 text-sm" transition:persist="true">
+<header class="mx-auto max-w-4xl  w-full flex items-center justify-between pt-8 px-4 text-sm" transition:persist="true">
   <div class="flex items-center gap-2 flex-1 justify-start lowercase">
     <Clock />
     <span>/</span>
-    <a href="https://maps.app.goo.gl/ftMTNLp81F2gpX7LA" target="_blank" rel="
+    <a
+      href="https://maps.app.goo.gl/ftMTNLp81F2gpX7LA"
+      target="_blank"
+      rel="
       noopener noreferrer"
-        class="hover:text-accent relative after:absolute after:w-0 after:-bottom-0.5 hover:after:w-full after:h-px after:bg-accent after:left-0"
-      >Paris,France</a>
+      class="hover:text-accent relative after:absolute after:w-0 after:-bottom-0.5 hover:after:w-full after:h-px after:bg-accent after:left-0"
+      >Paris,France</a
+    >
   </div>
 
   <Navigation />
   <div class="flex-1 items-center justify-end flex gap-2">
     <Modal id="language-modal">
-      <div slot="trigger" class="lowercase hover:text-accent relative after:absolute after:w-0 after:-bottom-0.5 hover:after:w-full after:h-px after:bg-accent after:left-0">Language</div>
+      <div
+        slot="trigger"
+        class="lowercase hover:text-accent relative after:absolute after:w-0 after:-bottom-0.5 hover:after:w-full after:h-px after:bg-accent after:left-0"
+      >
+        Language
+      </div>
       <span slot="content">content</span>
     </Modal>
     <span>/</span>
     <Modal id="theme-modal">
-      <div slot="trigger" class="lowercase hover:text-accent relative after:absolute after:w-0 after:-bottom-0.5 hover:after:w-full after:h-px after:bg-accent after:left-0">Theme</div>
+      <div
+        slot="trigger"
+        class="lowercase hover:text-accent relative after:absolute after:w-0 after:-bottom-0.5 hover:after:w-full after:h-px after:bg-accent after:left-0"
+      >
+        Theme
+      </div>
       <Theme slot="content" />
     </Modal>
   </div>

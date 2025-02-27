@@ -7,7 +7,7 @@ import { projects, type Project } from "../data/projects";
 ---
 
 <Layout
-  title="Pierre Guéroult - Projects & Work"
+  title="Projects & Work"
   description="Explore my latest web development projects, automation tools, and tech experiments. Always building, always learning."
   keywords={[
     "Pierre Guéroult",
@@ -28,12 +28,7 @@ import { projects, type Project } from "../data/projects";
     <ListLayout title="Projects">
       {
         projects.map((project: Project) => (
-          <ProjectItem
-            title={project.name}
-            subtitle={project.role}
-            text={project.description}
-            links={project.links}
-          />
+          <ProjectItem title={project.name} subtitle={project.role} text={project.description} links={project.links} />
         ))
       }
     </ListLayout>

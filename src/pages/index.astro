@@ -29,7 +29,7 @@ const jsonld: WithContext<Person> = {
 ---
 
 <Layout
-  title="Pierre Guéroult - Web & Software Developer"
+  title="Web & Software Developer"
   description="20-year-old Web Developer & Computer Science Student passionate about building sleek, high-performance websites and automating workflows. Always exploring new technologies to solve problems and optimize efficiency."
 >
   <Title />
@@ -44,10 +44,13 @@ const jsonld: WithContext<Person> = {
     {
       works.map((work: Work) => {
         if ("role" in work) {
-          // looking for a job part
-          return <li class="mt-4">
-            <h3 class="text-sm lowercase">Looking for {work.role} near {work.place}</h3>
-          </li>
+          return (
+            <li class="mt-4">
+              <h3 class="text-sm lowercase">
+                Looking for {work.role} near {work.place}
+              </h3>
+            </li>
+          );
         }
         return (
           <li class="mt-4">
@@ -64,12 +67,12 @@ const jsonld: WithContext<Person> = {
                       <date>
                         {item.period[1] === "now"
                           ? "right now"
-                          : item.period[1].toLocaleDateString("en-US", { month: "long", year: "numeric" })}</date>)
+                          : item.period[1].toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+                      </date>
+                      )
                     </p>
                   </div>
-                  <p class="text-sm">
-                    {item.description}
-                  </p>
+                  <p class="text-sm">{item.description}</p>
                 </li>
               ))}
             </ul>

@@ -6,11 +6,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "sync": "astro sync",
     "astro": "astro",
     "format": "prettier --write .",
     "lint": "eslint"
   },
   "dependencies": {
+    "@astrojs/mdx": "^4.1.0",
     "@astrojs/node": "^9.1.0",
     "@astrojs/partytown": "^2.1.3",
     "@astrojs/sitemap": "^3.2.1",

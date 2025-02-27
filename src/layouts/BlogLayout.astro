@@ -1,0 +1,35 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Layout from "./Layout.astro";
+import { components } from "../components/markdown/components";
+import { render } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+  next?: CollectionEntry<"blog">;
+  prev?: CollectionEntry<"blog">;
+}
+
+const { post, next, prev } = Astro.props;
+
+const { Content } = await render(post);
+---
+
+<Layout title={post.data.title} description={post.data.summary}>
+  <article class="mt-8 max-w-4xl">
+    <Content 
+      components={{...components}}
+    />
+  </article>
+  <footer class="mt-8">
+    {prev && (
+      <a href={`/blog/${prev.data.slug}`} class="text-blue-500">
+        ← {prev.data.title}
+      </a>
+    )}
+    {next && (
+      <a href={`/blog/${next.data.slug}`} class="text-blue-500 float-right">
+        {next.data.title} →
+      </a>
+    )}
+</Layout>

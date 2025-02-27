@@ -1,6 +1,7 @@
 import node from "@astrojs/node";
 import sitemap from "@astrojs/sitemap";
 import partytown from "@astrojs/partytown";
+import mdx from "@astrojs/mdx";
 import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
@@ -9,6 +10,7 @@ export default defineConfig({
   site: "https://pierregueroult.dev",
   output: "server",
   integrations: [
+    mdx(),
     sitemap({
       changefreq: "weekly",
       priority: 0.7,
@@ -29,5 +31,5 @@ export default defineConfig({
   }),
   devToolbar: {
     enabled: false,
-  }
+  },
 });
