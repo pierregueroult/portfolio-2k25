@@ -20,7 +20,7 @@ const links: Link[] = [
   {
     name: "Blog",
     url: "/blog",
-  }
+  },
 ];
 ---
 
@@ -29,8 +29,16 @@ const links: Link[] = [
     {
       links.map((link) => (
         <li>
-          <a href={link.url} class="text-foreground hover:text-accent relative after:absolute after:w-0 after:-bottom-0.5 hover:after:w-full after:h-px after:bg-accent after:left-0">
-            <kdb data-shortcut-element data-event-key={link.name[0].toLowerCase()} data-event-target={link.url} class="hidden">
+          <a
+            href={link.url}
+            class="text-foreground hover:text-accent relative after:absolute after:w-0 after:-bottom-0.5 hover:after:w-full after:h-px after:bg-accent after:left-0"
+          >
+            <kdb
+              data-shortcut-element
+              data-event-key={link.name[0].toLowerCase()}
+              data-event-target={link.url}
+              class="hidden"
+            >
               [{link.name[0]}]
             </kdb>
             [{link.name}]
@@ -45,7 +53,7 @@ const links: Link[] = [
   import { navigate } from "astro:transitions/client";
 
   const shortcuts = document.querySelectorAll("[data-shortcut-element]");
-  const shortcutMap: Map<string, string>= new Map();
+  const shortcutMap: Map<string, string> = new Map();
 
   shortcuts.forEach((shortcut) => {
     const element = shortcut as HTMLElement;
@@ -57,11 +65,15 @@ const links: Link[] = [
 
   document.addEventListener("keydown", (event) => {
     const activeElement = document.activeElement as HTMLElement | null;
+
     if (
       activeElement &&
       (activeElement.tagName === "INPUT" || activeElement.tagName === "TEXTAREA" || activeElement.isContentEditable)
     )
       return;
+
+    const isDialogOpen = [...document.querySelectorAll("dialog")].some((dialog) => (dialog as HTMLDialogElement).open);
+    if (isDialogOpen) return;
 
     if (event.ctrlKey || event.metaKey) return;
 
