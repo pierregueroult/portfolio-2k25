@@ -10,7 +10,7 @@ interface Props {
   isForMarkdown?: boolean;
 }
 
-const theme: string = Astro.cookies.get("theme")?.value || "system";
+const { theme } = Astro.locals;
 
 const { title, description, keywords, isForMarkdown } = Astro.props;
 const defaultKeywords: string[] = [

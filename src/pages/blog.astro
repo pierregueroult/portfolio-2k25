@@ -3,7 +3,7 @@ import BlogItem from "../components/items/BlogItem.astro";
 import Layout from "../layouts/Layout.astro";
 import ListLayout from "../layouts/ListLayout.astro";
 import WithTitleLayout from "../layouts/WithTitleLayout.astro";
-import { excludeDrafts } from "../utils/excluse-drafts";
+import { excludeDrafts } from "../utils/exclude-drafts";
 import { getCollection } from "astro:content";
 
 const postsList = await getCollection("blog");
