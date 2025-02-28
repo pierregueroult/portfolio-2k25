@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+
+export const prerender = false;
+
+const projects = await getCollection("projects");
+const slug = Astro.params.slug;
+
+const index = projects.findIndex((project) => project.data.slug === slug);
+
+if (index === -1) {
+  return new Response(null, { status: 404 });
+}
+
+const project = projects[index];
+const prev = projects[index - 1] || null;
+const next = projects[index + 1] || null;
+---
+
+<ProjectLayout {project} {prev} {next} />

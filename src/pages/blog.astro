@@ -1,5 +1,7 @@
 ---
+import BlogItem from "../components/BlogItem.astro";
 import Layout from "../layouts/Layout.astro";
+import ListLayout from "../layouts/ListLayout.astro";
 import WithTitleLayout from "../layouts/WithTitleLayout.astro";
 import { excludeDrafts } from "../utils/excluse-drafts";
 import { getCollection } from "astro:content";
@@ -19,21 +21,18 @@ const posts = postsList.filter(excludeDrafts).sort((a, b) => {
     title="Blog - Insights & Experiments"
     subtitle="Exploring web development, automation, and new technologies—one project at a time."
   >
-    {
-      posts.length === 0 ? (
-        <p class="mt-4 w-full text-center text-base font-semibold">No posts found.</p>
-      ) : (
-        <ul>
-          {posts.map((post) => (
-            <li class="mt-4">
-              <a href={`/blog/${post.data.slug}`}>
-                <h2 class="text-lg">{post.data.title}</h2>
-                <p class="text-sm text-foreground/60">{post.data.summary}</p>
-              </a>
-            </li>
-          ))}
-        </ul>
-      )
-    }
+    <ListLayout title="Articles">
+      {
+        posts.map((post) => (
+          <BlogItem
+            title={post.data.title}
+            slug={post.data.slug}
+            summary={post.data.summary}
+            date={post.data.date}
+            tags={post.data.tags}
+          />
+        ))
+      }
+    </ListLayout>
   </WithTitleLayout>
 </Layout>

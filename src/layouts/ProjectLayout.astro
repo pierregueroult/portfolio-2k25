@@ -5,25 +5,25 @@ import { components } from "../components/markdown/components";
 import { render } from "astro:content";
 
 interface Props {
-  post: CollectionEntry<"blog">;
-  next?: CollectionEntry<"blog">;
-  prev?: CollectionEntry<"blog">;
+  project: CollectionEntry<"projects">;
+  next?: CollectionEntry<"projects">;
+  prev?: CollectionEntry<"projects">;
 }
 
-const { post, next, prev } = Astro.props;
+const { project, next, prev } = Astro.props;
 
-const { Content } = await render(post);
+const { Content } = await render(project);
 ---
 
-<Layout title={post.data.title} description={post.data.summary}>
+<Layout title={project.data.name} description={project.data.description}>
   <article class="mt-8 max-w-4xl">
     <Content components={{ ...components }} />
   </article>
   <footer class="py-8 flex items-center justify-between">
     {
       prev ? (
-        <a href={`/blog/${prev.data.slug}`} class="text-accent">
-          ← {prev.data.title}
+        <a href={`/projects/${prev.data.slug}`} class="text-accent">
+          ← {prev.data.slug}
         </a>
       ) : (
         <div aria-hidden="true" />
@@ -31,8 +31,8 @@ const { Content } = await render(post);
     }
     {
       next ? (
-        <a href={`/blog/${next.data.slug}`} class="text-accent">
-          {next.data.title} →
+        <a href={`/projects/${next.data.slug}`} class="text-accent">
+          {next.data.slug} →
         </a>
       ) : (
         <div aria-hidden="true" />
