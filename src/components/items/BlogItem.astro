@@ -13,11 +13,13 @@ const { title, slug, summary, date, tags } = Astro.props;
   <h4 class="text-xl font-mono">{title}</h4>
   <p class="text-sm text-foreground/60 lowercase">
     <date>
-      {date.toLocaleString("en-US", {
-        month: "long",
-        day: "numeric",
-        year: "numeric",
-      })}
+      {
+        date.toLocaleString("en-US", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+        })
+      }
     </date>
     - {tags.join(", ")}
   </p>

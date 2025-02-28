@@ -10,7 +10,6 @@ const allProjects = await getCollection("projects");
 const projects = allProjects.filter((project) => project.data.kind === "project");
 const creations = allProjects.filter((project) => project.data.kind === "creation");
 const contributions = allProjects.filter((project) => project.data.kind === "contribution");
-
 ---
 
 <Layout
@@ -32,47 +31,47 @@ const contributions = allProjects.filter((project) => project.data.kind === "con
     title="Projects, Creations and contributions"
     subtitle="Here are some of the projects I've led, built, or contributed to. I focus on creating developer tools, automation solutions, and innovative web applications that improve efficiency, streamline workflows, and push the boundaries of technology."
   >
-    {creations.length > 0 && (
-      <ListLayout title="Creations">
-        {
-          creations.map((project) => (
+    {
+      creations.length > 0 && (
+        <ListLayout title="Creations">
+          {creations.map((project) => (
             <ProjectItem
               title={project.data.slug}
               subtitle={project.data.role}
               text={project.data.description}
               slug={project.data.slug}
             />
-          ))
-        }
-      </ListLayout>
-    )}
-    {projects.length > 0 && (
-      <ListLayout title="Projects">
-        {
-          projects.map((project) => (
+          ))}
+        </ListLayout>
+      )
+    }
+    {
+      projects.length > 0 && (
+        <ListLayout title="Projects">
+          {projects.map((project) => (
             <ProjectItem
               title={project.data.slug}
               subtitle={project.data.role}
               text={project.data.description}
               slug={project.data.slug}
             />
-          ))
-        }
-      </ListLayout>
-    )}
-    {contributions.length > 0 && (
-      <ListLayout title="Contributions">
-        {
-          contributions.map((project) => (
+          ))}
+        </ListLayout>
+      )
+    }
+    {
+      contributions.length > 0 && (
+        <ListLayout title="Contributions">
+          {contributions.map((project) => (
             <ProjectItem
               title={project.data.slug}
               subtitle={project.data.role}
               text={project.data.description}
               slug={project.data.slug}
             />
-          ))
-        }
-      </ListLayout>
-    )}
+          ))}
+        </ListLayout>
+      )
+    }
   </WithTitleLayout>
 </Layout>
