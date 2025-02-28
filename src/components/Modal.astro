@@ -12,7 +12,7 @@ const { id } = Astro.props;
 
 <dialog
   id={id}
-  class="mb-0 md:mb-auto mt-auto mx-0 md:mx-auto backdrop:backdrop-blur-sm w-screen md:max-w-lg h-80 bg-background text-foreground backdrop:bg-foreground/20 rounded-lg relative"
+  class="fixed mb-0 md:mb-auto mt-auto mx-auto backdrop:backdrop-blur-sm w-screen md:max-w-lg h-[50vh] md:h-80 bg-background text-foreground backdrop:bg-foreground/20 rounded-lg"
 >
   <button data-modal-close class="absolute top-4 right-4 cursor-pointer z-50">Close</button>
   <main class="w-full h-full overflow-y-auto relative">
@@ -31,7 +31,6 @@ const { id } = Astro.props;
 
       trigger.addEventListener("click", () => {
         dialog.showModal();
-        document.body.classList.add("overflow-hidden", "md:overflow-auto");
       });
 
       const close = dialog.querySelector("[data-modal-close]") as HTMLButtonElement | null;
@@ -39,7 +38,6 @@ const { id } = Astro.props;
 
       close.addEventListener("click", () => {
         dialog.close();
-        document.body.classList.remove("overflow-hidden", "md:overflow-auto");
       });
     });
 
@@ -48,7 +46,6 @@ const { id } = Astro.props;
       if (target.tagName === "DIALOG") {
         const dialog = target as HTMLDialogElement;
         dialog.close();
-        document.body.classList.remove("overflow-hidden", "md:overflow-auto");
       }
     });
   });
