@@ -6,12 +6,13 @@ import ListLayout from "../layouts/ListLayout.astro";
 import { getCollection } from "astro:content";
 import WorkItem from "../components/items/WorkItem.astro";
 import SchoolItem from "../components/items/SchoolItem.astro";
+import { SITE } from "../consts";
 
 const jsonld: WithContext<Person> = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Pierre Guéroult",
-  url: "https://pierregueroult.dev",
+  url: SITE,
   image: "TODO",
   jobTitle: "Software Developer Junior & CS Student",
   nationality: "French",

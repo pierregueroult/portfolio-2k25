@@ -1,6 +1,7 @@
 import rss from "@astrojs/rss";
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
+import { SITE } from "../consts";
 
 export const GET: APIRoute = async ({ site }) => {
   const posts = await getCollection("blog");
@@ -8,7 +9,7 @@ export const GET: APIRoute = async ({ site }) => {
     title: "Pierre's Tech Blog",
     description:
       "Read my latest articles, thoughts, and tech tutorials. I write about web development, software engineering, automation, and tech culture.",
-    site: site || "https://pierregueroult.dev",
+    site: site || SITE,
     customData: "<language>en-us</language>",
     items: posts.map((post) => ({
       title: post.data.title,
