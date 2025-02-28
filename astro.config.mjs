@@ -4,9 +4,11 @@ import mdx from "@astrojs/mdx";
 import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
+import { SITE } from "./src/consts";
+import { blog, projects } from "./src/content/sitemap";
 
 export default defineConfig({
-  site: "https://pierregueroult.dev",
+  site: SITE,
   output: "server",
   integrations: [
     mdx(),
@@ -14,6 +16,7 @@ export default defineConfig({
       changefreq: "weekly",
       priority: 0.7,
       lastmod: new Date(),
+      customPages: [...projects, ...blog],
     }),
     robotsTxt(),
   ],
