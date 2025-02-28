@@ -9,8 +9,8 @@ const { school } = Astro.props;
 
 <li>
   <h3 class="text-lg">{school.data.name}</h3>
-  <div class="text-foreground/60 text-sm flex gap-2">
-    <h4 class="text-foreground/60 text-sm">- {school.data.school}</h4>
+  <div class="text-foreground/70 text-sm flex gap-2">
+    <h4 class="text-foreground/70 text-sm">- {school.data.school}</h4>
     <p class="lowercase">
       ( from <date>{school.data.period[0].toLocaleDateString("en-US", { month: "long", year: "numeric" })}</date> to
       <date>
