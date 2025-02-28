@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  work: CollectionEntry<"works">;
+}
+const { work } = Astro.props;
+---
+
+{
+  "role" in work.data ? (
+    <li class="mt-4">
+      <h3 class="text-sm lowercase">
+        Looking for {work.data.role} near {work.data.place}
+      </h3>
+    </li>
+  ) : (
+    <li class="mt-4">
+      <h3 class="text-lg">{work.data.place}</h3>
+      <ul>
+        {work.data.works.map((item) => (
+          <li class="mt-2 first-of-type:mt-1">
+            <div class="text-foreground/60 text-sm flex gap-2">
+              <h4>- {item.role}</h4>
+              <p class="lowercase">
+                ( From
+                <date>{item.period[0].toLocaleDateString("en-US", { month: "long", year: "numeric" })}</date>
+                to
+                <date>
+                  {item.period[1] === "now"
+                    ? "right now"
+                    : item.period[1].toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+                </date>
+                )
+              </p>
+            </div>
+            <p class="text-sm">{item.description}</p>
+          </li>
+        ))}
+      </ul>
+    </li>
+  )
+}

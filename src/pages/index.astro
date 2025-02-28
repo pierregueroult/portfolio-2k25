@@ -3,8 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import Title from "../components/Title.astro";
 import type { Person, WithContext } from "schema-dts";
 import ListLayout from "../layouts/ListLayout.astro";
-import { works, type Work } from "../data/works";
-import { schools, type School } from "../data/schools";
+import { getCollection } from "astro:content";
+import WorkItem from "../components/items/WorkItem.astro";
+import SchoolItem from "../components/items/SchoolItem.astro";
 
 const jsonld: WithContext<Person> = {
   "@context": "https://schema.org",
@@ -27,6 +28,9 @@ const jsonld: WithContext<Person> = {
   email: "contact@pierregueroult.dev",
   sameAs: ["https://www.linkedin.com/in/pierregueroult", "https://github.com/pierregueroult"],
 };
+
+const works = await getCollection("works");
+const schools = await getCollection("schools");
 ---
 
 <Layout
@@ -42,67 +46,10 @@ const jsonld: WithContext<Person> = {
     completely out of my comfort zone - I'm in.
   </h2>
   <ListLayout title="Works">
-    {
-      works.map((work: Work) => {
-        if ("role" in work) {
-          return (
-            <li class="mt-4">
-              <h3 class="text-sm lowercase">
-                Looking for {work.role} near {work.place}
-              </h3>
-            </li>
-          );
-        }
-        return (
-          <li class="mt-4">
-            <h3 class="text-lg">{work.place}</h3>
-            <ul>
-              {work.works.map((item) => (
-                <li class="mt-2 first-of-type:mt-1">
-                  <div class="text-foreground/60 text-sm flex gap-2">
-                    <h4>- {item.role}</h4>
-                    <p class="lowercase">
-                      ( From
-                      <date>{item.period[0].toLocaleDateString("en-US", { month: "long", year: "numeric" })}</date>
-                      to
-                      <date>
-                        {item.period[1] === "now"
-                          ? "right now"
-                          : item.period[1].toLocaleDateString("en-US", { month: "long", year: "numeric" })}
-                      </date>
-                      )
-                    </p>
-                  </div>
-                  <p class="text-sm">{item.description}</p>
-                </li>
-              ))}
-            </ul>
-          </li>
-        );
-      })
-    }
+    {works.map((work) => <WorkItem {work} />)}
   </ListLayout>
   <ListLayout title="Schools">
-    {
-      schools.map((school: School) => (
-        <li class="mt-4">
-          <h3 class="text-lg">{school.name}</h3>
-          <div class="text-foreground/60 text-sm flex gap-2">
-            <h4 class="text-foreground/60 text-sm">- {school.school} </h4>
-            <p class="lowercase">
-              ( from <date>{school.period[0].toLocaleDateString("en-US", { month: "long", year: "numeric" })}</date> to
-              <date>
-                {school.period[1] === "now"
-                  ? "right now"
-                  : school.period[1].toLocaleDateString("en-US", { month: "long", year: "numeric" })}
-              </date>
-              )
-            </p>
-          </div>
-          <p class="text-sm">{school.description}</p>
-        </li>
-      ))
-    }
+    {schools.map((school) => <SchoolItem {school} />)}
   </ListLayout>
   <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonld, null, 0)} />
 </Layout>

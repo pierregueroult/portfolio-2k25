@@ -1,0 +1,27 @@
+[
+  {
+    "id": 2,
+    "type": "looking",
+    "place": "Paris, France",
+    "role": "an internship in software engineering"
+  },
+  {
+    "id": 1,
+    "type": "passed",
+    "place": "Groupe Frame IP",
+    "works": [
+      {
+        "role": "Web development internship",
+        "techs": ["Angular", "C#", "MySQL", "PHP"],
+        "period": ["2024-08", "now"],
+        "description": "I'm working on the internal tools of the company, mainly using PHP and Angular frameworks."
+      },
+      {
+        "role": "Web developer",
+        "techs": ["Angular", "C#", "MySQL", "PHP"],
+        "period": ["2024-06", "2024-08"],
+        "description": "I mainly worked on the migration of the company's internal tools to a new version of PHP. I also worked on the development of new features."
+      }
+    ]
+  }
+]

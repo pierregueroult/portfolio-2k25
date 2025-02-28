@@ -28,7 +28,7 @@ const projects = defineCollection({
       z.object({
         url: z.string(),
         title: z.string(),
-      })
+      }),
     ),
     date: z.coerce.date(),
   }),
@@ -41,7 +41,48 @@ const socials = defineCollection({
     link: z.string(),
     description: z.string(),
     isFeatured: z.boolean().default(false),
-  })
-})
+  }),
+});
 
-export const collections = { blog, projects, socials };
+const works = defineCollection({
+  loader: file("./src/content/works/works.json"),
+  schema: z.discriminatedUnion("type", [
+    z.object({
+      type: z.literal("looking"),
+      place: z.string(),
+      role: z.string(),
+    }),
+    z.object({
+      type: z.literal("passed"),
+      place: z.string(),
+      works: z.array(
+        z.object({
+          role: z.string(),
+          techs: z.array(z.string()),
+          period: z.tuple([
+            z.string().transform((str) => new Date(str)),
+            z.union([z.string().transform((str) => (str === "now" ? "now" : new Date(str))), z.literal("now")]),
+          ]),
+          description: z.string(),
+        }),
+      ),
+    }),
+  ]),
+});
+
+const schools = defineCollection({
+  loader: file("./src/content/schools/schools.json"),
+  schema: z.object({
+    name: z.string(),
+    school: z.string(),
+    city: z.string(),
+    country: z.string(),
+    period: z.tuple([
+      z.string().transform((str) => new Date(str)),
+      z.union([z.string().transform((str) => (str === "now" ? "now" : new Date(str))), z.literal("now")]),
+    ]),
+    description: z.string(),
+  }),
+});
+
+export const collections = { blog, projects, socials, works, schools };

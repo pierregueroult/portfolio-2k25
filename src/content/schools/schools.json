@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "name": "BUT Métiers du Multimédia et de l'Internet",
+    "school": "Université de Rouen",
+    "city": "Rouen",
+    "country": "France",
+    "period": ["2022-09", "now"],
+    "description": "I specialize in Web Development and Interactive Systems, focusing on front-end and back-end development, UI/UX design, and interactive media."
+  }
+]

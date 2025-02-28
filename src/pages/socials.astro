@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import ListLayout from "../layouts/ListLayout.astro";
 import WithTitleLayout from "../layouts/WithTitleLayout.astro";
+import SocialItem from "../components/items/SocialItem.astro";
 
 const allSocials = await getCollection("socials");
 
@@ -32,74 +33,14 @@ const socials = allSocials.filter((social) => !social.data.isFeatured);
     <ListLayout title="Featured">
       {
         featured.map((social) => (
-          <li class="group mt-4">
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href={social.data.link}
-              class="flex items-center justify-between group-hover:text-accent font-medium transition-colors"
-              title={social.data.title}
-            >
-              <div>
-                <h3>{social.data.link}</h3>
-                <p class="text-xs text-foreground/60 mr-4">{social.data.description}</p>
-              </div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="group-hover:rotate-45 transition-transform"
-              >
-                <>
-                  <path d="M7 7h10v10" />
-                  <path d="M7 17 17 7" />
-                </>
-              </svg>
-            </a>
-          </li>
+          <SocialItem link={social.data.link} title={social.data.title} description={social.data.description} />
         ))
       }
     </ListLayout>
     <ListLayout title="Socials Links">
       {
         socials.map((social) => (
-          <li class="group mt-4">
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href={social.data.link}
-              class="flex items-center justify-between group-hover:text-accent font-medium transition-colors"
-              title={social.data.title}
-            >
-              <div>
-                <h3>{social.data.link}</h3>
-                <p class="text-xs text-foreground/60 mr-4">{social.data.description}</p>
-              </div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="group-hover:rotate-45 transition-transform"
-              >
-                <>
-                  <path d="M7 7h10v10" />
-                  <path d="M7 17 17 7" />
-                </>
-              </svg>
-            </a>
-          </li>
+          <SocialItem link={social.data.link} title={social.data.title} description={social.data.description} />
         ))
       }
     </ListLayout>
