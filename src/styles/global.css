@@ -21,9 +21,10 @@
   font-family: "Geist";
   src:
     local("Geist Mono"),
-    url("/fonts/Geist[wght].woff2") format("woff2"),
-    url("/fonts/Geist[wght].ttf") format("truetype");
+    url("/fonts/Geist.woff2") format("woff2"),
+    url("/fonts/Geist.ttf") format("truetype");
   font-display: swap;
+  font-weight: 400;
 }
 
 @font-face {
@@ -35,9 +36,10 @@
   font-family: "Geist Mono";
   src:
     local("Geist Mono"),
-    url("/fonts/GeistMono[wght].woff2") format("woff2"),
-    url("/fonts/GeistMono[wght].ttf") format("truetype");
+    url("/fonts/GeistMono.woff2") format("woff2"),
+    url("/fonts/GeistMono.ttf") format("truetype");
   font-display: swap;
+  font-weight: 700 400;
 }
 
 @font-face {
