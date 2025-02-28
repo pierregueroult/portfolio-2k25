@@ -4,24 +4,26 @@ import type { CollectionEntry } from "astro:content";
 interface Props {
   school: CollectionEntry<"schools">;
 }
-const { school } = Astro.props;
+const {
+  school: { data },
+} = Astro.props;
 ---
 
 <li>
-  <h3 class="text-lg">{school.data.name}</h3>
-  <div class="text-foreground/70 text-sm flex gap-2">
-    <h4 class="text-foreground/70 text-sm">- {school.data.school}</h4>
-    <p class="lowercase">
-      ( from <date>{school.data.period[0].toLocaleDateString("en-US", { month: "long", year: "numeric" })}</date> to
+  <h3 class="text-lg">{data.name}</h3>
+  <div class="text-foreground/70 text-sm">
+    <h4 class="text-foreground/70 inline-block">- {data.school}</h4>
+    <p class="lowercase inline-block ml-[1ch]">
+      <span>(From</span>{" "}
+      <date>{data.period[0].toLocaleDateString("en-US", { month: "long", year: "numeric" })}</date>{" "}
+      <span>to</span>{" "}
       <date>
-        {
-          school.data.period[1] === "now"
+        {data.period[1] === "now"
             ? "right now"
-            : school.data.period[1].toLocaleDateString("en-US", { month: "long", year: "numeric" })
-        }
+            : data.period[1].toLocaleDateString("en-US", { month: "long", year: "numeric" })}
       </date>
-      )
+      <span>)</span>
     </p>
   </div>
-  <p class="text-sm">{school.data.description}</p>
+  <p class="text-sm">{data.description}</p>
 </li>

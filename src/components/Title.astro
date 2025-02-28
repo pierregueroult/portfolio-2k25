@@ -3,36 +3,58 @@ const letters: string[] = ["P", "i", "e", "r", "r", "e", " ", "G", "u", "e", "r"
 ---
 
 <div
-  class="font-accent text-[19rem] uppercase text-center leading-none flex items-center not-[[data-title-ready]]:opacity-0 w-full overflow-hidden justify-center"
+  class="font-accent text-[0rem] uppercase text-center sm:flex sm:items-center w-full overflow-hidden sm:justify-center"
   data-title-container
 >
   {
     letters.map((letter) => (
-      <span
-        class={`letter opacity-0 text-foreground ${letter === " " ? "min-w-[0.5ch]" : ""}`}
-        style={`animation-delay: ${Math.random() * 0.5}s`}
-      >
-        {letter}
-      </span>
+      <>
+        {/* prettier-ignore */}
+        <span class={`leading-[35vw] sm:leading-none text-[40vw] sm:text-[30vw] lg:text-[19rem] letter opacity-0 text-foreground ${letter === " " ? "min-w-[0.5ch]" : ""}`} style={`animation-delay: ${Math.random() * 0.5}s`}>{letter}</span>
+        {letter === " " && <br />}
+      </>
     ))
   }
 </div>
 
 <style>
-  @keyframes letter-enter-animations {
-    0% {
-      opacity: 1;
-      transform: scaleY(0);
-    }
-    100% {
-      opacity: 1;
-      transform: scaleY(1);
+  @keyframes letter-enter-scale {
+  0% {
+    opacity: 1;
+    transform: scaleY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes letter-enter-opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+  [data-title-ready] .letter {
+    animation: letter-enter-opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-title-ready] .letter {
+      animation: none;
     }
   }
 
-  [data-title-ready] .letter {
-    animation: letter-enter-animations 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  @media screen and (min-width: 640px) {
+    [data-title-ready] .letter {
+      animation: letter-enter-scale 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+    
   }
+
 </style>
 
 <script>
