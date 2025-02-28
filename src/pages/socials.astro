@@ -1,8 +1,13 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import ListLayout from "../layouts/ListLayout.astro";
 import WithTitleLayout from "../layouts/WithTitleLayout.astro";
-import { socials, featured, type Social } from "../data/socials";
+
+const allSocials = await getCollection("socials");
+
+const featured = allSocials.filter((social) => social.data.isFeatured);
+const socials = allSocials.filter((social) => !social.data.isFeatured);
 ---
 
 <Layout
@@ -26,18 +31,18 @@ import { socials, featured, type Social } from "../data/socials";
   >
     <ListLayout title="Featured">
       {
-        featured.map((social: Social) => (
+        featured.map((social) => (
           <li class="group mt-4">
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href={social.link}
+              href={social.data.link}
               class="flex items-center justify-between group-hover:text-accent font-medium transition-colors"
-              title={social.title}
+              title={social.data.title}
             >
               <div>
-                <h3>{social.link}</h3>
-                <p class="text-xs text-foreground/60 mr-4">{social.description}</p>
+                <h3>{social.data.link}</h3>
+                <p class="text-xs text-foreground/60 mr-4">{social.data.description}</p>
               </div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -63,18 +68,18 @@ import { socials, featured, type Social } from "../data/socials";
     </ListLayout>
     <ListLayout title="Socials Links">
       {
-        socials.map((social: Social) => (
+        socials.map((social) => (
           <li class="group mt-4">
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href={social.link}
+              href={social.data.link}
               class="flex items-center justify-between group-hover:text-accent font-medium transition-colors"
-              title={social.title}
+              title={social.data.title}
             >
               <div>
-                <h3>{social.link}</h3>
-                <p class="text-xs text-foreground/60 mr-4">{social.description}</p>
+                <h3>{social.data.link}</h3>
+                <p class="text-xs text-foreground/60 mr-4">{social.data.description}</p>
               </div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
