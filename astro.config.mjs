@@ -1,6 +1,5 @@
 import node from "@astrojs/node";
 import sitemap from "@astrojs/sitemap";
-import partytown from "@astrojs/partytown";
 import mdx from "@astrojs/mdx";
 import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
@@ -16,7 +15,6 @@ export default defineConfig({
       priority: 0.7,
       lastmod: new Date(),
     }),
-    partytown(),
     robotsTxt(),
   ],
   vite: {
