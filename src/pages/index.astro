@@ -8,7 +8,7 @@ import WorkItem from "../components/items/WorkItem.astro";
 import SchoolItem from "../components/items/SchoolItem.astro";
 import { SITE } from "../consts";
 
-const jsonld: WithContext<Person> = {
+const jsonLd: WithContext<Person> = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Pierre Guéroult",
@@ -52,5 +52,5 @@ const schools = await getCollection("schools");
   <ListLayout title="Schools">
     {schools.map((school) => <SchoolItem {school} />)}
   </ListLayout>
-  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonld, null, 0)} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd, null, 0)} />
 </Layout>

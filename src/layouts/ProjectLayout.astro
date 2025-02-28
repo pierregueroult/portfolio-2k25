@@ -3,6 +3,8 @@ import type { CollectionEntry } from "astro:content";
 import Layout from "./Layout.astro";
 import { components } from "../components/markdown/components";
 import { render } from "astro:content";
+import type { CreativeWork, WithContext } from "schema-dts";
+import { SITE } from "../consts";
 
 interface Props {
   project: CollectionEntry<"projects">;
@@ -13,6 +15,23 @@ interface Props {
 const { project, next, prev } = Astro.props;
 
 const { Content } = await render(project);
+
+const jsonLd: WithContext<CreativeWork> = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: project.data.name,
+  description: project.data.description,
+  url: `${SITE}/projects/${project.data.slug}`,
+  author: {
+    "@type": "Person",
+    name: "Pierre Guéroult",
+    url: SITE,
+  },
+  datePublished: project.data.date.toLocaleDateString(),
+  inLanguage: "en",
+  keywords: project.data.technologies,
+};
+
 ---
 
 <Layout title={project.data.name} description={project.data.description}>
@@ -39,4 +58,5 @@ const { Content } = await render(project);
       )
     }
   </footer>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd, null, 0)} />
 </Layout>
