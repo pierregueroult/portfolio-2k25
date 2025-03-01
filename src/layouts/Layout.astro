@@ -44,18 +44,26 @@ const ogImage = ["home", "projects", "blog", "socials"].find((image) => Astro.or
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <meta name="viewport" content="width=device-width" />
-    <meta name="keywords" content={keywords ? keywords.join(", ") : defaultKeywords.join(", ")} />
-    <meta name="og:title" content={`Pierre Guéroult - ${title}`} />
-    <meta name="og:type" content="website" />
-    <meta name="og:description" content={description} />
-    <meta name="og:url" content={SITE} />
-    <meta name="og:image" content={`${SITE}/open-graph/banner-${ogImage}.png`} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`${SITE}/open-graph/banner-${ogImage}.png`} />
+    <meta
+      name="keywords"
+      content={keywords ? [...keywords, ...defaultKeywords].join(", ") : defaultKeywords.join(", ")}
+    />
+    <meta property="og:title" content={`Pierre Guéroult - ${title}`} />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={SITE} />
+    <meta property="og:image" content={`${SITE}/open-graph/banner-${ogImage}.png`} />
+    <meta property="og:site_name" content="Pierre Guéroult" />
+    <meta property="og:locale" content={locale} />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={`${SITE}/open-graph/banner-${ogImage}.png`} />
+    <meta property="twitter:site" content="@pierregueroult1" />
+    <meta property="twitter:creator" content="@pierregueroult1" />
     <meta name="robots" content="index, follow" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" href={SITE} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <ClientRouter />
   </head>
