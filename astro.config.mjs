@@ -18,20 +18,17 @@ export default defineConfig({
       priority: 0.7,
       lastmod: new Date(),
       customPages: [...projects, ...blog],
-      serialize: (page) => {
-        console.log(page);
-        return {
-          url: page.url,
-          changefreq: page.changefreq,
-          priority: page.priority,
-          lastmod: page.lastmod,
-          links: LOCALES.map((locale) => ({
-            lang: locale,
-            hreflang: locale,
-            url: page.url.replace("https://", `https://${locale}.`),
-          })),
-        };
-      },
+      serialize: (page) => ({
+        url: page.url,
+        changefreq: page.changefreq,
+        priority: page.priority,
+        lastmod: page.lastmod,
+        links: LOCALES.map((locale) => ({
+          lang: locale,
+          hreflang: locale,
+          url: page.url.replace("https://", `https://${locale}.`),
+        })),
+      }),
     }),
     robotsTxt(),
     partytown({
@@ -50,5 +47,22 @@ export default defineConfig({
   }),
   devToolbar: {
     enabled: true,
+  },
+  server: {
+    headers: {
+      "Content-Security-Policy": `
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' 'unsafe-eval';
+        style-src 'self' 'unsafe-inline';
+        img-src 'self' data: https:;
+        font-src 'self';
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self';
+        frame-ancestors 'none';
+        block-all-mixed-content;
+        upgrade-insecure-requests;
+      `,
+    },
   },
 });
