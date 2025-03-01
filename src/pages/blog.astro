@@ -17,16 +17,15 @@ const posts = postsList.filter(excludeDrafts).sort((a, b) => {
 const t = useTranslation(Astro.locals.locale);
 ---
 
-<Layout title={t("pages.blog.meta.title")} description={t("pages.blog.meta.description")}
+<Layout
+  title={t("pages.blog.meta.title")}
+  description={t("pages.blog.meta.description")}
   keywords={t("pages.blog.meta.keywords").split(", ")}
 >
   <WithTitleLayout title={t("pages.blog.title")} subtitle={t("pages.blog.subtitle")}>
     {
       Astro.locals.locale !== "en" && (
-        <TranslationAlert
-          title={t("pages.blog.translation.title")}
-          text={t("pages.blog.translation.text")}
-        />
+        <TranslationAlert title={t("pages.blog.translation.title")} text={t("pages.blog.translation.text")} />
       )
     }
     <ListLayout title={t("pages.blog.articles")}>

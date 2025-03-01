@@ -45,7 +45,9 @@ const labels = {
             class="w-full h-full py-2 px-4 text-md text-left cursor-pointer rounded-sm bg-background text-foreground/80 hover:bg-foreground hover:text-background outline-none focus:bg-foreground focus:text-background flex gap-2 items-center"
             href={`https://${locale}.${Astro.site?.toString().replace("https://", "")}`}
           >
-            <span>{flags[locale]} {labels[locale]}</span>
+            <span>
+              {flags[locale]} {labels[locale]}
+            </span>
             <span class="font-mono text-sm">{Astro.locals.locale === locale && "(current)"}</span>
           </a>
         </li>

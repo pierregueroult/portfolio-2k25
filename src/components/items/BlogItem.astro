@@ -1,5 +1,5 @@
 ---
-import { useTranslation } from '../../i18n';
+import { useTranslation } from "../../i18n";
 
 interface Props {
   title: string;
@@ -31,6 +31,6 @@ const t = useTranslation(Astro.locals.locale);
     class="text-sm text-accent relative after:absolute after:w-0 after:-bottom-0 hover:after:w-full after:h-px after:bg-accent after:left-0"
     href={`/blog/${slug}`}
   >
-    {t('components.items.more')}
+    {t("components.items.more")}
   </a>
 </li>

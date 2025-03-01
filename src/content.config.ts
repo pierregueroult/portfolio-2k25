@@ -2,9 +2,7 @@ import { file, glob } from "astro/loaders";
 import { LOCALES } from "./consts";
 import { defineCollection, z } from "astro:content";
 
-const localizedStringSchema = z.object(
-  Object.fromEntries(LOCALES.map((lang) => [lang, z.string()]))
-);
+const localizedStringSchema = z.object(Object.fromEntries(LOCALES.map((lang) => [lang, z.string()])));
 
 const blog = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/blog" }),
@@ -62,7 +60,7 @@ const works = defineCollection({
       place: z.string(),
       works: z.array(
         z.object({
-          role: localizedStringSchema, 
+          role: localizedStringSchema,
           techs: z.array(z.string()),
           period: z.tuple([
             z.string().transform((str) => new Date(str)),

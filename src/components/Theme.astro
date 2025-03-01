@@ -1,5 +1,5 @@
 ---
-import { useTranslation } from "../i18n"
+import { useTranslation } from "../i18n";
 
 const t = useTranslation(Astro.locals.locale);
 ---
@@ -21,7 +21,7 @@ const t = useTranslation(Astro.locals.locale);
     <input
       type="text"
       autofocus
-      placeholder={t('components.theme.search')}
+      placeholder={t("components.theme.search")}
       class="font-mono flex w-full rounded-md py-4 text-md outline-none disabled:cursor-not-allowed disabled:opacity-50 placeholder:text-foreground/70"
       data-theme-search
     />
@@ -29,11 +29,11 @@ const t = useTranslation(Astro.locals.locale);
 
   <div data-theme-result class="flex-1 overflow-y-auto py-1 px-2">
     <p class="p-2 text-xs">
-     {t('components.theme.default')}
+      {t("components.theme.default")}
     </p>
     <ul data-theme-default-result class="flex flex-col gap-1"></ul>
     <p class="p-2 text-xs mt-4">
-      {t('components.theme.special')}
+      {t("components.theme.special")}
     </p>
     <ul data-theme-special-result class="flex flex-col gap-1"></ul>
   </div>
