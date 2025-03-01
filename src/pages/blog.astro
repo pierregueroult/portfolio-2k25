@@ -1,5 +1,7 @@
 ---
 import BlogItem from "../components/items/BlogItem.astro";
+import TranslationAlert from "../components/TranslationAlert.astro";
+import { useTranslation } from "../i18n";
 import Layout from "../layouts/Layout.astro";
 import ListLayout from "../layouts/ListLayout.astro";
 import WithTitleLayout from "../layouts/WithTitleLayout.astro";
@@ -11,17 +13,23 @@ const postsList = await getCollection("blog");
 const posts = postsList.filter(excludeDrafts).sort((a, b) => {
   return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
 });
+
+const t = useTranslation(Astro.locals.locale);
 ---
 
-<Layout
-  title="Blog"
-  description="Read my latest articles, thoughts, and tech tutorials. I write about web development, software engineering, automation, and tech culture."
+<Layout title={t("pages.blog.meta.title")} description={t("pages.blog.meta.description")}
+  keywords={t("pages.blog.meta.keywords").split(", ")}
 >
-  <WithTitleLayout
-    title="Blog - Insights & Experiments"
-    subtitle="Exploring web development, automation, and new technologies—one project at a time."
-  >
-    <ListLayout title="Articles">
+  <WithTitleLayout title={t("pages.blog.title")} subtitle={t("pages.blog.subtitle")}>
+    {
+      Astro.locals.locale !== "en" && (
+        <TranslationAlert
+          title={t("pages.blog.translation.title")}
+          text={t("pages.blog.translation.text")}
+        />
+      )
+    }
+    <ListLayout title={t("pages.blog.articles")}>
       {
         posts.map((post) => (
           <BlogItem

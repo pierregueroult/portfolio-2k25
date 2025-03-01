@@ -3,9 +3,14 @@ import Modal from "./Modal.astro";
 import Navigation from "./Navigation.astro";
 import Clock from "./Clock.astro";
 import Theme from "./Theme.astro";
+import { useTranslation } from "../i18n";
+
+const t = useTranslation(Astro.locals.locale);
 ---
 
-<header class="mx-auto max-w-4xl w-full flex items-center justify-between py-4 sm:pt-8 sm:pb-0 px-4 text-sm flex-col sm:flex-row gap-4">
+<header
+  class="mx-auto max-w-4xl w-full flex items-center justify-between py-4 sm:pt-8 sm:pb-0 px-4 text-sm flex-col sm:flex-row gap-4"
+>
   <div class="flex items-center gap-2 flex-1 justify-start lowercase">
     <Clock />
     <span>/</span>
@@ -15,8 +20,9 @@ import Theme from "./Theme.astro";
       rel="
       noopener noreferrer"
       class="hover:text-accent relative after:absolute after:w-0 after:-bottom-0.5 hover:after:w-full after:h-px after:bg-accent after:left-0"
-      >Paris,France</a
     >
+      {t("components.header.paris")},{t("components.header.france")}
+    </a>
   </div>
 
   <Navigation />
@@ -26,9 +32,9 @@ import Theme from "./Theme.astro";
         slot="trigger"
         class="lowercase hover:text-accent relative after:absolute after:w-0 after:-bottom-0.5 hover:after:w-full after:h-px after:bg-accent after:left-0"
       >
-        Language
+        {t("components.header.lang")}
       </div>
-      <span slot="content">content</span>
+      <span slot="content"></span>
     </Modal>
     <span>/</span>
     <Modal id="theme-modal">
@@ -36,7 +42,7 @@ import Theme from "./Theme.astro";
         slot="trigger"
         class="lowercase hover:text-accent relative after:absolute after:w-0 after:-bottom-0.5 hover:after:w-full after:h-px after:bg-accent after:left-0"
       >
-        Theme
+        {t("components.header.theme")}
       </div>
       <Theme slot="content" />
     </Modal>

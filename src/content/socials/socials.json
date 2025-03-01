@@ -3,35 +3,55 @@
     "id": 1,
     "title": "X (Twitter)",
     "link": "https://x.com/pierregueroult1",
-    "description": "I post and re-post meme about my work, and also some tech insights, and sometimes I share my blog posts.",
+    "description": {
+      "en": "I post and re-post meme about my work, and also some tech insights, and sometimes I share my blog posts.",
+      "fr": "Je poste et re-poste des memes sur mon travail, et aussi des insights tech, et parfois je partage mes articles de blog.",
+      "ar": "WIP"
+    },
     "isFeatured": false
   },
   {
     "id": 2,
     "title": "Linkedin",
     "link": "https://www.linkedin.com/in/pierregueroult/",
-    "description": "So you can see my professional profile and connect with me. I re-post meme there too. That's the goal of Linkedin, right?",
+    "description": {
+      "en": "So you can see my professional profile and connect with me. I re-post meme there too. That's the goal of Linkedin, right?",
+      "fr": "Pour que vous puissiez voir mon profil professionnel et me connecter. Je re-poste des memes là-bas aussi. C'est le but de Linkedin, non?",
+      "ar": "WIP"
+    },
     "isFeatured": false
   },
   {
     "id": 3,
     "title": "Github",
     "link": "https://github.com/pierregueroult",
-    "description": "You can see my projects and contributions. Gimme a star if you like my work! (please)",
+    "description": {
+      "en": "You can see my projects and contributions. Gimme a star if you like my work! (please)",
+      "fr": "Vous pouvez voir mes projets et contributions. Donnez-moi une étoile si vous aimez mon travail! (s'il vous plaît)",
+      "ar": "WIP"
+    },
     "isFeatured": false
   },
   {
     "id": 4,
     "title": "Youtube",
     "link": "https://www.youtube.com/@pierregueroultdev",
-    "description": "I swear I will post some tech videos soon. I'm just waiting for the right moment and the right amount of time.",
+    "description": {
+      "en": "I swear I will post some tech videos soon. I'm just waiting for the right moment and the right amount of time.",
+      "fr": "Je jure que je posterai bientôt des vidéos tech. J'attends juste le bon moment et la bonne quantité de temps.",
+      "ar": "WIP"
+    },
     "isFeatured": false
   },
   {
     "id": 5,
     "title": "Selenite's Github Organization",
     "link": "https://github.com/selenite-live",
-    "description": "The organization we created for our school project - Selenite: Lost Contact. We are a team of 5 students working on a 3D game in Unity.",
+    "description": {
+      "en": "The organization we created for our school project - Selenite: Lost Contact. We are a team of 5 students working on a 3D game in Unity.",
+      "fr": "L'organisation que nous avons créée pour notre projet scolaire - Selenite: Lost Contact. Nous sommes une équipe de 5 étudiants travaillant sur un jeu 3D dans Unity.",
+      "ar": "WIP"
+    },
     "isFeatured": true
   }
 ]

@@ -4,36 +4,32 @@ import ProjectItem from "../components/items/ProjectItem.astro";
 import Layout from "../layouts/Layout.astro";
 import ListLayout from "../layouts/ListLayout.astro";
 import WithTitleLayout from "../layouts/WithTitleLayout.astro";
+import { useTranslation } from "../i18n";
+import TranslationAlert from "../components/TranslationAlert.astro";
 
 const allProjects = await getCollection("projects");
 
 const projects = allProjects.filter((project) => project.data.kind === "project");
 const creations = allProjects.filter((project) => project.data.kind === "creation");
 const contributions = allProjects.filter((project) => project.data.kind === "contribution");
+
+const t = useTranslation(Astro.locals.locale);
 ---
 
 <Layout
-  title="Projects & Work"
-  description="Explore my latest web development projects, automation tools, and tech experiments. Always building, always learning."
-  keywords={[
-    "Pierre Guéroult",
-    "projects",
-    "web development",
-    "automation",
-    "portfolio",
-    "coding",
-    "software development",
-    "tech",
-    "CS student",
-  ]}
+  title={t("pages.projects.meta.title")}
+  description={t("pages.projects.meta.description")}
+  keywords={t("pages.projects.meta.keywords").split(", ")}
 >
-  <WithTitleLayout
-    title="Projects, Creations and contributions"
-    subtitle="Here are some of the projects I've led, built, or contributed to. I focus on creating developer tools, automation solutions, and innovative web applications that improve efficiency, streamline workflows, and push the boundaries of technology."
-  >
+  <WithTitleLayout title={t("pages.projects.title")} subtitle={t("pages.projects.subtitle")}>
+    {
+      Astro.locals.locale !== "en" && (
+        <TranslationAlert title={t("pages.projects.translation.title")} text={t("pages.projects.translation.text")} />
+      )
+    }
     {
       creations.length > 0 && (
-        <ListLayout title="Creations">
+        <ListLayout title={t("pages.projects.creations")}>
           {creations.map((project) => (
             <ProjectItem
               title={project.data.slug}
@@ -47,7 +43,7 @@ const contributions = allProjects.filter((project) => project.data.kind === "con
     }
     {
       projects.length > 0 && (
-        <ListLayout title="Projects">
+        <ListLayout title={t("pages.projects.projects")}>
           {projects.map((project) => (
             <ProjectItem
               title={project.data.slug}
@@ -61,7 +57,7 @@ const contributions = allProjects.filter((project) => project.data.kind === "con
     }
     {
       contributions.length > 0 && (
-        <ListLayout title="Contributions">
+        <ListLayout title={t("pages.projects.contributions")}>
           {contributions.map((project) => (
             <ProjectItem
               title={project.data.slug}

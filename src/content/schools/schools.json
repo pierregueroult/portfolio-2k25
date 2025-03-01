@@ -6,6 +6,10 @@
     "city": "Rouen",
     "country": "France",
     "period": ["2022-09", "now"],
-    "description": "I specialize in Web Development and Interactive Systems, focusing on front-end and back-end development, UI/UX design, and interactive media."
+    "description": {
+      "en": "I specialize in Web Development and Interactive Systems, focusing on front-end and back-end development, UI/UX design, and interactive media.",
+      "fr": "Je me spécialise dans le développement web et les systèmes interactifs, en me concentrant sur le développement front-end et back-end, le design UI/UX et les médias interactifs.",
+      "ar": "WIP"
+    }
   }
 ]

@@ -1,9 +1,12 @@
 ---
+import { useTranslation } from '../i18n';
+
 interface Props {
   id: string;
 }
 
 const { id } = Astro.props;
+const t = useTranslation(Astro.locals.locale);
 ---
 
 <button id={`${id}-trigger`} class="cursor-pointer" data-modal-trigger>
@@ -14,7 +17,9 @@ const { id } = Astro.props;
   id={id}
   class="fixed mb-0 md:mb-auto mt-auto mx-auto backdrop:backdrop-blur-sm w-screen md:max-w-lg h-[50vh] md:h-80 bg-background text-foreground backdrop:bg-foreground/20 rounded-lg"
 >
-  <button data-modal-close class="absolute top-4 right-4 cursor-pointer z-50">Close</button>
+  <button data-modal-close class="absolute top-4 right-4 cursor-pointer z-50">
+    {t("components.modal.close")}
+  </button>
   <main class="w-full h-full overflow-y-auto relative">
     <slot name="content" />
   </main>

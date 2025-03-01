@@ -11,7 +11,6 @@ const clockContent: string = new Date().toLocaleTimeString("en-GB");
     const clock = document.querySelector("[data-clock]");
     const updateClock = () => {
       if (!clock) return;
-      // 18:00:20 format
       clock.textContent = new Date().toLocaleTimeString("en-GB");
       setTimeout(updateClock, 1000);
     };

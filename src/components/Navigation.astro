@@ -1,4 +1,6 @@
 ---
+import { useTranslation } from "../i18n";
+
 type Link = {
   name: string;
   url: string;
@@ -6,22 +8,24 @@ type Link = {
 
 const links: Link[] = [
   {
-    name: "Home",
+    name: "components.navigation.home",
     url: "/",
   },
   {
-    name: "Projects",
+    name: "components.navigation.projects",
     url: "/projects",
   },
   {
-    name: "Socials",
+    name: "components.navigation.socials",
     url: "/socials",
   },
   {
-    name: "Blog",
+    name: "components.navigation.blog",
     url: "/blog",
   },
 ];
+
+const t = useTranslation(Astro.locals.locale);
 ---
 
 <nav>
@@ -35,13 +39,13 @@ const links: Link[] = [
           >
             <kdb
               data-shortcut-element
-              data-event-key={link.name[0].toLowerCase()}
+              data-event-key={t(link.name)[0].toLowerCase()}
               data-event-target={link.url}
               class="hidden"
             >
-              [{link.name[0]}]
+              {t(link.name)[0].toLowerCase()}
             </kdb>
-            [{link.name}]
+            [{t(link.name)}]
           </a>
         </li>
       ))

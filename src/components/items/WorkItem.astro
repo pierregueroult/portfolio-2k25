@@ -1,17 +1,23 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { useTranslation } from "../../i18n";
 
 interface Props {
   work: CollectionEntry<"works">;
 }
 const { work } = Astro.props;
+const locale = Astro.locals.locale;
+const t = useTranslation(locale);
 ---
 
 {
   "role" in work.data ? (
     <li class="mt-4">
       <h3 class="text-sm lowercase">
-        Looking for {work.data.role} near {work.data.place}
+        {t("components.items.work.looking") + " "}
+        {work.data.role[locale] + " "}
+        {t("components.items.work.near") + " "}
+        {work.data.place}
       </h3>
     </li>
   ) : (
@@ -21,20 +27,20 @@ const { work } = Astro.props;
         {work.data.works.map((item) => (
           <li class="mt-2 first-of-type:mt-1">
             <div class="text-foreground/70 text-sm">
-              <h4 class="inline-block">- {item.role}</h4>
+              <h4 class="inline-block">- {item.role[locale]}</h4>
               <p class="lowercase inline-block ml-[1ch]">
-                <span>(From</span>{" "}
-                <date>{item.period[0].toLocaleDateString("en-US", { month: "long", year: "numeric" })}</date>{" "}
-                <span>to</span>{" "}
+                <span>({t("components.items.from")}</span>{" "}
+                <date>{item.period[0].toLocaleDateString(locale, { month: "long", year: "numeric" })}</date>{" "}
+                <span>{t("components.items.to")}</span>{" "}
                 <date>
                   {item.period[1] === "now"
-                    ? "right now"
-                    : item.period[1].toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+                    ? t("components.items.now")
+                    : item.period[1].toLocaleDateString(locale, { month: "long", year: "numeric" })}
                 </date>
                 <span>)</span>
               </p>
             </div>
-            <p class="text-sm">{item.description}</p>
+            <p class="text-sm">{item.description[locale]}</p>
           </li>
         ))}
       </ul>

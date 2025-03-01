@@ -7,6 +7,7 @@ import { getCollection } from "astro:content";
 import WorkItem from "../components/items/WorkItem.astro";
 import SchoolItem from "../components/items/SchoolItem.astro";
 import { SITE } from "../consts";
+import { useTranslation } from "../i18n";
 
 const jsonLd: WithContext<Person> = {
   "@context": "https://schema.org",
@@ -32,24 +33,26 @@ const jsonLd: WithContext<Person> = {
 
 const works = await getCollection("works");
 const schools = await getCollection("schools");
+
+const t = useTranslation(Astro.locals.locale);
 ---
 
 <Layout
-  title="Web & Software Developer"
-  description="20-year-old Web Developer & Computer Science Student passionate about building sleek, high-performance websites and automating workflows. Always exploring new technologies to solve problems and optimize efficiency."
+  title={t("pages.index.meta.title")}
+  description={t("pages.index.meta.description")}
+  keywords={t("pages.index.meta.keywords").split(", ")}
 >
   <Title />
-  <h1 class="sr-only">Full-Stack Software Engineer - Pierre Guéroult - Paris, France</h1>
+  <h1 class="sr-only">
+    {t("pages.index.title")}
+  </h1>
   <h2 class="leading-relaxed text-sm md:text-base">
-    20 year-old web developer & Computer Science Student. I love crafting sleek websites and automating workflows to
-    make life easier. Passionate about clean code, problem-solving, and making tech work smarter, not harder. Always
-    exploring new technologies, always up for a challenge. Whether it's web development, automation, or something
-    completely out of my comfort zone - I'm in.
+    {t("pages.index.subtitle")}
   </h2>
-  <ListLayout title="Works">
+  <ListLayout title={t("pages.index.works")}>
     {works.map((work) => <WorkItem {work} />)}
   </ListLayout>
-  <ListLayout title="Schools">
+  <ListLayout title={t("pages.index.schools")}>
     {schools.map((school) => <SchoolItem {school} />)}
   </ListLayout>
   <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd, null, 0)} />

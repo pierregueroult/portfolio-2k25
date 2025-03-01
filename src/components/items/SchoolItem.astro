@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { useTranslation } from "../../i18n";
 
 interface Props {
   school: CollectionEntry<"schools">;
@@ -7,6 +8,8 @@ interface Props {
 const {
   school: { data },
 } = Astro.props;
+const locale = Astro.locals.locale;
+const t = useTranslation(locale);
 ---
 
 <li>
@@ -14,18 +17,18 @@ const {
   <div class="text-foreground/70 text-sm">
     <h4 class="inline-block">- {data.school}</h4>
     <p class="lowercase inline-block">
-      <span>(From</span>{" "}
-      <date>{data.period[0].toLocaleDateString("en-US", { month: "long", year: "numeric" })}</date>{" "}
-      <span>to</span>{" "}
+      <span>({t("components.items.from")}</span>{" "}
+      <date>{data.period[0].toLocaleDateString(locale, { month: "long", year: "numeric" })}</date>{" "}
+      <span>{t("components.items.to")}</span>{" "}
       <date>
         {
           data.period[1] === "now"
-            ? "right now"
-            : data.period[1].toLocaleDateString("en-US", { month: "long", year: "numeric" })
+            ? t("components.items.now")
+            : data.period[1].toLocaleDateString(locale, { month: "long", year: "numeric" })
         }
       </date>
       <span class="-ml-[1ch]">)</span>
     </p>
   </div>
-  <p class="text-sm">{data.description}</p>
+  <p class="text-sm">{data.description[locale]}</p>
 </li>

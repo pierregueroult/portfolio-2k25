@@ -1,4 +1,6 @@
 ---
+import { useTranslation } from '../../i18n';
+
 interface Props {
   title: string;
   slug: string;
@@ -7,6 +9,7 @@ interface Props {
   tags: string[];
 }
 const { title, slug, summary, date, tags } = Astro.props;
+const t = useTranslation(Astro.locals.locale);
 ---
 
 <li>
@@ -14,7 +17,7 @@ const { title, slug, summary, date, tags } = Astro.props;
   <p class="text-sm text-foreground/70 lowercase">
     <date>
       {
-        date.toLocaleString("en-US", {
+        date.toLocaleString(Astro.locals.locale, {
           month: "long",
           day: "numeric",
           year: "numeric",
@@ -28,6 +31,6 @@ const { title, slug, summary, date, tags } = Astro.props;
     class="text-sm text-accent relative after:absolute after:w-0 after:-bottom-0 hover:after:w-full after:h-px after:bg-accent after:left-0"
     href={`/blog/${slug}`}
   >
-    Read more
+    {t('components.items.more')}
   </a>
 </li>

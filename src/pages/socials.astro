@@ -4,43 +4,40 @@ import Layout from "../layouts/Layout.astro";
 import ListLayout from "../layouts/ListLayout.astro";
 import WithTitleLayout from "../layouts/WithTitleLayout.astro";
 import SocialItem from "../components/items/SocialItem.astro";
+import { useTranslation } from "../i18n";
 
 const allSocials = await getCollection("socials");
 
 const featured = allSocials.filter((social) => social.data.isFeatured);
 const socials = allSocials.filter((social) => !social.data.isFeatured);
+
+const t = useTranslation(Astro.locals.locale);
 ---
 
 <Layout
-  title="Connect with Me"
-  description="Find and follow me across social media and professional networks. Stay updated on my latest projects, blog posts, and tech insights."
-  keywords={[
-    "Pierre Guéroult",
-    "social links",
-    "follow me",
-    "developer social media",
-    "connect",
-    "tech network",
-    "portfolio",
-    "web developer",
-    "CS student",
-  ]}
+  title={t("pages.socials.meta.title")}
+  description={t("pages.socials.meta.description")}
+  keywords={t("pages.socials.meta.keywords").split(", ")}
 >
   <WithTitleLayout
-    title="My Socials - Let's Stay Connected"
-    subtitle="Find me on social and professional platforms to follow my projects and connect over web development and automation."
+    title={t("pages.socials.title")}
+    subtitle={t("pages.socials.subtitle")}
   >
-    <ListLayout title="Featured">
+    <ListLayout title={
+      t("pages.socials.featured")
+    }>
       {
         featured.map((social) => (
-          <SocialItem link={social.data.link} title={social.data.title} description={social.data.description} />
+          <SocialItem link={social.data.link} title={social.data.title} description={social.data.description[Astro.locals.locale]} />
         ))
       }
     </ListLayout>
-    <ListLayout title="Socials Links">
+    <ListLayout title=
+      {t("pages.socials.links")}
+    >
       {
         socials.map((social) => (
-          <SocialItem link={social.data.link} title={social.data.title} description={social.data.description} />
+          <SocialItem link={social.data.link} title={social.data.title} description={social.data.description[Astro.locals.locale]} />
         ))
       }
     </ListLayout>

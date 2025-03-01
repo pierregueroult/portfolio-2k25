@@ -1,5 +1,10 @@
 import { file, glob } from "astro/loaders";
+import { LOCALES } from "./consts";
 import { defineCollection, z } from "astro:content";
+
+const localizedStringSchema = z.object(
+  Object.fromEntries(LOCALES.map((lang) => [lang, z.string()]))
+);
 
 const blog = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/blog" }),
@@ -39,7 +44,7 @@ const socials = defineCollection({
   schema: z.object({
     title: z.string(),
     link: z.string(),
-    description: z.string(),
+    description: localizedStringSchema,
     isFeatured: z.boolean().default(false),
   }),
 });
@@ -50,20 +55,20 @@ const works = defineCollection({
     z.object({
       type: z.literal("looking"),
       place: z.string(),
-      role: z.string(),
+      role: localizedStringSchema,
     }),
     z.object({
       type: z.literal("passed"),
       place: z.string(),
       works: z.array(
         z.object({
-          role: z.string(),
+          role: localizedStringSchema, 
           techs: z.array(z.string()),
           period: z.tuple([
             z.string().transform((str) => new Date(str)),
             z.union([z.string().transform((str) => (str === "now" ? "now" : new Date(str))), z.literal("now")]),
           ]),
-          description: z.string(),
+          description: localizedStringSchema,
         }),
       ),
     }),
@@ -81,7 +86,7 @@ const schools = defineCollection({
       z.string().transform((str) => new Date(str)),
       z.union([z.string().transform((str) => (str === "now" ? "now" : new Date(str))), z.literal("now")]),
     ]),
-    description: z.string(),
+    description: localizedStringSchema,
   }),
 });
 
