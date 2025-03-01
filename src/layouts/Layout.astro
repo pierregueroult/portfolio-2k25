@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Header from "../components/Header.astro";
 import { ClientRouter } from "astro:transitions";
 import { SITE } from "../consts";
+import Analytics from "../components/Analytics.astro";
 
 interface Props {
   title: string;
@@ -61,5 +62,6 @@ const defaultKeywords: string[] = [
     <main class={`mx-auto max-w-4xl w-full px-4 pb-8 ${isForMarkdown ? "mt-4" : ""}`}>
       <slot />
     </main>
+    <Analytics />
   </body>
 </html>
