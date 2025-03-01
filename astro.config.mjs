@@ -4,7 +4,7 @@ import mdx from "@astrojs/mdx";
 import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
-import { SITE } from "./src/consts";
+import { SITE, LOCALES } from "./src/consts";
 import { blog, projects } from "./src/content/sitemap";
 
 export default defineConfig({
@@ -17,6 +17,20 @@ export default defineConfig({
       priority: 0.7,
       lastmod: new Date(),
       customPages: [...projects, ...blog],
+      serialize: (page) => {
+        console.log(page);
+        return {
+          url: page.url,
+          changefreq: page.changefreq,
+          priority: page.priority,
+          lastmod: page.lastmod,
+          links: LOCALES.map((locale) => ({
+            lang: locale,
+            hreflang: locale,
+            url: page.url.replace('https://', `https://${locale}.`),
+          })),
+        };
+      },
     }),
     robotsTxt(),
   ],
