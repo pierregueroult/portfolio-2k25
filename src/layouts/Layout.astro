@@ -12,7 +12,7 @@ interface Props {
   isForMarkdown?: boolean;
 }
 
-const { theme } = Astro.locals;
+const { theme, locale } = Astro.locals;
 
 const { title, description, keywords, isForMarkdown } = Astro.props;
 const defaultKeywords: string[] = [
@@ -34,7 +34,7 @@ const defaultKeywords: string[] = [
 ---
 
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="en" dir={locale === "ar" ? "rtl" : "ltr"}>
   <head>
     <title>Pierre Guéroult - {title}</title>
     <meta charset="utf-8" />

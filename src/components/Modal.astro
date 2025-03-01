@@ -17,7 +17,7 @@ const t = useTranslation(Astro.locals.locale);
   id={id}
   class="fixed mb-0 md:mb-auto mt-auto mx-auto backdrop:backdrop-blur-sm w-screen md:max-w-lg h-[50vh] md:h-80 bg-background text-foreground backdrop:bg-foreground/20 rounded-lg"
 >
-  <button data-modal-close class="absolute top-4 right-4 cursor-pointer z-50">
+  <button data-modal-close class={`top-4 absolute cursor-pointer z-50 ${Astro.locals.locale === "ar" ? "left-4" : "right-4"}`}>
     {t("components.modal.close")}
   </button>
   <main class="w-full h-full overflow-y-auto relative">
