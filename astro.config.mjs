@@ -6,6 +6,7 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import { SITE, LOCALES } from "./src/consts";
 import { blog, projects } from "./src/content/sitemap";
+import partytown from "@astrojs/partytown";
 
 export default defineConfig({
   site: SITE,
@@ -27,12 +28,15 @@ export default defineConfig({
           links: LOCALES.map((locale) => ({
             lang: locale,
             hreflang: locale,
-            url: page.url.replace('https://', `https://${locale}.`),
+            url: page.url.replace("https://", `https://${locale}.`),
           })),
         };
       },
     }),
     robotsTxt(),
+    partytown({
+      config: { forward: ["dataLayer.push "] },
+    }),
   ],
   vite: {
     plugins: [tailwindcss()],
