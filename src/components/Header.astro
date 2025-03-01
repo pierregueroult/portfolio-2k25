@@ -4,6 +4,7 @@ import Navigation from "./Navigation.astro";
 import Clock from "./Clock.astro";
 import Theme from "./Theme.astro";
 import { useTranslation } from "../i18n";
+import Lang from "./Lang.astro";
 
 const t = useTranslation(Astro.locals.locale);
 ---
@@ -34,7 +35,7 @@ const t = useTranslation(Astro.locals.locale);
       >
         {t("components.header.lang")}
       </div>
-      <span slot="content"></span>
+      <Lang slot="content" />
     </Modal>
     <span>/</span>
     <Modal id="theme-modal">
