@@ -1,5 +1,15 @@
 {
-  "cSpell.words": ["changefreq", "fontfaceobserver", "lastmod", "partytown", "runtine"],
+  "cSpell.words": [
+    "changefreq",
+    "Coolify",
+    "fontfaceobserver",
+    "lastmod",
+    "partytown",
+    "Qube",
+    "runtine",
+    "sonarqube",
+    "Traefik"
+  ],
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "astro"],
   "files.associations": {
     "*.css": "tailwindcss"
