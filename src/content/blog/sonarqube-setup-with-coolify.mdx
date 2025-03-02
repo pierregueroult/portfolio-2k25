@@ -8,6 +8,8 @@ draft: false
 slug: "sonarqube-setup-with-coolify"
 summary: "In this article, we'll explore how to deploy a SonarQube server on Coolify hosting. SonarQube is a powerful static code analysis tool that helps improve code quality and security. Coolify, on the other hand, is a modern, open-source alternative to platforms like Heroku, providing an easy way to self-host applications and services. We’ll cover the installation, configuration, and optimization of SonarQube on Coolify so you can leverage automated code analysis in your development pipeline."
 ---
+import { Image } from "astro:assets";
+import coolifyDashboard from "../../images/articles/sonarqube-setup-with-coolify/coolify-dashboard.png";
 
 # Deploying SonarQube on Coolify: A Complete Guide to Code Quality Analysis
 
@@ -47,7 +49,7 @@ SonarQube requires a decent amount of resources to run smoothly. At a minimum, y
 
 ### Log in to your Coolify dashboard.
 
-![Coolify Dashboard Screenshot](/images/articles/sonarqube-setup-with-coolify/coolify-dashboard.png)
+<Image src={coolifyDashboard} alt="Coolify Dashboard" />
 
 You should see the Coolify dashboard with your applications and services, that you have deployed previously.
 

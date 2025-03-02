@@ -9,12 +9,11 @@ interface Props {
   title: string;
   description: string;
   keywords?: string[];
-  isForMarkdown?: boolean;
 }
 
 const { theme, locale } = Astro.locals;
 
-const { title, description, keywords, isForMarkdown } = Astro.props;
+const { title, description, keywords } = Astro.props;
 const defaultKeywords: string[] = [
   "software developer",
   "coding projects",
@@ -69,7 +68,7 @@ const ogImage = ["home", "projects", "blog", "socials"].find((image) => Astro.or
   </head>
   <body class="font-mono bg-background text-foreground" data-theme={theme}>
     <Header />
-    <main class={`mx-auto max-w-4xl w-full px-4 pb-8 ${isForMarkdown ? "mt-4" : ""}`}>
+    <main class={`mx-auto max-w-4xl w-full px-4 pb-8`}>
       <slot />
     </main>
     <Analytics />

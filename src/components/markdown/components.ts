@@ -10,6 +10,7 @@ import P from "./p.astro";
 import Li from "./li.astro";
 import Ol from "./ol.astro";
 import Ul from "./ul.astro";
+import Blockquote from "./blockquote.astro";
 
 export const components = {
   h1: H1,
@@ -24,4 +25,5 @@ export const components = {
   li: Li,
   ol: Ol,
   ul: Ul,
+  blockquote: Blockquote,
 };
