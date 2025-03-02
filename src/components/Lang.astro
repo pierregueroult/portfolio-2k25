@@ -50,7 +50,9 @@ const t = useTranslation(Astro.locals.locale);
             <span>
               {flags[locale]} {labels[locale]}
             </span>
-            <span class="font-mono text-sm">{Astro.locals.locale === locale && `(${t("components.lang.current")})`}</span>
+            <span class="font-mono text-sm">
+              {Astro.locals.locale === locale && `(${t("components.lang.current")})`}
+            </span>
           </a>
         </li>
       ))

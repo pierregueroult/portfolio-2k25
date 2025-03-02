@@ -8,6 +8,7 @@ draft: false
 slug: "sonarqube-setup-with-coolify"
 summary: "In this article, we'll explore how to deploy a SonarQube server on Coolify hosting. SonarQube is a powerful static code analysis tool that helps improve code quality and security. Coolify, on the other hand, is a modern, open-source alternative to platforms like Heroku, providing an easy way to self-host applications and services. We’ll cover the installation, configuration, and optimization of SonarQube on Coolify so you can leverage automated code analysis in your development pipeline."
 ---
+
 import { Image } from "astro:assets";
 import coolifyDashboard from "../../images/articles/sonarqube-setup-with-coolify/coolify-dashboard.png";
 
@@ -16,21 +17,27 @@ import coolifyDashboard from "../../images/articles/sonarqube-setup-with-coolify
 ## Definitions
 
 ### Code Quality Analysis
+
 Code quality analysis helps developers write better, more secure, and maintainable code. It detects issues such as bugs, security vulnerabilities, and code smells that could lead to technical debt. Automated tools can analyze the code against best practices and provide insights for improvement.
 
 ### SonarQube & SonarLint
+
 SonarQube is a powerful platform for static code analysis. It scans your code, identifies problems, and provides detailed reports on quality, security, and maintainability. It is typically used in CI/CD pipelines to ensure code quality in teams.
 
 SonarLint is a lightweight companion to SonarQube. It integrates directly into code editors (such as VS Code or IntelliJ) and provides real-time feedback on code quality issues before the code is even committed.
 
 ### Docker
+
 Docker is a platform that allows applications to run in isolated environments called containers. Instead of installing software directly on a server, Docker packages everything needed to run an application in a standardized way. This makes deployment more efficient, portable, and scalable.
 
 ### Coolify
+
 Coolify is a modern, open-source alternative to platforms like Heroku. It simplifies the deployment and management of applications, databases, and services with an easy-to-use interface. With Coolify, you can self-host applications without complex configurations.
 
 ## Prerequisites
+
 1. A Server with Coolify Installed
+
 - You need a server (VPS, dedicated server, or a cloud instance) where Coolify is installed and running.
 - Coolify supports Docker-based deployments, so make sure your server meets the requirements for running Docker
 - If you perfectly know how to use both Docker and Traefik, you can skip the Coolify installation and deploy SonarQube directly.
@@ -38,11 +45,13 @@ Coolify is a modern, open-source alternative to platforms like Heroku. It simpli
 2. Sufficient Server Resources
 
 SonarQube requires a decent amount of resources to run smoothly. At a minimum, your server should have:
+
 - 4GB RAM (8GB recommended for better performance)
 - 2 CPU cores
 - 10GB+ disk space (depending on code analysis history and database size)
 
 3. A Domain Name (Optional but Recommended)
+
 - If you want to access SonarQube via a custom URL, you should have a domain and configure a reverse proxy with HTTPS (Coolify can help with this).
 
 ## Step 1: Deploy SonarQube on Coolify
@@ -54,18 +63,20 @@ SonarQube requires a decent amount of resources to run smoothly. At a minimum, y
 You should see the Coolify dashboard with your applications and services, that you have deployed previously.
 
 ### Create a new project
+
 - Head to the "Projects" section and click on "Create Project."
 - Choose a name and a description for your project (e.g., "SonarQube", "Code Quality Analysis Server").
-> A new production environment will be created for your project, this is where you will put the docker-compose file for SonarQube.
+  > A new production environment will be created for your project, this is where you will put the docker-compose file for SonarQube.
 - Click on "Add a new resource" and select "Docker Compose Empty" to create a new docker-compose file.
 
 ### Configure the Docker Compose file
+
 - Copy the following Docker Compose configuration for SonarQube:
 
 ```yaml
 services:
   sonarqube:
-    image: 'sonarqube:community'
+    image: "sonarqube:community"
     hostname: sonarqube
     container_name: sonarqube
     read_only: true
@@ -73,24 +84,24 @@ services:
       db:
         condition: service_healthy
     environment:
-      SONAR_JDBC_URL: 'jdbc:postgresql://db:5432/sonar'
+      SONAR_JDBC_URL: "jdbc:postgresql://db:5432/sonar"
       SONAR_JDBC_USERNAME: sonar
       SONAR_JDBC_PASSWORD: sonar
     volumes:
-      - 'sonarqube_data:/opt/sonarqube/data'
-      - 'sonarqube_extensions:/opt/sonarqube/extensions'
-      - 'sonarqube_logs:/opt/sonarqube/logs'
-      - 'sonarqube_temp:/opt/sonarqube/temp'
+      - "sonarqube_data:/opt/sonarqube/data"
+      - "sonarqube_extensions:/opt/sonarqube/extensions"
+      - "sonarqube_logs:/opt/sonarqube/logs"
+      - "sonarqube_temp:/opt/sonarqube/temp"
     ports:
-      - '9000:9000'
+      - "9000:9000"
     networks:
       - ipv4
   db:
-    image: 'postgres:15'
+    image: "postgres:15"
     healthcheck:
       test:
         - CMD-SHELL
-        - 'pg_isready -q -d sonar -U sonar'
+        - "pg_isready -q -d sonar -U sonar"
       interval: 10s
       timeout: 5s
       retries: 5
@@ -101,8 +112,8 @@ services:
       POSTGRES_PASSWORD: sonar
       POSTGRES_DB: sonar
     volumes:
-      - 'postgresql:/var/lib/postgresql'
-      - 'postgresql_data:/var/lib/postgresql/data'
+      - "postgresql:/var/lib/postgresql"
+      - "postgresql_data:/var/lib/postgresql/data"
     networks:
       - ipv4
 volumes:
@@ -121,34 +132,32 @@ networks:
     enable_ipv6: true
     ipam:
       config:
-        -
-          subnet: 192.168.2.0/24
+        - subnet: 192.168.2.0/24
           gateway: 192.168.2.1
-        -
-          subnet: '2001:db8:2::/64'
-          gateway: '2001:db8:2::1'
+        - subnet: "2001:db8:2::/64"
+          gateway: "2001:db8:2::1"
 ```
 
 - This Docker Compose file will deploy SonarQube with a PostgreSQL database. Make sure to adjust the resources and configurations as needed.
-> I found this configuration on the official SonarQube documentation, you can customize it further based on your requirements.
-> Coolify will automatically create the necessary volumes and networks for your project, it will also add some information to the docker compose file to make it work with Traefik.
+  > I found this configuration on the official SonarQube documentation, you can customize it further based on your requirements.
+  > Coolify will automatically create the necessary volumes and networks for your project, it will also add some information to the docker compose file to make it work with Traefik.
 - Save the Docker Compose file and click on "Deploy" to start the deployment process.
 
 ## Step 2: Configure SonarQube
 
 Once the deployment is complete, you should see the SonarQube application running in your project environment. You can access it via the URL provided by Coolify or your custom domain if configured.
 
-
 ### Log in to SonarQube
+
 - Open your browser and navigate to the SonarQube URL.
 - Log in with the default credentials (`admin` / `admin`).
 - You will be prompted to change the password and set up your organization.
 
 ### Monitor the Deployment
+
 - Check the logs and status of the SonarQube container in the Coolify dashboard.
 - Make sure the services are healthy and running without issues.
 
-### Configure SonarQube 
+### Configure SonarQube
 
 WIP
-
