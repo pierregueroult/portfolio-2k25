@@ -17,5 +17,6 @@
   "sonarlint.connectedMode.project": {
     "connectionId": "https-sonar-pierregueroult-dev",
     "projectKey": "pierregueroult_portfolio-2k25_357932ae-6353-4f09-924a-98d04550aabe"
-  }
+  },
+  "cSpell.language": "en,fr,ar"
 }
