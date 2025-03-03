@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import { ClientRouter } from "astro:transitions";
 import { SITE } from "../consts";
 import Analytics from "../components/Analytics.astro";
+import PostHog from "../components/PostHog.astro";
 
 interface Props {
   title: string;
@@ -72,5 +73,6 @@ const ogImage = ["home", "projects", "blog", "socials"].find((image) => Astro.or
       <slot />
     </main>
     <Analytics />
+    <PostHog />
   </body>
 </html>
