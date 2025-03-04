@@ -65,6 +65,8 @@ const ogImage = ["home", "projects", "blog", "socials"].find((image) => Astro.or
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="canonical" href={SITE} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
     <ClientRouter />
   </head>
   <body class="font-mono bg-background text-foreground" data-theme={theme}>
