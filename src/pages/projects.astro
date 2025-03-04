@@ -10,6 +10,7 @@ import TranslationAlert from "../components/TranslationAlert.astro";
 const allProjects = await getCollection("projects");
 
 const projects = allProjects.filter((project) => project.data.kind === "project");
+const schools = allProjects.filter((project) => project.data.kind === "school");
 const creations = allProjects.filter((project) => project.data.kind === "creation");
 const contributions = allProjects.filter((project) => project.data.kind === "contribution");
 
@@ -45,6 +46,20 @@ const t = useTranslation(Astro.locals.locale);
       projects.length > 0 && (
         <ListLayout title={t("pages.projects.projects")}>
           {projects.map((project) => (
+            <ProjectItem
+              title={project.data.slug}
+              subtitle={project.data.role}
+              text={project.data.description}
+              slug={project.data.slug}
+            />
+          ))}
+        </ListLayout>
+      )
+    }
+    {
+      schools.length > 0 && (
+        <ListLayout title={t("pages.projects.schools")}>
+          {schools.map((project) => (
             <ProjectItem
               title={project.data.slug}
               subtitle={project.data.role}

@@ -22,7 +22,7 @@ const projects = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/projects" }),
   schema: z.object({
     name: z.string(),
-    kind: z.enum(["project", "creation", "contribution"]),
+    kind: z.enum(["project", "creation", "contribution", "school", "work"]),
     role: z.string(),
     slug: z.string(),
     description: z.string(),

@@ -67,6 +67,7 @@ export const texts: Texts = {
     "pages.projects.creations": "Creations",
     "pages.projects.projects": "Projects",
     "pages.projects.contributions": "Contributions",
+    "pages.projects.schools": "School Projects",
     // --- home (index)
     "pages.index.meta.title": "Web & Software Developer",
     "pages.index.meta.description":
@@ -148,6 +149,7 @@ export const texts: Texts = {
     "pages.projects.translation.title": "Traduction en cours...",
     "pages.projects.translation.text":
       "Ces pages de projets ne sont pas encore disponible en français, mais j'y travaille ! En attendant, vous pouvez les lire en anglais ou revenir plus tard pour la version traduite.",
+    "pages.projects.schools": "Projets Scolaires",
     // --- home (index)
     "pages.index.meta.title": "Développeur Web & Logiciel",
     "pages.index.meta.description":
@@ -226,6 +228,7 @@ export const texts: Texts = {
     "pages.projects.translation.title": "الترجمة قيد التنفيذ...",
     "pages.projects.translation.text":
       "هذه الصفحات الخاصة بالمشاريع غير متاحة حاليًا باللغة العربية، لكنني أعمل على ذلك! في الوقت الحالي، يمكنك قراءتها باللغة الإنجليزية أو العودة لاحقًا للاطلاع على النسخة المترجمة.",
+    "pages.projects.schools": "مشاريع المدارس",
     // --- home (index)
     "pages.index.meta.title": "مطور ويب وبرمجيات",
     "pages.index.meta.description":
