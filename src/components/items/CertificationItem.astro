@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { useTranslation } from "../../i18n";
+
+interface Props {
+  certification: CollectionEntry<"certifications">;
+}
+const { certification } = Astro.props;
+const locale = Astro.locals.locale;
+const t = useTranslation(locale);
+---
+
+<li>
+  <h4 class="text-xl font-mono">{certification.data.name[locale]}</h4>
+  <p class="text-sm text-foreground/70">
+    - {t("components.items.certification.certifiedBy")}{" "}
+    {certification.data.organization}
+    (<date class="lowercase"
+      >{
+        certification.data.date.toLocaleString(locale, {
+          month: "long",
+          year: "numeric",
+        })
+      }</date
+    >)
+  </p>
+</li>

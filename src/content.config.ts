@@ -88,4 +88,14 @@ const schools = defineCollection({
   }),
 });
 
-export const collections = { blog, projects, socials, works, schools };
+const certifications = defineCollection({
+  loader: file("./src/content/certifications/certifications.json"),
+  schema: z.object({
+    name: localizedStringSchema,
+    organization: z.string(),
+    date: z.coerce.date(),
+    link: z.string(),
+  }),
+});
+
+export const collections = { blog, projects, socials, works, schools, certifications };

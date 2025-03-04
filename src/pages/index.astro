@@ -8,6 +8,7 @@ import WorkItem from "../components/items/WorkItem.astro";
 import SchoolItem from "../components/items/SchoolItem.astro";
 import { SITE } from "../consts";
 import { useTranslation } from "../i18n";
+import CertificationItem from "../components/items/CertificationItem.astro";
 
 const jsonLd: WithContext<Person> = {
   "@context": "https://schema.org",
@@ -33,6 +34,7 @@ const jsonLd: WithContext<Person> = {
 
 const works = await getCollection("works");
 const schools = await getCollection("schools");
+const certifications = await getCollection("certifications");
 
 const t = useTranslation(Astro.locals.locale);
 ---
@@ -54,6 +56,9 @@ const t = useTranslation(Astro.locals.locale);
   </ListLayout>
   <ListLayout title={t("pages.index.schools")}>
     {schools.map((school) => <SchoolItem {school} />)}
+  </ListLayout>
+  <ListLayout title={t('pages.index.certifications')}>
+    {certifications.map((certification) => <CertificationItem {certification} />)}
   </ListLayout>
   <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd, null, 0)} />
 </Layout>

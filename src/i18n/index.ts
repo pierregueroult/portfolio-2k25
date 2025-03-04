@@ -35,6 +35,7 @@ export const texts: Texts = {
     "components.items.to": "to",
     "components.items.work.looking": "Looking for",
     "components.items.work.near": "near",
+    "components.items.certification.certifiedBy": "Certified by",
     // pages
     // --- blog
     "pages.blog.meta.title": "Blog",
@@ -77,6 +78,7 @@ export const texts: Texts = {
       " 20 year-old web developer & Computer Science Student. I love crafting sleek websites and automating workflows to make life easier. Passionate about clean code, problem-solving, and making tech work smarter, not harder. Always exploring new technologies, always up for a challenge. Whether it's web development, automation, or something completely out of my comfort zone - I'm in.",
     "pages.index.works": "Works",
     "pages.index.schools": "Schools",
+    "pages.index.certifications": "Certifications",
   },
   fr: {
     // components
@@ -157,6 +159,7 @@ export const texts: Texts = {
       "Développeur web de 20 ans & Étudiant en Informatique. J'adore créer des sites web élégants et automatiser les workflows pour faciliter la vie. Passionné par le code propre, la résolution de problèmes et la mise en place de technologies intelligentes. Toujours à la recherche de nouvelles technologies, toujours prêt à relever un défi. Que ce soit le développement web, l'automatisation ou quelque chose complètement hors de ma zone de confort - je suis partant.",
     "pages.index.works": "Emplois",
     "pages.index.schools": "Écoles",
+    "pages.index.certifications": "Certifications",
   },
   ar: {
     // components
@@ -233,6 +236,7 @@ export const texts: Texts = {
       "مطور ويب وطالب علوم الحاسوب بعمر 20 عامًا. أحب إنشاء مواقع أنيقة وأتمتة سير العمل لجعل الحياة أسهل. شغوف بالكود النظيف وحل المشكلات وجعل التكنولوجيا تعمل بذكاء وليس بجهد. دائمًا أستكشف التقنيات الجديدة، ودائمًا مستعد للتحدي. سواء كان تطوير ويب، أتمتة، أو شيئًا خارج نطاق راحتي - أنا مستعد.",
     "pages.index.works": "الأعمال",
     "pages.index.schools": "المدارس",
+    "pages.index.certifications": "الشهادات",
   },
 };
 
