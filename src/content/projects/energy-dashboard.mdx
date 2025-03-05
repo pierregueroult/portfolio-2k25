@@ -1,0 +1,113 @@
+---
+name: Energy Dashboard
+slug: energy-dashboard
+description: "An interactive dashboard analyzing electricity consumption across French departments. Built with PHP, Chart.js, and AJAX for dynamic updates without page reloads."
+technologies: ["PHP", "JavaScript", "HTML", "CSS", "MySQL", "Ajax", "Chart.js"]
+links: [
+    { title: "GitHub Repository", url: "https://github.com/pierregueroult/energy-dashboard" }
+]
+role: "Developer (school project)"
+date: "2023-01-01"
+kind: "school"
+---
+
+# Energy Dashboard: An Interactive Visualization of Electricity Consumption
+
+## Context and Objectives
+This project was developed as part of a **SAE (Situation d'Apprentissage et d'Évaluation)** for the **BUT MMI** program. The goal was to create an interactive dashboard displaying the electricity consumption of a given department based on provided CSV data.
+
+Instead of limiting the dashboard to a single department, I enhanced the project by collecting **all available CSV files**, storing the data in a **database**, and allowing users to select any department dynamically.
+
+## Technologies Used
+The project was built using the following technologies:
+
+- **PHP** (server-side processing and API endpoints)
+- **Chart.js** (interactive data visualization)
+- **AJAX** (dynamic updates without page reloads)
+- **Tailwind CSS** (modern UI styling)
+
+## Dynamic Data Updates with AJAX
+One of the main challenges was ensuring that the **charts update dynamically** when selecting a new department, without requiring a full page reload. This was achieved using **AJAX requests** to fetch updated data and redraw the charts in real-time.
+
+### Example of AJAX Implementation
+Below is the main JavaScript function handling data fetching and updating the UI dynamically:
+
+```javascript
+async function loadCharts(department) {
+  // Check if department data is available
+  try {
+    const res = await fetch("/sae303/api/test.php?department=" + department);
+    const { status } = await res.json();
+    if (status === false) {
+      throw new Error("The department is not available");
+    }
+  } catch (e) {
+    window.alert("Il semblerait que toutes les bases de données nécessaires ne soient pas disponibles ... ");
+    return;
+  }
+
+  // Update department summary cards
+  const cards = document.querySelectorAll("[data-cards]");
+  cards.forEach(async (card, i) => {
+    const legend = card.querySelector("dt");
+    const value = card.querySelector("dd");
+    const aside = card.querySelector("aside");
+    const ratio = card.querySelector("span");
+    const svg = card.querySelectorAll("svg");
+
+    const res = await fetch(`/sae303/api/cards?department=${department}&index=${i + 1}`);
+    const { data } = await res.json();
+
+    aside.classList.remove("positive", "negative", "text-green-500", "text-red-500");
+    legend.innerText = data.legend;
+    value.innerText = Math.round(data.info) + " " + data.unit;
+    ratio.innerText = Math.round(data.ratio * 100) / 100 + "%";
+
+    aside.classList.add(data.ratio > 0 ? "positive" : "negative");
+    aside.classList.add(data.ratio > 0 ? "text-green-500" : "text-red-500");
+  });
+
+  // Fetch and update charts
+  var res = await fetch("/sae303/api/charts/consoByYear.php?department=" + department);
+  var { data } = await res.json();
+  drawConsoByYear(data);
+
+  await loadYearlyCharts(department, 2021);
+
+  var res = await fetch("/sae303/api/charts/typeOfProduction.php?department=" + department);
+  var { data } = await res.json();
+  drawTypeOfProduction(data);
+
+  var res = await fetch("/sae303/api/charts/regionByMonth.php?department=" + department);
+  var { data } = await res.json();
+  drawRegionByMonth(data);
+
+  var res = await fetch("/sae303/api/charts/prodByMonth.php?department=" + department);
+  var { data } = await res.json();
+  drawProdByMonth(data);
+}
+```
+
+### How It Works:
+- First, the function **checks if the selected department's data is available**.
+- It then **updates the summary cards** showing key statistics.
+- Finally, it **fetches new chart data** and redraws each visualization accordingly.
+
+## UI & Design Considerations
+To create a **modern and consistent UI**, I took inspiration from **ShadCN/UI** for layout and design coherence, without directly using its components. The dashboard features a clean and accessible interface with a focus on **clarity and responsiveness**.
+
+> 📌 TODO *An image of the dashboard layout would be useful here.*
+
+## Challenges & Learning Outcomes
+- **Data Processing**: Automating CSV imports into a structured **database**.
+- **Dynamic UX**: Implementing real-time updates via AJAX for a **smooth user experience**.
+- **UI Consistency**: Creating a visually appealing design while maintaining **accessibility** standards.
+
+## Results & Final Grade
+The final project was **well-received** and earned a **high grade**, validating both its **technical robustness** and **user experience**.
+
+> 📌 TODO *A screenshot of the dashboard in action could be placed here.*
+
+## Conclusion
+This project was an excellent exercise in **data manipulation, frontend/backend integration, and UX design**. It demonstrated how a relatively simple dataset could be transformed into an **interactive and insightful tool** through effective web development practices.
+
