@@ -42,7 +42,7 @@ export default defineConfig({
     mode: "standalone",
   }),
   devToolbar: {
-    enabled: true,
+    enabled: false,
   },
   server: {
     headers: {

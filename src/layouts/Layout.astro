@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import { ClientRouter } from "astro:transitions";
-import { SITE } from "../consts";
+import { SITE, LOCALES } from "../consts";
 import Analytics from "../components/Analytics.astro";
 import PostHog from "../components/PostHog.astro";
 
@@ -10,6 +10,11 @@ interface Props {
   title: string;
   description: string;
   keywords?: string[];
+}
+
+interface LocalAlternate {
+  hreflang: "x-default" | "en" | "fr" | "ar";
+  href: string;
 }
 
 const { theme, locale } = Astro.locals;
@@ -31,6 +36,26 @@ const defaultKeywords: string[] = [
   "LinkedIn",
   "personal development",
 ];
+
+let currentPage = Astro.url.toString();
+
+if (currentPage.includes("localhost")) {
+  currentPage = currentPage.replace(/^https?:\/\/([a-z]{2}\.)?localhost(:\d+)?/, (match, subdomain) => {
+    return subdomain ? `https://${subdomain}${SITE.replace("https://", "")}` : SITE;
+  });
+}
+
+const localeAlternate: LocalAlternate[] = LOCALES.filter((l) => l !== locale).map((l) => ({
+  hreflang: l,
+  href: currentPage.includes(`https://${locale}.`)
+    ? currentPage.replace(`https://${locale}.`, `https://${l}.`)
+    : currentPage.replace("https://", `https://${l}.`),
+}));
+
+localeAlternate.push({
+  hreflang: "x-default",
+  href: SITE,
+});
 
 const ogImage = ["home", "projects", "blog", "socials"].find((image) => Astro.originPathname.includes(image)) || "home";
 ---
@@ -63,7 +88,8 @@ const ogImage = ["home", "projects", "blog", "socials"].find((image) => Astro.or
     <meta property="twitter:creator" content="@pierregueroult1" />
     <meta name="robots" content="index, follow" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="canonical" href={SITE} />
+    <link rel="canonical" href={currentPage} />
+    {localeAlternate.map((l) => <link rel="alternate" hreflang={l.hreflang} href={l.href} />)}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://www.google-analytics.com" />
