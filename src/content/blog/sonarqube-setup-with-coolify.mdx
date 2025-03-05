@@ -153,11 +153,56 @@ Once the deployment is complete, you should see the SonarQube application runnin
 - Log in with the default credentials (`admin` / `admin`).
 - You will be prompted to change the password and set up your organization.
 
-### Monitor the Deployment
+### Create a New Project
 
-- Check the logs and status of the SonarQube container in the Coolify dashboard.
-- Make sure the services are healthy and running without issues.
+- Click on the "Create new project" button.
+- Use the "From Github" option to import your project from a Git repository.
+- You might need to generate a token or link an organization to SonarQube to allow SonarQube to access your code repository.
+- Follow the on-screen instructions until it asks "How do you want to analyze your project?"
 
-### Configure SonarQube
+### Analyze Your Code
 
-WIP
+- Choose the "With GitHub Actions" option to set up automated code analysis in your CI/CD pipeline.
+- Create two new "Repository Secrets" in your GitHub repository: `SONAR_TOKEN` and `SONAR_HOST_URL`.
+  > The `SONAR_TOKEN` is generated in SonarQube under "My Account" > "Security" > "Generate Tokens."
+  > The `SONAR_HOST_URL` is the URL of your SonarQube server.
+- Add the following GitHub Actions workflow to your repository:
+
+```yaml
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  build:
+    name: Build and analyze
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      # If you wish to fail your job when the Quality Gate is red, uncomment the
+      # following lines. This would typically be used to fail a deployment.
+      # - uses: SonarSource/sonarqube-quality-gate-action@v1
+      #   timeout-minutes: 5
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+```
+
+The actual yaml can differ if you are using a specific framework or language, you can find more examples in the SonarQube documentation.
+> This one works perfectly with Javascript/Typescript projects !
+
+- Commit the changes to your repository and push them to trigger the GitHub Actions workflow.
+
+## Conclusion
+
+Congratulations! You have successfully deployed SonarQube on Coolify and set up automated code analysis in your development pipeline. SonarQube will now scan your code for bugs, security vulnerabilities, and code smells, helping you improve code quality and maintainability.
