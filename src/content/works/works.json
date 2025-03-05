@@ -4,7 +4,7 @@
     "type": "looking",
     "place": "Paris, France",
     "role": {
-      "en": "an internship in software engineering",
+      "en": "an apprenticeship in software engineering",
       "fr": "d'une alternance en ingénierie logicielle",
       "ar": "متدرب في هندسة البرمجيات"
     }
@@ -16,7 +16,7 @@
     "works": [
       {
         "role": {
-          "en": "Web development internship",
+          "en": "Web development apprenticeship",
           "fr": "Alternance en développement web",
           "ar": "تدريب في تطوير الويب"
         },
@@ -35,7 +35,7 @@
           "ar": "مطور ويب"
         },
         "techs": ["Angular", "C#", "MySQL", "PHP"],
-        "period": ["2024-06", "2024-08"],
+        "period": ["2024-04", "2024-08"],
         "description": {
           "en": "I mainly worked on the migration of the company's internal tools to a new version of PHP. I also worked on the development of new features.",
           "fr": "J'ai principalement travaillé sur la migration des outils internes de l'entreprise vers une nouvelle version de PHP. J'ai également travaillé sur le développement de nouvelles fonctionnalités.",
