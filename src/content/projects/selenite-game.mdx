@@ -1,8 +1,8 @@
 ---
 name: Selenite Game
 slug: selenite-game
-description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nunc. Nullam nec purus nec nunc. Nullam nec purus nec nunc. Nullam nec purus nec nunc."
-technologies: ["Unity", "Github", "C#"]
+description: "Selenite: Lost Contact is a fast-paced space combat game where players control Alex Carter, a pilot stranded near the Moon. I contributed by setting up the GitHub repository and implementing a CI/CD pipeline to automate builds and releases, ensuring a smooth development process."
+technologies: ["space combat","sci-fi game","Unity","indie game","action shooter","CI/CD pipeline","game development","GitHub automation","build and release","Moon mission"]
 links:
   [
     { url: "https://selenite.live", title: "Website of Selenite" },
@@ -12,7 +12,156 @@ role: "Developer & DevOps"
 date: "2021-09-01"
 kind: "school"
 ---
+import { Image } from "astro:assets";
+import organization from "../../images/projects/selenite-lost-contact/organization.png";
+import gameRepo from "../../images/projects/selenite-lost-contact/game-repo.png";
+import egRelease from "../../images/projects/selenite-lost-contact/eg-release.png";
 
-# Selenite Game
+# Selenite: Lost Contact - My contribution to the game development
 
-AH! I see you are interested in the Selenite Game project. Well, let me tell you more about it.
+*Selenite: Lost Contact* is an ambitious game project that required a solid development infrastructure. My role in this project focused on setting up and managing the GitHub repository, implementing CI/CD pipelines, and ensuring smooth release management.
+
+## Setting Up the GitHub Repository
+
+To facilitate collaboration, I created the main repository for the game on the [Selenite GitHub organization](https://github.com/selenite-live/). This repository serves as the central hub for contributions, issue tracking, and project organization.
+
+<Image src={organization} alt="Selenite GitHub Organization" class="my-8"/>
+<Image src={gameRepo} alt="Selenite Game Repository" class="my-8"/>
+
+## Implementing CI/CD for Automated Builds & Releases
+
+One of the most critical aspects of the development workflow was automating the build and release process. I implemented a CI/CD pipeline using GitHub Actions to build the game for both Windows and macOS. This setup ensures that every new release is built, packaged, and published automatically.
+
+### CI/CD Pipeline
+
+Below is the GitHub Actions script used for building and releasing the game:
+
+```yaml
+name: Build the game Windows & MacOS 🎮
+
+on:
+  push:
+    branches:
+      - release
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: write
+  packages: write
+  releases: write
+
+jobs:
+  init-data:
+    name: Set the workflow data 📊
+    runs-on: ubuntu-latest
+    outputs:
+      builder_number: ${{ steps.builder_number.outputs.build_number }}
+      date: ${{ steps.set_date.outputs.date }}
+    steps:
+      - name: Get the number of the current build
+        id: builder_number
+        uses: einaregilsson/build-number@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Get the current date for the build name
+        id: set_date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
+  buildWindows:
+    name: Build the game for Windows 🪟
+    runs-on: ubuntu-latest
+    needs: init-data
+    steps:
+      - name: Checkout the code 🛎️
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Build Unity Project for Windows
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: StandaloneWindows64
+          unityVersion: 2022.3.42f1
+      - name: Upload the build
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-StandaloneWindows64
+          path: build/StandaloneWindows64
+
+  buildMacOs:
+    name: Build the game for MacOS 🍏
+    runs-on: ubuntu-latest
+    needs: init-data
+    steps:
+      - name: Checkout the code 🛎️
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Build Unity Project for MacOS
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: StandaloneOSX
+          unityVersion: 2022.3.42f1
+      - name: Upload the build
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-StandaloneOSX
+          path: build/StandaloneOSX
+
+  publishAsRelease:
+    name: Publish the build as a release 🚀
+    runs-on: ubuntu-latest
+    needs:
+      - buildWindows
+      - buildMacOs
+      - init-data
+    steps:
+      - name: Create a release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: build-0.0.${{ needs.init-data.outputs.builder_number }}
+          release_name: "v0.0.${{ needs.init-data.outputs.builder_number }}"
+          body: |
+            Selenite : Lost Contact
+            > Release v0.0.${{ needs.init-data.outputs.builder_number }} / ${{ needs.init-data.outputs.date }} 🚀
+          draft: false
+          prerelease: false
+```
+
+> **[Insert Diagram: CI/CD Workflow Overview]**
+
+## Managing Releases
+
+With the CI/CD pipeline in place, every build is automatically packaged and published as a new release on GitHub. This ensures that developers and testers always have access to the latest stable version of the game.
+
+The release workflow:
+- Detects new changes pushed to the `release` branch
+- Builds the game for both Windows and macOS
+- Uploads the build artifacts
+- Publishes a new GitHub release with versioning
+
+You can check out the latest releases here: [Selenite: Lost Contact Releases](https://github.com/selenite-live/selenite-game/releases)
+
+<Image src={egRelease} alt="Example Release" class="my-8"/>
+
+## Conclusion
+
+By setting up a structured GitHub repository, implementing a robust CI/CD pipeline, and managing automated releases, we ensured a streamlined development workflow for *Selenite: Lost Contact*. These technical foundations allow developers to focus on improving the game while maintaining an efficient and reliable release process.
+
+
+This project highlights my expertise in DevOps, CI/CD pipelines, and GitHub repository management. If you’re interested in learning more or collaborating, feel free to reach out!
+
+Check out the link below to visit the official website of Selenite, or explore the GitHub repository for the game.

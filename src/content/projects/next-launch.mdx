@@ -1,8 +1,8 @@
 ---
 name: Next Launch
 slug: next-launch
-description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nunc. Nullam nec purus nec nunc. Nullam nec purus nec nunc. Nullam nec purus nec nunc."
-technologies: ["React", "Next.js", "Tailwind CSS", "TypeScript"]
+description: "next-launch simplifies Next.js project setup by automating essential configurations. It includes TypeScript, ESLint, Prettier, Jest, TailwindCSS, and CI/CD workflows, allowing developers to focus on building features instead of configuring tools."
+technologies: ["React", "Next.js", "Tailwind CSS", "TypeScript", "Boilerplate", "CLI"]
 links:
   [
     { url: "https://github.com/pierregueroult/next-launch", title: "Github Repository of next-launch" },
@@ -13,6 +13,66 @@ date: "2024-09-01"
 kind: "creation"
 ---
 
-# Next Launch
+# Next Launch: Nextjs Boilerplate
 
-AH! I see you are interested in the Next Launch project. Well, let me tell you more about it.
+> This article covers the V1 of Next Launch, the V2 is under heavy development right now. Don't be suprised if you see some differences between the article and the current version of the project.
+
+## Introduction
+
+Setting up a new Next.js project often requires tedious configuration, including installing various dependencies and tools. Each project involves manually setting up code quality tools, testing frameworks, and styling solutions, which can be repetitive and time-consuming.
+
+To streamline this process, I developed **next-launch**, a command-line tool that initializes a Next.js project with all the necessary configurations already in place. The goal is to provide developers with a fully functional and optimized development environment from the start, following best practices.
+
+## Installation
+
+To create a new project using **next-launch**, run the following command:
+
+```sh
+npx create-next-launch my-project
+```
+
+This will generate a Next.js project with a complete, ready-to-use configuration.
+
+## Key Features
+
+### Automated Configuration
+
+`next-launch` automatically installs and configures several essential tools to improve code quality and the development experience:
+
+- **ESLint**: A linter that analyzes your code and flags syntax errors, inconsistencies, and bad practices.
+- **Prettier**: A code formatter that ensures consistent styling based on predefined rules.
+- **Jest**: A JavaScript testing framework that makes it easy to write and run unit tests.
+- **TailwindCSS**: A utility-first CSS framework that enables fast and efficient styling.
+- **Husky**: A Git hook manager that runs commands before commits and pushes (e.g., enforcing code checks before committing changes).
+- **lint-staged**: A tool that runs scripts on staged files, ensuring they comply with formatting and linting standards before being committed.
+
+### TypeScript Support
+
+`next-launch` initializes the project with TypeScript enabled by default. This enhances code robustness by detecting type errors during development, reducing the risk of bugs in production.
+
+### Continuous Integration
+
+The tool sets up GitHub Actions workflows to automate testing and code validation on each push. This ensures that all changes comply with established standards and that tests run automatically to detect potential regressions.
+
+## Benefits for Developers
+
+### Time-Saving
+
+By automating the initial setup, `next-launch` allows developers to focus on building features right from the start, without spending time manually configuring each tool.
+
+### Standardization
+
+Using predefined configurations ensures consistency across different projects and teams. All developers within a team benefit from the same tools and best practices from day one.
+
+### Improved Code Quality
+
+With built-in linting, formatting, and testing tools, the code remains clean, well-structured, and adheres to best practices, reducing errors and making maintenance easier.
+
+## Conclusion
+
+`next-launch` is designed to simplify and accelerate the setup process for Next.js projects by providing a complete and consistent initial configuration. This tool is especially useful for developers who want to avoid repetitive tasks and focus on what really matters: building innovative features.
+
+With `next-launch`, you start your Next.js project with an optimized development environment from minute one.
+
+For more details and to access the source code, check out the project's GitHub repository.
+

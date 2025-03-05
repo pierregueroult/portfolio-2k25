@@ -37,25 +37,56 @@ const jsonLd: WithContext<CreativeWork> = {
   <article class="mt-8 max-w-4xl">
     <Content components={{ ...components }} />
   </article>
-  <footer class="py-8 flex items-center justify-between">
-    {
-      prev ? (
-        <a href={`/projects/${prev.data.slug}`} class="text-accent">
-          ← {prev.data.slug}
-        </a>
-      ) : (
-        <div aria-hidden="true" />
-      )
-    }
-    {
-      next ? (
-        <a href={`/projects/${next.data.slug}`} class="text-accent">
-          {next.data.slug} →
-        </a>
-      ) : (
-        <div aria-hidden="true" />
-      )
-    }
+  <footer>
+    <ul class="flex items-center justify-center gap-4 py-8 flex-wrap">
+      {
+        project.data.links.map((link) => (
+          <li>
+            <a href={link.url} class="text-accent mr-4 underline flex items-center gap-2" target="_blank" rel="noopener noreferrer">
+              {link.title}
+              <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-external-link size-4"
+            >
+              <>
+                <path d="M15 3h6v6" />
+                <path d="M10 14 21 3" />
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              </>
+            </svg>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="py-8 flex items-center justify-between">
+      {
+        prev ? (
+          <a href={`/projects/${prev.data.slug}`} class="text-accent">
+            ← {prev.data.slug}
+          </a>
+        ) : (
+          <div aria-hidden="true" />
+        )
+      }
+      {
+        next ? (
+          <a href={`/projects/${next.data.slug}`} class="text-accent">
+            {next.data.slug} →
+          </a>
+        ) : (
+          <div aria-hidden="true" />
+        )
+      }
+    </div>
   </footer>
   <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd, null, 0)} />
 </Layout>
