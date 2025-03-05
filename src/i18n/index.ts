@@ -109,6 +109,8 @@ export const texts: Texts = {
     "components.items.to": "à",
     "components.items.work.looking": "À la recherche",
     "components.items.work.near": "autour de",
+    "components.items.certification.certifiedBy": "Certifié par",
+
     // pages
     // --- blog
     "pages.blog.meta.title": "Blog",
@@ -191,6 +193,7 @@ export const texts: Texts = {
     "components.items.to": "إلى",
     "components.items.work.looking": "يبحث عن",
     "components.items.work.near": "بالقرب من",
+    "components.items.certification.certifiedBy": "معتم",
     // pages
     // --- blog
     "pages.blog.meta.title": "المدونة",
