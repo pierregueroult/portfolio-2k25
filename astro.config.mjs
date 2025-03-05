@@ -29,7 +29,19 @@ export default defineConfig({
         })),
       }),
     }),
-    robotsTxt(),
+    robotsTxt({
+      transform: (content) => `# Dont try to find the private things \n\n${content}`,
+      policy: [
+        {
+          userAgent: "*",
+          disallow: ["/documents/private"],
+        },
+        {
+          userAgent: "Googlebot-Image",
+          disallow: ["/"],
+        },
+      ],
+    }),
   ],
   vite: {
     plugins: [tailwindcss()],

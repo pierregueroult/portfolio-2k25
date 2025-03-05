@@ -80,6 +80,7 @@ export const texts: Texts = {
     "pages.index.works": "Works",
     "pages.index.schools": "Schools",
     "pages.index.certifications": "Certifications",
+    "pages.index.curriculum": "Download my Curriculum Vitae",
   },
   fr: {
     // components
@@ -110,7 +111,6 @@ export const texts: Texts = {
     "components.items.work.looking": "À la recherche",
     "components.items.work.near": "autour de",
     "components.items.certification.certifiedBy": "Certifié par",
-
     // pages
     // --- blog
     "pages.blog.meta.title": "Blog",
@@ -164,6 +164,7 @@ export const texts: Texts = {
     "pages.index.works": "Emplois",
     "pages.index.schools": "Écoles",
     "pages.index.certifications": "Certifications",
+    "pages.index.curriculum": "Téléchargez mon Curriculum Vitae",
   },
   ar: {
     // components
@@ -243,6 +244,7 @@ export const texts: Texts = {
     "pages.index.works": "الأعمال",
     "pages.index.schools": "المدارس",
     "pages.index.certifications": "الشهادات",
+    "pages.index.curriculum": "تنزيل سيرتي الذاتية (باللغة الإنجليزية)",
   },
 };
 

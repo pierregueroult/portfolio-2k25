@@ -37,6 +37,8 @@ const schools = await getCollection("schools");
 const certifications = await getCollection("certifications");
 
 const t = useTranslation(Astro.locals.locale);
+
+const cvPath = `/documents/pierre%20gueroult%20-%20curriculum%20vitae%20-%20${Astro.locals.locale === "fr" ? "fr" : "en"}.pdf`;
 ---
 
 <Layout
@@ -50,6 +52,9 @@ const t = useTranslation(Astro.locals.locale);
   </h1>
   <h2 class="leading-relaxed text-sm md:text-base">
     {t("pages.index.subtitle")}
+    <a href={`${cvPath}`} class="underline text-accent">
+      {t("pages.index.curriculum")}
+    </a>
   </h2>
   <ListLayout title={t("pages.index.works")}>
     {works.map((work) => <WorkItem {work} />)}
@@ -57,7 +62,7 @@ const t = useTranslation(Astro.locals.locale);
   <ListLayout title={t("pages.index.schools")}>
     {schools.map((school) => <SchoolItem {school} />)}
   </ListLayout>
-  <ListLayout title={t('pages.index.certifications')}>
+  <ListLayout title={t("pages.index.certifications")}>
     {certifications.map((certification) => <CertificationItem {certification} />)}
   </ListLayout>
   <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd, null, 0)} />
