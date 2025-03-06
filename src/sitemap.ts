@@ -1,5 +1,5 @@
 import * as fs from "node:fs";
-import { SITE } from "../consts";
+import { SITE } from "./consts";
 
 export const blog: string[] = fs
   .readdirSync("src/content/blog")
@@ -8,3 +8,5 @@ export const blog: string[] = fs
 export const projects: string[] = fs
   .readdirSync("src/content/projects")
   .map((file) => `${SITE}/projects/${file.replace(".mdx", "")}/`);
+
+export const pages: string[] = [`${SITE}/`, `${SITE}/blog/`, `${SITE}/projects/`, `${SITE}/socials/`];
