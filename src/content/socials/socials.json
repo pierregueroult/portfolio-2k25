@@ -1,5 +1,16 @@
 [
   {
+    "id": 6,
+    "title": "E-mail",
+    "link": "mailto:contact@pierregueroult.dev",
+    "description": {
+      "en": "You can contact me by e-mail. I will answer as soon as possible.",
+      "fr": "Vous pouvez me contacter par e-mail. Je répondrai dès que possible.",
+      "ar": "يمكنك الاتصال بي عبر البريد الإلكتروني. سأرد في أقرب وقت ممكن."
+    },
+    "isFeatured": false
+  },
+  {
     "id": 1,
     "title": "X (Twitter)",
     "link": "https://x.com/pierregueroult1",
