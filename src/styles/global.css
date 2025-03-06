@@ -77,19 +77,16 @@
       --color-accent: #007aff;
     }
   }
-
   [data-theme="dark"] {
     --color-foreground: #e0e0e0;
     --color-background: #0d1b2a;
     --color-accent: #ff7b00;
   }
-
   [data-theme="brest"] {
     --color-foreground: #ffffff; 
     --color-background: #9b0000; 
     --color-accent: #000000;  
   }
-
   [data-theme="light"] {
     --color-foreground: #2d2d2d;
     --color-background: #f5f5f5;
@@ -100,19 +97,16 @@
     --color-background: var(--arc-palette-background);
     --color-accent: var(--arc-palette-foregroundPrimary);
   }
-
   [data-theme="pastel"] {
     --color-foreground: #4f4f4f;
     --color-background: #ffebef;
     --color-accent: #b3c0ff;
   }
-
   [data-theme="solarized-light"] {
     --color-foreground: #657b83;
     --color-background: #fdf6e3;
     --color-accent: #d33682;
   }
-
   [data-theme="solarized-dark"] {
     --color-foreground: #839496;
     --color-background: #002b36;
