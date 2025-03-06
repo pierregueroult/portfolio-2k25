@@ -44,6 +44,10 @@ if (currentPage.includes("localhost")) {
   });
 }
 
+if (currentPage.includes("www.")) {
+  currentPage = currentPage.replace("www.", "");
+}
+
 const localeAlternate: LocalAlternate[] = LOCALES.filter((l) => l !== locale).map((l) => ({
   hreflang: l,
   href: currentPage.includes(`https://${locale}.`)
