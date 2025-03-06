@@ -33,7 +33,7 @@ const t = useTranslation(Astro.locals.locale);
         <ListLayout title={t("pages.projects.creations")}>
           {creations.map((project) => (
             <ProjectItem
-              title={project.data.slug}
+              title={project.data.name}
               subtitle={project.data.role}
               text={project.data.description}
               slug={project.data.slug}
@@ -47,7 +47,7 @@ const t = useTranslation(Astro.locals.locale);
         <ListLayout title={t("pages.projects.projects")}>
           {projects.map((project) => (
             <ProjectItem
-              title={project.data.slug}
+              title={project.data.name}
               subtitle={project.data.role}
               text={project.data.description}
               slug={project.data.slug}
@@ -61,7 +61,7 @@ const t = useTranslation(Astro.locals.locale);
         <ListLayout title={t("pages.projects.schools")}>
           {schools.map((project) => (
             <ProjectItem
-              title={project.data.slug}
+              title={project.data.name}
               subtitle={project.data.role}
               text={project.data.description}
               slug={project.data.slug}
@@ -75,7 +75,7 @@ const t = useTranslation(Astro.locals.locale);
         <ListLayout title={t("pages.projects.contributions")}>
           {contributions.map((project) => (
             <ProjectItem
-              title={project.data.slug}
+              title={project.data.name}
               subtitle={project.data.role}
               text={project.data.description}
               slug={project.data.slug}
