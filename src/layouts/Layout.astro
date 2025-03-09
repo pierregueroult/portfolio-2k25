@@ -57,7 +57,7 @@ const localeAlternate: LocalAlternate[] = LOCALES.filter((l) => l !== locale).ma
 
 localeAlternate.push({
   hreflang: "x-default",
-  href: SITE,
+  href: currentPage.replace(`https://${locale}.`, "https://"),
 });
 
 const ogImage = ["home", "projects", "blog", "socials"].find((image) => Astro.originPathname.includes(image)) || "home";
