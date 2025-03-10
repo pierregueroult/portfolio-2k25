@@ -14,7 +14,8 @@ const t = useTranslation(locale);
   "role" in work.data ? (
     <li class="mt-4">
       <h3 class="text-sm lowercase">
-        {t("components.items.work.looking") + " "}
+        <span class="text-accent">━</span>
+        {" " + t("components.items.work.looking") + " "}
         {work.data.role[locale] + " "}
         {t("components.items.work.near") + " "}
         {work.data.place}

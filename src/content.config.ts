@@ -75,17 +75,25 @@ const works = defineCollection({
 
 const schools = defineCollection({
   loader: file("./src/content/schools/schools.json"),
-  schema: z.object({
-    name: z.string(),
-    school: z.string(),
-    city: z.string(),
-    country: z.string(),
-    period: z.tuple([
-      z.string().transform((str) => new Date(str)),
-      z.union([z.string().transform((str) => (str === "now" ? "now" : new Date(str))), z.literal("now")]),
-    ]),
-    description: localizedStringSchema,
-  }),
+  schema: z.discriminatedUnion("type", [
+    z.object({
+      name: z.string(),
+      type: z.literal("default"),
+      school: z.string(),
+      city: z.string(),
+      country: z.string(),
+      period: z.tuple([
+        z.string().transform((str) => new Date(str)),
+        z.union([z.string().transform((str) => (str === "now" ? "now" : new Date(str))), z.literal("now")]),
+      ]),
+      description: localizedStringSchema,
+    }),
+    z.object({
+      type: z.literal("looking"),
+      city: z.string(),
+      role: localizedStringSchema,
+    }),
+  ]),
 });
 
 const certifications = defineCollection({

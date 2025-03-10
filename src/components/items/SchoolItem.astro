@@ -12,23 +12,37 @@ const locale = Astro.locals.locale;
 const t = useTranslation(locale);
 ---
 
-<li>
-  <h3 class="text-lg">{data.name}</h3>
-  <div class="text-foreground/70 text-sm">
-    <h4 class="inline-block">- {data.school}</h4>
-    <p class="lowercase inline-block">
-      <span>({t("components.items.from")}</span>{" "}
-      <date>{data.period[0].toLocaleDateString(locale, { month: "long", year: "numeric" })}</date>{" "}
-      <span>{t("components.items.to")}</span>{" "}
-      <date>
-        {
-          data.period[1] === "now"
-            ? t("components.items.now")
-            : data.period[1].toLocaleDateString(locale, { month: "long", year: "numeric" })
-        }
-      </date>
-      <span class="-ml-[1ch]">)</span>
-    </p>
-  </div>
-  <p class="text-sm">{data.description[locale]}</p>
-</li>
+{
+  "school" in data ? (
+    <li>
+      <h3 class="text-lg">{data.name}</h3>
+      <div class="text-foreground/70 text-sm">
+        <h4 class="inline-block">- {data.school}</h4>
+        <p class="lowercase inline-block">
+          <span>({t("components.items.from")}</span>{" "}
+          <date>{data.period[0].toLocaleDateString(locale, { month: "long", year: "numeric" })}</date>{" "}
+          <span>{t("components.items.to")}</span>{" "}
+          <date>
+            {data.period[1] === "now"
+              ? t("components.items.now")
+              : data.period[1].toLocaleDateString(locale, { month: "long", year: "numeric" })}
+          </date>
+          <span class="-ml-[1ch]">)</span>
+        </p>
+      </div>
+      <p class="text-sm">{data.description[locale]}</p>
+    </li>
+  ) : (
+    <li>
+      <li class="mt-4">
+        <h3 class="text-sm lowercase">
+          <span class="text-accent">━</span>
+          {" " + t("components.items.work.looking") + " "}
+          {data.role[locale] + " "}
+          {t("components.items.work.near") + " "}
+          {data.city}
+        </h3>
+      </li>
+    </li>
+  )
+}
