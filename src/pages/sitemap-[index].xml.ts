@@ -1,8 +1,12 @@
 import type { APIRoute } from "astro";
-import { LOCALES } from "../consts";
+import { LOCALES, IGNORED_LOCALES } from "../consts";
 import { projects, pages, blog } from "../sitemap";
 
-const possibleIndexes = ["index", "base", ...LOCALES] as const;
+const possibleIndexes = [
+  "index",
+  "base",
+  ...LOCALES.filter((locale) => !IGNORED_LOCALES.includes(locale as (typeof IGNORED_LOCALES)[number])),
+] as const;
 
 export const prerender = true;
 
@@ -38,7 +42,8 @@ export const GET: APIRoute = async ({ params: { index }, rewrite }) => {
 
           const alternates = LOCALES.reduce((acc, locale) => {
             return locale !== prefix
-              ? acc + `<xhtml:link rel="alternate" hreflang="${locale}" href="https://${locale}.${baseUrl}"></xhtml:link>`
+              ? acc +
+                  `<xhtml:link rel="alternate" hreflang="${locale}" href="https://${locale}.${baseUrl}"></xhtml:link>`
               : acc;
           }, "");
 
@@ -65,7 +70,10 @@ export const GET: APIRoute = async ({ params: { index }, rewrite }) => {
     xmlResponse = generateSitemap([...pages, ...projects, ...blog]);
   }
 
-  if (LOCALES.includes(index as (typeof LOCALES)[number])) {
+  if (
+    LOCALES.includes(index as (typeof LOCALES)[number]) &&
+    !IGNORED_LOCALES.includes(index as (typeof IGNORED_LOCALES)[number])
+  ) {
     xmlResponse = generateSitemap([...pages, ...projects, ...blog], index);
   }
   return new Response(xmlResponse.replace(/\s+/g, " ").trim(), {

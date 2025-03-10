@@ -6,12 +6,14 @@ const flags = {
   en: "🇬🇧",
   fr: "🇫🇷",
   ar: "🇸🇦",
+  morse: "🔤",
 };
 
 const labels = {
   en: "English",
   fr: "Français",
   ar: "العربية (work in progress, i'm not fluent yet)",
+  morse: "- - .-. ... . (challenging but fun)",
 };
 const t = useTranslation(Astro.locals.locale);
 const pathname = Astro.url.pathname.slice(1);
