@@ -38,6 +38,9 @@ const defaultKeywords: string[] = [
 
 let currentPage = Astro.url.toString();
 
+const untranslatedPaths = ["/projects/", "/blog/"]; // Détecter les pages non traduites
+const isUntranslated = untranslatedPaths.some((path) => currentPage.includes(path));
+
 if (currentPage.includes("localhost")) {
   currentPage = currentPage.replace(/^https?:\/\/([a-z]{2}\.)?localhost(:\d+)?/, (match, subdomain) => {
     return subdomain ? `https://${subdomain}${SITE.replace("https://", "")}` : SITE;
@@ -48,17 +51,25 @@ if (currentPage.includes("www.")) {
   currentPage = currentPage.replace("www.", "");
 }
 
-const localeAlternate: LocalAlternate[] = LOCALES.filter((l) => l !== locale).map((l) => ({
-  hreflang: l,
-  href: currentPage.includes(`https://${locale}.`)
-    ? currentPage.replace(`https://${locale}.`, `https://${l}.`)
-    : currentPage.replace("https://", `https://${l}.`),
-}));
+const localeAlternate: LocalAlternate[] = isUntranslated
+  ? []
+  : LOCALES.filter((l) => l !== locale).map((l) => ({
+      hreflang: l,
+      href: currentPage.includes(`https://${locale}.`)
+        ? currentPage.replace(`https://${locale}.`, `https://${l}.`)
+        : currentPage.replace("https://", `https://${l}.`),
+    }));
 
-localeAlternate.push({
-  hreflang: "x-default",
-  href: currentPage.replace(`https://${locale}.`, "https://"),
-});
+const canonicalUrl = isUntranslated
+  ? currentPage.replace(`https://${locale}.`, "https://") // Canonique sans sous-domaine
+  : currentPage;
+
+if (!isUntranslated) {
+  localeAlternate.push({
+    hreflang: "x-default",
+    href: currentPage.replace(`https://${locale}.`, "https://"),
+  });
+}
 
 const ogImage = ["home", "projects", "blog", "socials"].find((image) => Astro.originPathname.includes(image)) || "home";
 ---
@@ -91,7 +102,7 @@ const ogImage = ["home", "projects", "blog", "socials"].find((image) => Astro.or
     <meta property="twitter:creator" content="@pierregueroult1" />
     <meta name="robots" content="index, follow" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="canonical" href={currentPage} />
+    <link rel="canonical" href={canonicalUrl} />
     {localeAlternate.map((l) => <link rel="alternate" hreflang={l.hreflang} href={l.href} />)}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://eu.i.posthog.com" crossorigin="anonymous" />
