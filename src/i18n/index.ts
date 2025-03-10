@@ -113,6 +113,10 @@ export const texts: Texts = {
     "components.items.work.looking": "À la recherche",
     "components.items.work.near": "autour de",
     "components.items.certification.certifiedBy": "Certifié par",
+    // --- noTranslation
+    "components.noTranslation.title": "Traduction en cours...",
+    "components.noTranslation.text":
+      "Cette page n'est pas encore disponible en français, mais j'y travaille ! En attendant, vous pouvez la lire en anglais ou revenir plus tard pour la version traduite.",
     // pages
     // --- blog
     "pages.blog.meta.title": "Blog",
@@ -198,6 +202,10 @@ export const texts: Texts = {
     "components.items.work.looking": "يبحث عن",
     "components.items.work.near": "بالقرب من",
     "components.items.certification.certifiedBy": "معتم",
+    // --- noTranslation
+    "components.noTranslation.title": "الترجمة قيد التنفيذ...",
+    "components.noTranslation.text":
+      "هذه الصفحة غير متاحة باللغة العربية حاليًا، لكنني أعمل على ذلك! في الوقت الحالي، يمكنك قراءتها باللغة الإنجليزية أو العودة لاحقًا للاطلاع على النسخة المترجمة.",
     // pages
     // --- blog
     "pages.blog.meta.title": "المدونة",
