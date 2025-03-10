@@ -100,7 +100,7 @@ const ogImage = ["home", "projects", "blog", "socials"].find((image) => Astro.or
     <meta property="twitter:image" content={`${SITE}/open-graph/banner-${ogImage}.png`} />
     <meta property="twitter:site" content="@pierregueroult1" />
     <meta property="twitter:creator" content="@pierregueroult1" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={Astro.locals.locale === "morse" ? "noindex, nofollow" : "index, follow"} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="canonical" href={canonicalUrl} />
     {localeAlternate.map((l) => <link rel="alternate" hreflang={l.hreflang} href={l.href} />)}
