@@ -20,20 +20,17 @@ const { theme, locale } = Astro.locals;
 
 const { title, description, keywords } = Astro.props;
 const defaultKeywords: string[] = [
-  "software developer",
-  "coding projects",
-  "development",
-  "programming",
-  "social media",
-  "Pierre developer",
-  "tech projects",
-  "developer portfolio",
-  "web developer",
-  "Python",
+  "web development",
+  "frontend developer",
+  "backend developer",
+  "full-stack projects",
+  "Astro framework",
   "JavaScript",
-  "GitHub",
-  "LinkedIn",
-  "personal development",
+  "Typescript",
+  "php",
+  "Tailwind CSS",
+  "GitHub portfolio",
+  "Pierre Guéroult",
 ];
 
 let currentPage = Astro.url.toString();
@@ -90,7 +87,7 @@ const ogImage = ["home", "projects", "blog", "socials"].find((image) => Astro.or
     <meta property="og:title" content={`Pierre Guéroult - ${title}`} />
     <meta property="og:type" content="website" />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={SITE} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={`${SITE}/open-graph/banner-${ogImage}.png`} />
     <meta property="og:site_name" content="Pierre Guéroult" />
     <meta property="og:locale" content={locale} />
