@@ -5,7 +5,8 @@
     "role": {
       "en": "a Software Engineer or Computer Engineer School",
       "fr": "d'une École d'ingénieur en informatique ou d'ingénieur en informatique",
-      "ar": "مدرسة هندسة برمجيات أو هندسة حاسوب"
+      "ar": "مدرسة هندسة برمجيات أو هندسة حاسوب",
+      "morse": ".- / ... — ..-. - .- .- .-. . / . -. -. .. -. . . .-. / — .-. / -.-. — - .-. ..- - . .-. / . -. -. .. -. . . .-. / ... -.-. .... — — .-.."
     },
     "city": "Rouen / Paris"
   },
@@ -20,7 +21,8 @@
     "description": {
       "en": "I specialize in Web Development and Interactive Systems, focusing on front-end and back-end development, UI/UX design, and interactive media.",
       "fr": "Je me spécialise dans le développement web et les systèmes interactifs, en me concentrant sur le développement front-end et back-end, le design UI/UX et les médias interactifs.",
-      "ar": "أتخصص في تطوير الويب والأنظمة التفاعلية، مركزًا على تطوير الواجهة الأمامية والخلفية، تصميم واجهة المستخدم/تجربة المستخدم، ووسائط تفاعلية."
+      "ar": "أتخصص في تطوير الويب والأنظمة التفاعلية، مركزًا على تطوير الواجهة الأمامية والخلفية، تصميم واجهة المستخدم/تجربة المستخدم، ووسائط تفاعلية.",
+      "morse": ".. / ... .-. . -.-. .. .- .-.. .. -.. . / .. -. / .- . -... / -.. . ...- . .-.. — .-. - . -. - / .- -. -.. / .. -. - . .-. .- -.-. - .. ...- . / ... -.- ... - . - ... -..- / ..-. — -.-. ..- ... .. -. -. / — -. / ..-. .-. — -. - / . -.. / .- -. -.. / -... .- -.-. -.- / . -.. / -.. . ...- . .-.. — .-. - . -. - -..- / ..- .. / ..- -... / -.. . ... .. -. -. -..- / .- -. -.. / .. -. - . .-. .- -.-. - .. ...- . / - . -.. .. .- .-.."
     }
   }
 ]

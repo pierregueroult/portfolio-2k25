@@ -6,7 +6,8 @@
     "role": {
       "en": "an apprenticeship in software engineering",
       "fr": "d'une alternance en ingénierie logicielle",
-      "ar": "متدرب في هندسة البرمجيات"
+      "ar": "متدرب في هندسة البرمجيات",
+      "morse": ".- -. / .- .--. .--. .-. . -. - .. -.-. . ... .... .. .--. / .. -. / ... --- ..-. - .-- .- .-. . / . -. --. .. -. . . .-. .. -. --."
     }
   },
   {
@@ -18,28 +19,32 @@
         "role": {
           "en": "Web development apprenticeship",
           "fr": "Alternance en développement web",
-          "ar": "تدريب في تطوير الويب"
+          "ar": "تدريب في تطوير الويب",
+          "morse": ".-- . -... / -.. . ...- . .-.. --- .--. -- . -. - / .- .--. .--. .-. . -. - .. -.-. . ... .... .. .--."
         },
         "techs": ["Angular", "C#", "MySQL", "PHP"],
         "period": ["2024-08", "now"],
         "description": {
           "en": "I'm working on the internal tools of the company, mainly using PHP and Angular frameworks.",
           "fr": "Je travaille sur les outils internes de l'entreprise, principalement en utilisant les frameworks PHP et Angular.",
-          "ar": "أعمل على أدوات الشركة الداخلية، باستخدام إطارات PHP و Angular."
+          "ar": "أعمل على أدوات الشركة الداخلية، باستخدام إطارات PHP و Angular.",
+          "morse": ".. .----. -- / .-- --- .-. -.- .. -. --. / --- -. / - .... . / .. -. - . .-. -. .- .-.. / - --- --- .-.. ... / --- ..-. / - .... . / -.-. --- -- .--. .- -. -.-- --..-- / -- .- .. -. .-.. -.-- / ..- ... .. -. --. / .--. .... .--. / .- -. -.. / .- -. --. ..- .-.. .- .-. / ..-. .-. .- -- . .-- --- .-. -.- ... .-.-.-"
         }
       },
       {
         "role": {
           "en": "Web developer",
           "fr": "Développeur web",
-          "ar": "مطور ويب"
+          "ar": "مطور ويب",
+          "morse": ".-- . -... / -.. . ...- . .-.. --- .--. . .-."
         },
         "techs": ["Angular", "C#", "MySQL", "PHP"],
         "period": ["2024-04", "2024-08"],
         "description": {
           "en": "I mainly worked on the migration of the company's internal tools to a new version of PHP. I also worked on the development of new features.",
           "fr": "J'ai principalement travaillé sur la migration des outils internes de l'entreprise vers une nouvelle version de PHP. J'ai également travaillé sur le développement de nouvelles fonctionnalités.",
-          "ar": "عملت بشكل رئيسي على ترحيل أدوات الشركة الداخلية إلى إصدار جديد من PHP. عملت أيضًا على تطوير ميزات جديدة."
+          "ar": "عملت بشكل رئيسي على ترحيل أدوات الشركة الداخلية إلى إصدار جديد من PHP. عملت أيضًا على تطوير ميزات جديدة.",
+          "morse": ".. / -- .- .. -. .-.. -.-- / .-- --- .-. -.- . -.. / --- -. / - .... . / -- .. --. .-. .- - .. --- -. / --- ..-. / - .... . / -.-. --- -- .--. .- -. -.-- .----. ... / .. -. - . .-. -. .- .-.. / - --- --- .-.. ... / - --- / .- / -. . .-- / ...- . .-. ... .. --- -. / --- ..-. / .--. .... .--. .-.-.- / .. / .- .-.. ... --- / .-- --- .-. -.- . -.. / --- -. / - .... . / -.. . ...- . .-.. --- .--. -- . -. - / --- ..-. / -. . .-- / ..-. . .- - ..- .-. . ... .-.-.-"
         }
       }
     ]
