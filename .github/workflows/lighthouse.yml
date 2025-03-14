@@ -33,6 +33,6 @@ jobs:
         run: pnpm build
 
       - name: Run Lighthouse CI
-        run: lhci autorun --collect.url=http://localhost:4321/ --collect.startServerCommand="pnpm prod" --collect.numberOfRuns=3 --upload.target=temporary-public-storage
+        run: pnpm lh:mobile
         env: 
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}

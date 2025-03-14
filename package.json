@@ -10,7 +10,9 @@
     "astro": "astro",
     "format": "prettier --write .",
     "lint": "eslint",
-    "prod": "node ./dist/server/entry.mjs"
+    "prod": "node ./dist/server/entry.mjs",
+    "lh:mobile": "lhci autorun --collect.url=http://localhost:4321/ --collect.startServerCommand='pnpm prod' --collect.numberOfRuns=3 --upload.target=temporary-public-storage",
+    "lh:desktop": "lhci autorun --collect.url=http://localhost:4321/ --collect.startServerCommand='pnpm prod' --collect.numberOfRuns=3 --upload.target=temporary-public-storage --collect.settings.preset=desktop"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.1.0",
