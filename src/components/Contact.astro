@@ -1,0 +1,49 @@
+---
+
+---
+
+<form data-form="contact">
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" required />
+
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" required />
+
+  <label for="message">Message</label>
+  <textarea id="message" name="message" required></textarea>
+
+  <button type="submit" data-submit="contact">Send</button>
+</form>
+
+<script>
+  import { actions } from "astro:actions";
+
+  const form: HTMLFormElement | null = document.querySelector('[data-form="contact"]');
+  const button: HTMLButtonElement | null = document.querySelector('[data-submit="contact"]');
+
+  if (form && button) {
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const userAgent = navigator.userAgent;
+      const formData = new FormData(form);
+
+      const { email, name, message } = Object.fromEntries(formData.entries());
+
+      const { data, error } = await actions.contact({
+        email: email as string,
+        name: name as string,
+        message: message as string,
+        userAgent,
+      });
+
+      if (error || !data || data.success !== true) {
+        alert("An error occurred while sending the message. Please try again later.");
+        return;
+      }
+
+      alert("Message sent successfully!");
+      form.reset();
+    });
+  }
+</script>
