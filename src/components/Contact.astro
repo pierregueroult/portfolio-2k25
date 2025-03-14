@@ -2,17 +2,60 @@
 
 ---
 
-<form data-form="contact">
-  <label for="email">Email</label>
-  <input type="email" id="email" name="email" required />
+<form data-form="contact" class="flex flex-col gap-2 mt-2">
+  <div class="flex gap-2">
+    <input
+      type="text"
+      id="name"
+      name="name"
+      required
+      class="flex flex-1 h-9 rounded border border-foreground bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent fil:text-sm file:font-medium file:text-foreground placeholder:text-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-0"
+      placeholder="John Doe"
+      tabindex="0"
+    />
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+      placeholder="john.doe@mail.dev"
+      class="flex flex-1 h-9 rounded border border-foreground bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent fil:text-sm file:font-medium file:text-foreground placeholder:text-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-0"
+      tabindex="0"
+    />
+    <button
+      type="submit"
+      data-submit="contact"
+      class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-foreground bg-foreground shadow-sm hover:bg-accent hover:text-foreground h-9 px-4 py-2 focus-visible:border-0 font-mono text-background focus-visible:bg-accent focus-visible:text-foreground"
+      tabindex="0"
+    >
+      Send
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-send-horizontal"
+        ><path
+          d="M3.714 3.048a.498.498 0 0 0-.683.627l2.843 7.627a2 2 0 0 1 0 1.396l-2.842 7.627a.498.498 0 0 0 .682.627l18-8.5a.5.5 0 0 0 0-.904z"
+        ></path><path d="M6 12h16"></path></svg
+      >
+    </button>
+  </div>
 
-  <label for="name">Name</label>
-  <input type="text" id="name" name="name" required />
-
-  <label for="message">Message</label>
-  <textarea id="message" name="message" required></textarea>
-
-  <button type="submit" data-submit="contact">Send</button>
+  <textarea
+    id="message"
+    name="message"
+    required
+    class="flex rounded border border-foreground bg-transparent px-3 py-2 text-base shadow-sm transition-colors file:border-0 file:bg-transparent fil:text-sm file:font-medium file:text-foreground placeholder:text-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-0 font-mono"
+    placeholder="Type your message here..."
+    tabindex="0"></textarea>
+    <p class="text-xs text-foreground/70">By submitting this form, you agree to be contacted by email. See my <a href="/privacy" class="text-accent underline">Privacy Policy</a> for more information.
+    </p>
 </form>
 
 <script>
