@@ -23,7 +23,7 @@ const t = useTranslation(Astro.locals.locale);
 >
   
   <WithTitleLayout title={t("pages.socials.title")} subtitle={t("pages.socials.subtitle")}>
-    <FormLayout title={"Send me a little message"} subtitle={"I'll answer as soon as possible"}>
+    <FormLayout title={t("pages.socials.contact.title")} subtitle={t("pages.socials.contact.description")}>
       <Contact />
     </FormLayout>
     {
