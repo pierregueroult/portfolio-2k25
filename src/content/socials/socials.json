@@ -58,17 +58,5 @@
       "morse": ".. / ... .-- . .- .-. / .. / .-- .. .-.. .-.. / .--. --- ... - / ... --- -- . / - . -.-. .... / ...- .. -.. . --- ... / ... --- --- -. .-.-.- / .. .----. -- / .--- ..- ... - / .-- .- .. - .. -. --. / ..-. --- .-. / - .... . / .-. .. --. .... - / -- --- -- . -. - / .- -. -.. / - .... . / .-. .. --. .... - / .- -- --- ..- -. - / --- ..-. / - .. -- . .-.-.-"
     },
     "isFeatured": false
-  },
-  {
-    "id": 5,
-    "title": "Selenite's Github Organization",
-    "link": "https://github.com/selenite-live",
-    "description": {
-      "en": "The organization we created for our school project - Selenite: Lost Contact. We are a team of 5 students working on a 3D game in Unity.",
-      "fr": "L'organisation que nous avons créée pour notre projet scolaire - Selenite: Lost Contact. Nous sommes une équipe de 5 étudiants travaillant sur un jeu 3D dans Unity.",
-      "ar": "المنظمة التي أنشأناها لمشروعنا المدرسي - Selenite: Lost Contact. نحن فريق مكون من 5 طلاب يعملون على لعبة ثلاثية الأبعاد في Unity.",
-      "morse": "- .... . / --- .-. --. .- -. .. --.. .- - .. --- -. / .-- . / -.-. .-. . .- - . -.. / ..-. --- .-. / --- ..- .-. / ... -.-. .... --- --- .-.. / .--. .-. --- .--- . -.-. - / -....- / ... . .-.. . -. .. - . ---... / .-.. --- ... - / -.-. --- -. - .- -.-. - .-.-.- / .-- . / .- .-. . / .- / - . .- -- / --- ..-. / ..... / ... - ..- -.. . -. - ... / .-- --- .-. -.- .. -. --. / --- -. / .- / ...-- -.. / --. .- -- . / .. -. / ..- -. .. - -.-- .-.-.-"
-    },
-    "isFeatured": true
   }
 ]
