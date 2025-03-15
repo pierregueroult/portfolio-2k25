@@ -16,9 +16,9 @@ export const server = {
       let country = "No Country";
       if (ipAddress !== "No IP") {
         try {
-          const response = await fetch(`https://ipapi.co/${ipAddress}/json/`);
+          const response = await fetch(`https://ipwhois.app/json/${ipAddress}`);
           const data = await response.json();
-          country = data.country_name || "Inconnu";
+          country = data["country"] || "Inconnu";
         } catch {}
       }
 
