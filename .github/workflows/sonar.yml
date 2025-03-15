@@ -1,4 +1,4 @@
-name: Build
+name: SonarQube Scan
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  analyze:
     name: Analyze on SonarQube Server
     runs-on: ubuntu-latest
 

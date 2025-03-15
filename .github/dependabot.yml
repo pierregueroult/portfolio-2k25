@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    reviewers:
+      - "pierregueroult"
+    assignees:
+      - "pierregueroult"
+    labels:
+      - "[dependencies]"
+    commit-message:
+      prefix: "Update pnpm dependencies : "
