@@ -5,8 +5,8 @@
     "Coolify",
     "datasource",
     "fontfaceobserver",
-    "github",
     "france",
+    "github",
     "gtag",
     "lastmod",
     "lhci",
@@ -16,6 +16,7 @@
     "Qube",
     "runtine",
     "sonarqube",
+    "tailwindcss",
     "Traefik"
   ],
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "astro"],
