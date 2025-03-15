@@ -12,19 +12,23 @@
     "lint": "eslint",
     "prod": "node ./dist/server/entry.mjs",
     "lh:mobile": "lhci autorun --collect.url=http://localhost:4321/ --collect.startServerCommand='pnpm prod' --collect.numberOfRuns=3 --upload.target=temporary-public-storage",
-    "lh:desktop": "lhci autorun --collect.url=http://localhost:4321/ --collect.startServerCommand='pnpm prod' --collect.numberOfRuns=3 --upload.target=temporary-public-storage --collect.settings.preset=desktop"
+    "lh:desktop": "lhci autorun --collect.url=http://localhost:4321/ --collect.startServerCommand='pnpm prod' --collect.numberOfRuns=3 --upload.target=temporary-public-storage --collect.settings.preset=desktop",
+    "db:generate": "prisma generate --schema=./src/database/schema.prisma --no-hints",
+    "db:push": "prisma db push --schema=./src/database/schema.prisma",
+    "postinstall": "prisma generate --schema=./src/database/schema.prisma --no-hints"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.1.0",
     "@astrojs/node": "^9.1.2",
-    "@astrojs/partytown": "^2.1.3",
+    "@astrojs/partytown": "^2.1.4",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.2.1",
+    "@prisma/client": "^6.5.0",
     "@tailwindcss/vite": "^4.0.7",
     "astro": "^5.4.0",
     "astro-robots-txt": "^1.0.0",
     "fontfaceobserver": "^2.3.0",
-    "tailwindcss": "^4.0.7"
+    "tailwindcss": "^4.0.14"
   },
   "devDependencies": {
     "@types/fontfaceobserver": "^2.1.3",
@@ -33,8 +37,9 @@
     "eslint-plugin-astro": "^1.3.1",
     "prettier": "^3.5.1",
     "prettier-plugin-astro": "^0.14.1",
+    "prisma": "^6.5.0",
     "schema-dts": "^1.1.2",
-    "tailwind-scrollbar": "^4.0.0",
+    "tailwind-scrollbar": "^4.0.1",
     "typescript-eslint": "^8.24.1"
   }
 }

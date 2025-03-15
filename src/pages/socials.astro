@@ -5,6 +5,8 @@ import ListLayout from "../layouts/ListLayout.astro";
 import WithTitleLayout from "../layouts/WithTitleLayout.astro";
 import SocialItem from "../components/items/SocialItem.astro";
 import { useTranslation } from "../i18n";
+import FormLayout from "../layouts/FormLayout.astro";
+import Contact from "../components/Contact.astro";
 
 const allSocials = await getCollection("socials");
 
@@ -19,28 +21,36 @@ const t = useTranslation(Astro.locals.locale);
   description={t("pages.socials.meta.description")}
   keywords={t("pages.socials.meta.keywords").split(", ")}
 >
+  
   <WithTitleLayout title={t("pages.socials.title")} subtitle={t("pages.socials.subtitle")}>
-    <ListLayout title={t("pages.socials.featured")}>
-      {
-        featured.map((social) => (
-          <SocialItem
-            link={social.data.link}
-            title={social.data.title}
-            description={social.data.description[Astro.locals.locale]}
-          />
-        ))
-      }
-    </ListLayout>
-    <ListLayout title={t("pages.socials.links")}>
-      {
-        socials.map((social) => (
-          <SocialItem
-            link={social.data.link}
-            title={social.data.title}
-            description={social.data.description[Astro.locals.locale]}
-          />
-        ))
-      }
-    </ListLayout>
+    <FormLayout title={t("pages.socials.contact.title")} subtitle={t("pages.socials.contact.description")}>
+      <Contact />
+    </FormLayout>
+    {
+      featured.length > 0 && (
+        <ListLayout title={t("pages.socials.featured")}>
+          {featured.map((social) => (
+            <SocialItem
+              link={social.data.link}
+              title={social.data.title}
+              description={social.data.description[Astro.locals.locale]}
+            />
+          ))}
+        </ListLayout>
+      )
+    }
+    {
+      socials.length > 0 && (
+        <ListLayout title={t("pages.socials.links")}>
+          {socials.map((social) => (
+            <SocialItem
+              link={social.data.link}
+              title={social.data.title}
+              description={social.data.description[Astro.locals.locale]}
+            />
+          ))}
+        </ListLayout>
+      )
+    }
   </WithTitleLayout>
 </Layout>
