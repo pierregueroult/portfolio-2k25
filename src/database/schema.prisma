@@ -16,4 +16,5 @@ model Message {
   ipAddress String
   country   String
   userAgent String
+  origin    String
 }
