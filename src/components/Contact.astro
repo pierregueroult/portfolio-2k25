@@ -1,0 +1,97 @@
+---
+import { useTranslation } from "../i18n";
+
+const t = useTranslation(Astro.locals.locale);
+---
+
+<form data-form="contact" class="flex flex-col gap-2 mt-2">
+  <div class="grid grid-cols-1 sm:grid-cols-[1fr_1fr_200px] gap-2">
+    <input
+      type="text"
+      id="name"
+      name="name"
+      required
+      class="flex flex-1 h-9 rounded border border-foreground bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent fil:text-sm file:font-medium file:text-foreground placeholder:text-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-0"
+      placeholder="John Doe"
+      aria-label={t("components.contact.name")}
+    />
+    <input
+      type="email"
+      id="email"
+      name="email"
+      aria-label="Email"
+      required
+      placeholder="john.doe@mail.dev"
+      class="sm:col-start-2 flex flex-1 h-9 rounded border border-foreground bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent fil:text-sm file:font-medium file:text-foreground placeholder:text-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-0"
+    />
+    <textarea
+      id="message"
+      name="message"
+      required
+      class="sm:col-span-3 row-start-2 flex rounded border border-foreground bg-transparent px-3 py-2 text-base shadow-sm transition-colors file:border-0 file:bg-transparent fil:text-sm file:font-medium file:text-foreground placeholder:text-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-0 font-mono"
+      placeholder={t("components.contact.message")}
+      aria-label={t("components.contact.message")}
+      tabindex="0"></textarea>
+    <button
+      type="submit"
+      data-submit="contact"
+      class="sm:col-start-3 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-foreground bg-foreground shadow-sm hover:bg-accent hover:text-foreground h-9 px-4 py-2 focus-visible:border-0 font-mono text-background focus-visible:bg-accent focus-visible:text-foreground"
+    >
+      {t("components.contact.send")}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-send-horizontal"
+        ><path
+          d="M3.714 3.048a.498.498 0 0 0-.683.627l2.843 7.627a2 2 0 0 1 0 1.396l-2.842 7.627a.498.498 0 0 0 .682.627l18-8.5a.5.5 0 0 0 0-.904z"
+        ></path><path d="M6 12h16"></path></svg
+      >
+    </button>
+  </div>
+
+  <p class="text-xs text-foreground/70">
+    {t("components.contact.consent")}
+    <a href="/documents/privacy" class="text-accent underline"> {t("components.contact.privacy")}</a>
+    {t("components.contact.consent2")}
+  </p>
+</form>
+
+<script>
+  import { actions } from "astro:actions";
+
+  const form: HTMLFormElement | null = document.querySelector('[data-form="contact"]');
+  const button: HTMLButtonElement | null = document.querySelector('[data-submit="contact"]');
+
+  if (form && button) {
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const userAgent = navigator.userAgent;
+      const formData = new FormData(form);
+
+      const { email, name, message } = Object.fromEntries(formData.entries());
+
+      const { data, error } = await actions.contact({
+        email: email as string,
+        name: name as string,
+        message: message as string,
+        userAgent,
+      });
+
+      if (error || !data || data.success !== true) {
+        alert("An error occurred while sending the message. Please try again later.");
+        return;
+      }
+
+      alert("Message sent successfully!");
+      form.reset();
+    });
+  }
+</script>
