@@ -32,10 +32,10 @@ const { title, text } = Astro.props;
       <path d="M14 18h6"></path>
     </>
   </svg>
-  <p class="text-base font-bold mb-1">
+  <p class="text-base font-bold mb-1" data-test-title>
     {title}
   </p>
-  <p class="text-sm leading-tight">
+  <p class="text-sm leading-tight" data-test-text>
     {text}
   </p>
 </div>
