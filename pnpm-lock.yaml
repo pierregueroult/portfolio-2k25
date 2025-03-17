@@ -67,8 +67,8 @@ importers:
         specifier: ^6.5.0
         version: 6.5.0(typescript@5.7.3)
       schema-dts:
-        specifier: ^1.1.2
-        version: 1.1.2(typescript@5.7.3)
+        specifier: ^1.1.5
+        version: 1.1.5
       tailwind-scrollbar:
         specifier: ^4.0.1
         version: 4.0.1(react@19.0.0)(tailwindcss@4.0.14)
@@ -2341,10 +2341,8 @@ packages:
     resolution: {integrity: sha512-xAg7SOnEhrm5zI3puOOKyy1OMcMlIJZYNJY7xLBwSze0UjhPLnWfj2GF2EpT0jmzaJKIWKHLsaSSajf35bcYnA==}
     engines: {node: '>=v12.22.7'}
 
-  schema-dts@1.1.2:
-    resolution: {integrity: sha512-MpNwH0dZJHinVxk9bT8XUdjKTxMYrA5bLtrrGmFA6PTLwlOKnhi67XoRd6/ty+Djt6ZC0slR57qFhZDNMI6DhQ==}
-    peerDependencies:
-      typescript: '>=4.1.0'
+  schema-dts@1.1.5:
+    resolution: {integrity: sha512-RJr9EaCmsLzBX2NDiO5Z3ux2BVosNZN5jo0gWgsyKvxKIUL5R3swNvoorulAeL9kLB0iTSX7V6aokhla2m7xbg==}
 
   semver@7.7.1:
     resolution: {integrity: sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==}
@@ -5729,9 +5727,7 @@ snapshots:
       xmlchars: 2.2.0
     optional: true
 
-  schema-dts@1.1.2(typescript@5.7.3):
-    dependencies:
-      typescript: 5.7.3
+  schema-dts@1.1.5: {}
 
   semver@7.7.1: {}
 
