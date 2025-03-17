@@ -28,3 +28,4 @@ pnpm-debug.log*
 
 # tests coverage folder
 coverage/
+.scannerwork/
