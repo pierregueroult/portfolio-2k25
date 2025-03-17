@@ -12,3 +12,4 @@ updates:
       - "[dependencies]"
     commit-message:
       prefix: "Update pnpm dependencies : "
+    open-pull-requests-limit: 15
