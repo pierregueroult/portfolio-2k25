@@ -8,6 +8,6 @@ export async function renderAstroComponent(Component: AstroComponent, options: C
 
   const template = document.createElement("template");
   template.innerHTML = result;
-  
+
   return template.content;
 }

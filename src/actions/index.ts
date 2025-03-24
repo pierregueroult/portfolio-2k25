@@ -13,7 +13,7 @@ export const server = {
     handler: async (input, context) => {
       const ipAddress: string = context.request.headers.get("x-forwarded-for") ?? "No IP";
       const origin: string = context.url.toString();
-      
+
       let country = "No Country";
       if (ipAddress !== "No IP") {
         try {

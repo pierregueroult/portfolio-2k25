@@ -32,6 +32,7 @@ const t = useTranslation(Astro.locals.locale);
     href={`/blog/${slug}`}
     title={`${t("components.items.more")} ${t("components.items.about")} ${title}`}
   >
-    {t("components.items.more")} <span class="sr-only">{t("components.items.about")} {title}</span>
+    {t("components.items.more")}
+    <span class="sr-only">{t("components.items.about")} {title}</span>
   </a>
 </li>

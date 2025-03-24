@@ -2,7 +2,19 @@
 name: Selenite Game
 slug: selenite-game
 description: "Selenite: Lost Contact is a fast-paced space combat game where players control Alex Carter, a pilot stranded near the Moon. I contributed by setting up the GitHub repository and implementing a CI/CD pipeline to automate builds and releases, ensuring a smooth development process."
-technologies: ["space combat","sci-fi game","Unity","indie game","action shooter","CI/CD pipeline","game development","GitHub automation","build and release","Moon mission"]
+technologies:
+  [
+    "space combat",
+    "sci-fi game",
+    "Unity",
+    "indie game",
+    "action shooter",
+    "CI/CD pipeline",
+    "game development",
+    "GitHub automation",
+    "build and release",
+    "Moon mission",
+  ]
 links:
   [
     { url: "https://selenite.live", title: "Website of Selenite" },
@@ -12,6 +24,7 @@ role: "Developer & DevOps"
 date: "2021-09-01"
 kind: "project"
 ---
+
 import { Image } from "astro:assets";
 import organization from "../../images/projects/selenite-lost-contact/organization.png";
 import gameRepo from "../../images/projects/selenite-lost-contact/game-repo.png";
@@ -22,14 +35,14 @@ import NoTranslation from "../../components/NoTranslation.astro";
 
 <NoTranslation />
 
-*Selenite: Lost Contact* is an ambitious game project that required a solid development infrastructure. My role in this project focused on setting up and managing the GitHub repository, implementing CI/CD pipelines, and ensuring smooth release management.
+_Selenite: Lost Contact_ is an ambitious game project that required a solid development infrastructure. My role in this project focused on setting up and managing the GitHub repository, implementing CI/CD pipelines, and ensuring smooth release management.
 
 ## Setting Up the GitHub Repository
 
 To facilitate collaboration, I created the main repository for the game on the [Selenite GitHub organization](https://github.com/selenite-live/). This repository serves as the central hub for contributions, issue tracking, and project organization.
 
-<Image src={organization} alt="Selenite GitHub Organization" class="my-8"/>
-<Image src={gameRepo} alt="Selenite Game Repository" class="my-8"/>
+<Image src={organization} alt="Selenite GitHub Organization" class="my-8" />
+<Image src={gameRepo} alt="Selenite Game Repository" class="my-8" />
 
 ## Implementing CI/CD for Automated Builds & Releases
 
@@ -151,6 +164,7 @@ jobs:
 With the CI/CD pipeline in place, every build is automatically packaged and published as a new release on GitHub. This ensures that developers and testers always have access to the latest stable version of the game.
 
 The release workflow:
+
 - Detects new changes pushed to the `release` branch
 - Builds the game for both Windows and macOS
 - Uploads the build artifacts
@@ -158,12 +172,11 @@ The release workflow:
 
 You can check out the latest releases here: [Selenite: Lost Contact Releases](https://github.com/selenite-live/selenite-game/releases)
 
-<Image src={egRelease} alt="Example Release" class="my-8"/>
+<Image src={egRelease} alt="Example Release" class="my-8" />
 
 ## Conclusion
 
-By setting up a structured GitHub repository, implementing a robust CI/CD pipeline, and managing automated releases, we ensured a streamlined development workflow for *Selenite: Lost Contact*. These technical foundations allow developers to focus on improving the game while maintaining an efficient and reliable release process.
-
+By setting up a structured GitHub repository, implementing a robust CI/CD pipeline, and managing automated releases, we ensured a streamlined development workflow for _Selenite: Lost Contact_. These technical foundations allow developers to focus on improving the game while maintaining an efficient and reliable release process.
 
 This project highlights my expertise in DevOps, CI/CD pipelines, and GitHub repository management. If you’re interested in learning more or collaborating, feel free to reach out!
 

@@ -3,90 +3,89 @@ name: Discord University Calendar
 slug: discord-univ-calendar
 description: "A Discord bot that helps students keep track of their university schedule, assignments, and exams. Built with Node.js, Discord.js, and MongoDB."
 technologies: ["Node.js", "JavaScript", "MongoDB", "Discord.js"]
-links: [
-    { title: "GitHub Repository", url: "https://github.com/pierregueroult/discord-univ-calendars" }
-]
+links: [{ title: "GitHub Repository", url: "https://github.com/pierregueroult/discord-univ-calendars" }]
 role: "Developer (school side project)"
 date: "2023-01-01"
 kind: "school"
 ---
+
 import NoTranslation from "../../components/NoTranslation.astro";
 
-
-# Discord Univ Calendars: A Smart Bot for University Schedules 
+# Discord Univ Calendars: A Smart Bot for University Schedules
 
 <NoTranslation />
 
-## 📌 Project Overview  
+## 📌 Project Overview
 
-University schedules can be a hassle to check, often requiring multiple steps through clunky online portals. **Discord Univ Calendars** solves this problem by bringing schedules directly to students via **Discord**.  
+University schedules can be a hassle to check, often requiring multiple steps through clunky online portals. **Discord Univ Calendars** solves this problem by bringing schedules directly to students via **Discord**.
 
-This bot allows students from **MMI (Multimedia and Internet Professions)** and **RT (Networks and Telecommunications)** at **IUT of Rouen (Elbeuf campus)** to quickly access their weekly schedules without leaving their favorite communication platform. Instead of manually looking up their timetables, they can simply use a **slash command** and instantly retrieve the relevant information.  
+This bot allows students from **MMI (Multimedia and Internet Professions)** and **RT (Networks and Telecommunications)** at **IUT of Rouen (Elbeuf campus)** to quickly access their weekly schedules without leaving their favorite communication platform. Instead of manually looking up their timetables, they can simply use a **slash command** and instantly retrieve the relevant information.
 
-By integrating real-time updates and ensuring the data remains accurate, this project significantly improves accessibility for students, reducing the friction of schedule management.  
+By integrating real-time updates and ensuring the data remains accurate, this project significantly improves accessibility for students, reducing the friction of schedule management.
 
-> 📌 TODO: Screenshot of the bot responding to a schedule request in Discord.  
+> 📌 TODO: Screenshot of the bot responding to a schedule request in Discord.
 
----  
+---
 
-## 🔧 Key Features  
+## 🔧 Key Features
 
-- **Instant access to schedules**: Retrieve the current week's schedule or request a specific date.  
-- **Slash command integration**: Simple and efficient interaction via Discord's built-in command system.  
-- **Automatic updates**: Ensures that the schedules remain up-to-date without manual intervention.  
-- **Optimized for student needs**: Designed with ease of use in mind to provide a **frictionless experience**.  
-- **Robust error handling**: Prevents outdated or incorrect information from being displayed.  
+- **Instant access to schedules**: Retrieve the current week's schedule or request a specific date.
+- **Slash command integration**: Simple and efficient interaction via Discord's built-in command system.
+- **Automatic updates**: Ensures that the schedules remain up-to-date without manual intervention.
+- **Optimized for student needs**: Designed with ease of use in mind to provide a **frictionless experience**.
+- **Robust error handling**: Prevents outdated or incorrect information from being displayed.
 
-> 📌 TODO: List of available commands in Discord with example usages.  
+> 📌 TODO: List of available commands in Discord with example usages.
 
----  
+---
 
-## 💻 Technologies Used  
+## 💻 Technologies Used
 
-Building a reliable bot required a **solid tech stack** to ensure efficiency and responsiveness:  
+Building a reliable bot required a **solid tech stack** to ensure efficiency and responsiveness:
 
-- **Node.js** - The core language for developing the bot.  
-- **Discord.js** - A powerful library for interacting with Discord's API.  
-- **Prisma** - ORM (Object-Relational Mapping) for managing database queries efficiently.  
-- **Automated fetch system** - Ensures data is updated dynamically.  
+- **Node.js** - The core language for developing the bot.
+- **Discord.js** - A powerful library for interacting with Discord's API.
+- **Prisma** - ORM (Object-Relational Mapping) for managing database queries efficiently.
+- **Automated fetch system** - Ensures data is updated dynamically.
 
-> 📌 TODO: Diagram illustrating the bot's architecture (data flow from the university's schedule system to Discord).  
+> 📌 TODO: Diagram illustrating the bot's architecture (data flow from the university's schedule system to Discord).
 
----  
+---
 
-## ⚡ Challenges & Solutions  
+## ⚡ Challenges & Solutions
 
-### 🔹 Ensuring Reliable Data Fetching  
+### 🔹 Ensuring Reliable Data Fetching
 
-University schedules can change frequently, and outdated information could cause confusion. To handle this, I implemented an **automated data retrieval system** that regularly fetches and updates schedules in the database. This guarantees that users always receive the most accurate information available.  
+University schedules can change frequently, and outdated information could cause confusion. To handle this, I implemented an **automated data retrieval system** that regularly fetches and updates schedules in the database. This guarantees that users always receive the most accurate information available.
 
-### 🔹 User-Friendly Interaction  
+### 🔹 User-Friendly Interaction
 
-Since many students are not familiar with bot commands, I focused on making interactions as intuitive as possible. Using **slash commands**, students can retrieve their schedules with minimal effort. Commands like `/schedule` and `/schedule week X` make navigation easy and quick.  
+Since many students are not familiar with bot commands, I focused on making interactions as intuitive as possible. Using **slash commands**, students can retrieve their schedules with minimal effort. Commands like `/schedule` and `/schedule week X` make navigation easy and quick.
 
-### 🔹 Performance Optimization  
+### 🔹 Performance Optimization
 
-Given that many students might request their schedules simultaneously, the bot needed to be **efficient and scalable**. Using **Prisma** for database queries improved performance by allowing quick lookups, while caching mechanisms reduced redundant API calls.  
+Given that many students might request their schedules simultaneously, the bot needed to be **efficient and scalable**. Using **Prisma** for database queries improved performance by allowing quick lookups, while caching mechanisms reduced redundant API calls.
 
-> 📌 TODO: Example of a user interacting with the bot in Discord.  
+> 📌 TODO: Example of a user interacting with the bot in Discord.
 
----  
+---
 
-## 📈 Impact & Lessons Learned  
+## 📈 Impact & Lessons Learned
 
-Developing **Discord Univ Calendars** provided valuable insights into **API development, database management, and third-party service integration**. More importantly, it reinforced the importance of **building tools tailored to user needs**.  
+Developing **Discord Univ Calendars** provided valuable insights into **API development, database management, and third-party service integration**. More importantly, it reinforced the importance of **building tools tailored to user needs**.
 
-### 🚀 What I Learned:  
-- How to efficiently fetch and process external data for real-time updates.  
-- The importance of **UX design in command-line interfaces**, ensuring ease of use.  
-- Optimizing API requests to balance performance and reliability.  
+### 🚀 What I Learned:
 
-This project successfully demonstrated how automation can **streamline everyday tasks**, making important information more **accessible and user-friendly**.  
+- How to efficiently fetch and process external data for real-time updates.
+- The importance of **UX design in command-line interfaces**, ensuring ease of use.
+- Optimizing API requests to balance performance and reliability.
 
-> 📌 TODO: A flowchart showing how the bot processes schedule requests.  
+This project successfully demonstrated how automation can **streamline everyday tasks**, making important information more **accessible and user-friendly**.
 
----  
+> 📌 TODO: A flowchart showing how the bot processes schedule requests.
 
-## 🎯 Conclusion  
+---
 
-**Discord Univ Calendars** is a **practical solution** to a common student problem, proving that small automations can significantly **enhance productivity and accessibility**. By leveraging **Discord's ecosystem**, the bot seamlessly integrates into student life, making it a useful tool for anyone in need of quick schedule access.  
+## 🎯 Conclusion
+
+**Discord Univ Calendars** is a **practical solution** to a common student problem, proving that small automations can significantly **enhance productivity and accessibility**. By leveraging **Discord's ecosystem**, the bot seamlessly integrates into student life, making it a useful tool for anyone in need of quick schedule access.

@@ -98,7 +98,7 @@ export type Texts = {
         description: string;
         spotify: string;
         cover: string;
-      }
+      };
     };
     projects: {
       meta: {
@@ -145,16 +145,17 @@ export const texts: TextsObject = {
 };
 
 const getNestedValue = (obj: Texts, path: string): string => {
-  return path.split('.').reduce((acc: unknown, part) => {
-    if (typeof acc === 'object' && acc !== null) {
-      return (acc as Record<string, unknown>)[part];
-    }
-    return undefined;
-  }, obj) as string ?? path;
+  return (
+    (path.split(".").reduce((acc: unknown, part) => {
+      if (typeof acc === "object" && acc !== null) {
+        return (acc as Record<string, unknown>)[part];
+      }
+      return undefined;
+    }, obj) as string) ?? path
+  );
 };
 
-export const useTranslation =
-  (lang: (typeof LOCALES)[number]) => (key: NestedKeyOf<Texts>) =>
-    getNestedValue(texts[lang], key);
+export const useTranslation = (lang: (typeof LOCALES)[number]) => (key: NestedKeyOf<Texts>) =>
+  getNestedValue(texts[lang], key);
 
 export type TranslationString = NestedKeyOf<Texts>;
