@@ -93,6 +93,12 @@ export type Texts = {
         title: string;
         description: string;
       };
+      music: {
+        title: string;
+        description: string;
+        spotify: string;
+        cover: string;
+      }
     };
     projects: {
       meta: {

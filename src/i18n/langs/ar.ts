@@ -83,6 +83,12 @@ export const ar: Texts = {
         title: "أرسل لي رسالة",
         description: "هل لديك سؤال أو مشروع أو ترغب فقط في الدردشة، لا تتردد في التواصل!",
       },
+      music: {
+        title: "ما الذي أستمع إليه",
+        description: "هذا ما أستمع إليه حاليًا على Spotify. ربما تجد شيئًا تحبه!",
+        spotify: "افتح على Spotify",
+        cover: "الغلاف",
+      }
     },
     projects: {
       meta: {

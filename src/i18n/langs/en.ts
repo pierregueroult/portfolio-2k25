@@ -83,6 +83,12 @@ export const en: Texts = {
         title: "Send me a message",
         description: "Have a question, a project, or just want to chat, feel free to reach out!",
       },
+      music: {
+        title: "What I'm listening to",
+        description: "Here's what I'm currently listening to on Spotify. Maybe you'll find something you like!",
+        spotify: "Open on Spotify",
+        cover: "'s Album Cover",
+      }
     },
     projects: {
       meta: {
