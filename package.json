@@ -27,7 +27,7 @@
     "@astrojs/sitemap": "^3.3.0",
     "@prisma/client": "^6.5.0",
     "@tailwindcss/vite": "^4.0.15",
-    "astro": "^5.5.3",
+    "astro": "^5.5.4",
     "astro-robots-txt": "^1.0.0",
     "fontfaceobserver": "^2.3.0",
     "tailwindcss": "^4.0.15"
