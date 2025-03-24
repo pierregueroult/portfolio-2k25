@@ -10,6 +10,7 @@ import MusicLayout from "../layouts/MusicLayout.astro";
 import Contact from "../components/Contact.astro";
 import { env } from "../env";
 import type { SpotifyInternalApiResponse, SpotifyInternalApiResponseError } from "../schemas/spotify";
+import { Image } from "astro:assets";
 
 const allSocials = await getCollection("socials");
 const featured = allSocials.filter((social) => social.data.isFeatured);
@@ -42,7 +43,13 @@ const data: SpotifyInternalApiResponse | SpotifyInternalApiResponseError = await
       "title" in data && data.isPlaying === true && (
         <MusicLayout title={t("pages.socials.music.title")} subtitle={t("pages.socials.music.description")}>
           <div class="flex gap-4 items-center">
-            <img src={data.cover} alt={`${data.title}${t("pages.socials.music.cover")}`} class="size-24 rounded" />
+            <Image
+              src={data.cover}
+              alt={`${data.title}${t("pages.socials.music.cover")}`}
+              class="size-24 rounded"
+              width="96"
+              height="96"
+            />
 
             <div class="font-mono">
               <h3 class="text-base font-semibold">{data.title}</h3>
@@ -67,11 +74,9 @@ const data: SpotifyInternalApiResponse | SpotifyInternalApiResponseError = await
                   stroke-linejoin="round"
                   class="lucide lucide-external-link size-3"
                 >
-                  <>
                     <path d="M15 3h6v6" />
                     <path d="M10 14 21 3" />
                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                  </>
                 </svg>
               </a>
             </div>
