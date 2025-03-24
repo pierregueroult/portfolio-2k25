@@ -6,14 +6,27 @@ import WithTitleLayout from "../layouts/WithTitleLayout.astro";
 import SocialItem from "../components/items/SocialItem.astro";
 import { useTranslation } from "../i18n";
 import FormLayout from "../layouts/FormLayout.astro";
+import MusicLayout from "../layouts/MusicLayout.astro";
 import Contact from "../components/Contact.astro";
+import { env } from "../env";
+import type { SpotifyInternalApiResponse, SpotifyInternalApiResponseError } from "../schemas/spotify";
 
 const allSocials = await getCollection("socials");
-
 const featured = allSocials.filter((social) => social.data.isFeatured);
 const socials = allSocials.filter((social) => !social.data.isFeatured);
 
 const t = useTranslation(Astro.locals.locale);
+
+const apiUrl: URL = new URL("/spotify", process.env.NODE_ENV === "development" ? "http://localhost:4321" : Astro.site);
+
+const spotify = await fetch(apiUrl, {
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${env.API_KEY}`,
+  },
+});
+
+const data: SpotifyInternalApiResponse | SpotifyInternalApiResponseError = await spotify.json();
 ---
 
 <Layout
@@ -21,11 +34,33 @@ const t = useTranslation(Astro.locals.locale);
   description={t("pages.socials.meta.description")}
   keywords={t("pages.socials.meta.keywords").split(", ")}
 >
-  
   <WithTitleLayout title={t("pages.socials.title")} subtitle={t("pages.socials.subtitle")}>
     <FormLayout title={t("pages.socials.contact.title")} subtitle={t("pages.socials.contact.description")}>
       <Contact />
     </FormLayout>
+    {
+      "title" in data && data.isPlaying === true && (
+        <MusicLayout
+          title="What I'm listening to"
+          subtitle="Here's what I'm currently listening to on Spotify. Maybe you'll find something you like!"
+        >
+          <div class="flex gap-4 items-center">
+            <img src={data.cover} alt={`${data.title}'s Album Cover`} 
+              class="size-24 rounded"
+            />
+            <div class="font-mono">
+              <h3 class="text-base font-semibold">{data.title}</h3>
+              <p class="text-sm opacity-80">{data.artist}</p>
+              <p class="text-xs opacity-70">{data.album}</p>
+              <a href={data.url} target="_blank" rel="noopener noreferrer" class="text-xs text-accent hover:underline flex items-center gap-1 mt-1">
+                <p>Open on Spotify</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link size-3"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+              </a>
+            </div>
+          </div>
+        </MusicLayout>
+      )
+    }
     {
       featured.length > 0 && (
         <ListLayout title={t("pages.socials.featured")}>

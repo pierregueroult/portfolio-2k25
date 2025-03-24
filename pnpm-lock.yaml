@@ -41,6 +41,9 @@ importers:
       tailwindcss:
         specifier: ^4.0.15
         version: 4.0.15
+      zod:
+        specifier: ^3.24.2
+        version: 3.24.2
     devDependencies:
       '@types/fontfaceobserver':
         specifier: ^2.1.3
