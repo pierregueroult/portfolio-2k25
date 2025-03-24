@@ -20,6 +20,6 @@ export const onRequest = defineMiddleware(async (context, next) => {
   response.headers.set("Permissions-Policy", "geolocation=(), microphone=(), camera=()");
   response.headers.set("X-Frame-Options", "DENY");
   response.headers.set("X-Permitted-Cross-Domain-Policies", "none");
-  
+
   return response;
 });

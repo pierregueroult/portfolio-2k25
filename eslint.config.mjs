@@ -3,8 +3,8 @@ import esLintTypescript from "typescript-eslint";
 
 /** @type {import('eslint').Linter.Config} */
 const config = [
-    { files: ["**/*.{mjs,ts,astro}"] },
-    { ignores: ["**/dist/*", ".astro/*"] },
+  { files: ["**/*.{mjs,ts,astro}"] },
+  { ignores: ["**/dist/*", ".astro/*"] },
   ...esLintTypescript.configs.recommended,
   ...eslintPluginAstro.configs.recommended,
 ];

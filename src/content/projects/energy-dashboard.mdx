@@ -3,13 +3,12 @@ name: Energy Dashboard
 slug: energy-dashboard
 description: "An interactive dashboard analyzing electricity consumption across French departments. Built with PHP, Chart.js, and AJAX for dynamic updates without page reloads."
 technologies: ["PHP", "JavaScript", "HTML", "CSS", "MySQL", "Ajax", "Chart.js"]
-links: [
-    { title: "GitHub Repository", url: "https://github.com/pierregueroult/energy-dashboard" }
-]
+links: [{ title: "GitHub Repository", url: "https://github.com/pierregueroult/energy-dashboard" }]
 role: "Developer (school project)"
 date: "2023-01-01"
 kind: "school"
 ---
+
 import NoTranslation from "../../components/NoTranslation.astro";
 
 # Energy Dashboard: An Interactive Visualization of Electricity Consumption
@@ -17,11 +16,13 @@ import NoTranslation from "../../components/NoTranslation.astro";
 <NoTranslation />
 
 ## Context and Objectives
+
 This project was developed as part of a **SAE (Situation d'Apprentissage et d'Évaluation)** for the **BUT MMI** program. The goal was to create an interactive dashboard displaying the electricity consumption of a given department based on provided CSV data.
 
 Instead of limiting the dashboard to a single department, I enhanced the project by collecting **all available CSV files**, storing the data in a **database**, and allowing users to select any department dynamically.
 
 ## Technologies Used
+
 The project was built using the following technologies:
 
 - **PHP** (server-side processing and API endpoints)
@@ -30,9 +31,11 @@ The project was built using the following technologies:
 - **Tailwind CSS** (modern UI styling)
 
 ## Dynamic Data Updates with AJAX
+
 One of the main challenges was ensuring that the **charts update dynamically** when selecting a new department, without requiring a full page reload. This was achieved using **AJAX requests** to fetch updated data and redraw the charts in real-time.
 
 ### Example of AJAX Implementation
+
 Below is the main JavaScript function handling data fetching and updating the UI dynamically:
 
 ```javascript
@@ -92,25 +95,29 @@ async function loadCharts(department) {
 ```
 
 ### How It Works:
+
 - First, the function **checks if the selected department's data is available**.
 - It then **updates the summary cards** showing key statistics.
 - Finally, it **fetches new chart data** and redraws each visualization accordingly.
 
 ## UI & Design Considerations
+
 To create a **modern and consistent UI**, I took inspiration from **ShadCN/UI** for layout and design coherence, without directly using its components. The dashboard features a clean and accessible interface with a focus on **clarity and responsiveness**.
 
-> 📌 TODO *An image of the dashboard layout would be useful here.*
+> 📌 TODO _An image of the dashboard layout would be useful here._
 
 ## Challenges & Learning Outcomes
+
 - **Data Processing**: Automating CSV imports into a structured **database**.
 - **Dynamic UX**: Implementing real-time updates via AJAX for a **smooth user experience**.
 - **UI Consistency**: Creating a visually appealing design while maintaining **accessibility** standards.
 
 ## Results & Final Grade
+
 The final project was **well-received** and earned a **high grade**, validating both its **technical robustness** and **user experience**.
 
-> 📌 TODO *A screenshot of the dashboard in action could be placed here.*
+> 📌 TODO _A screenshot of the dashboard in action could be placed here._
 
 ## Conclusion
-This project was an excellent exercise in **data manipulation, frontend/backend integration, and UX design**. It demonstrated how a relatively simple dataset could be transformed into an **interactive and insightful tool** through effective web development practices.
 
+This project was an excellent exercise in **data manipulation, frontend/backend integration, and UX design**. It demonstrated how a relatively simple dataset could be transformed into an **interactive and insightful tool** through effective web development practices.

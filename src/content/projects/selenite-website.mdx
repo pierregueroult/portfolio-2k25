@@ -2,7 +2,19 @@
 name: Selenite Website
 slug: selenite-website
 description: "Selenite: Lost Contact's website is more than just a showcase—it's an immersive platform designed to engage players and enhance their experience. Featuring interactive 3D elements, strategic SEO, and seamless responsiveness, the site captures the game's universe while ensuring smooth navigation across all devices. Built with Next.js, Tailwind CSS, and Three.js, it combines performance with aesthetics to create a compelling entry point into the world of Selenite."
-technologies: ["Selenite","Lost Contact","Game Website","Interactive 3D","Next.js","Three.js","SEO Optimization","Responsive Design","Space Adventure","Game Promotion"]
+technologies:
+  [
+    "Selenite",
+    "Lost Contact",
+    "Game Website",
+    "Interactive 3D",
+    "Next.js",
+    "Three.js",
+    "SEO Optimization",
+    "Responsive Design",
+    "Space Adventure",
+    "Game Promotion",
+  ]
 links:
   [
     { url: "https://selenite.live", title: "Website of Selenite" },
@@ -14,7 +26,8 @@ role: "Developer & DevOps"
 date: "2024-10-01"
 kind: "project"
 ---
-import {Image} from "astro:assets";
+
+import { Image } from "astro:assets";
 import countdownMockup from "../../images/projects/selenite-lost-contact/countdown-mockup.png";
 import countdownScreenshot from "../../images/projects/selenite-lost-contact/countdown-screen.png";
 import seoChart1 from "../../images/projects/selenite-lost-contact/seo-chart1.png";
@@ -25,34 +38,47 @@ import studio from "../../images/projects/selenite-lost-contact/studio.png";
 import download from "../../images/projects/selenite-lost-contact/download.png";
 import NoTranslation from "../../components/NoTranslation.astro";
 
-
 # Selenite: Lost Contact - The Website
 
 <NoTranslation />
 
 ## Introduction
-The website for *Selenite: Lost Contact* plays a key role in our project. It is not just a simple showcase site but a full-fledged platform that enhances and complements the game experience.
 
-The primary objective is to highlight *Selenite: Lost Contact*, inform players about its universe, and, most importantly, encourage them to download the game. Therefore, we designed an immersive, dynamic, and interactive website that reflects the game's visual identity and offers comprehensive content.
+The website for _Selenite: Lost Contact_ plays a key role in our project. It is not just a simple showcase site but a full-fledged platform that enhances and complements the game experience.
+
+The primary objective is to highlight _Selenite: Lost Contact_, inform players about its universe, and, most importantly, encourage them to download the game. Therefore, we designed an immersive, dynamic, and interactive website that reflects the game's visual identity and offers comprehensive content.
 
 In this article, we will detail the design choices, the technologies used, the development process, and how the website integrates into the overall strategy of the project.
-
 
 ## Creating an Engaging and Immersive Experience
 
 ### Homepage and Building Anticipation
+
 From the moment visitors arrive, they are greeted by a **large countdown timer** displaying the game's release date. This central element creates anticipation and a sense of urgency, encouraging players to follow the project closely.
 
 <Image src={countdownMockup} alt="Selenite: Lost Contact Countdown Mockup" className="my-8" />
 <Image src={countdownScreenshot} alt="Selenite: Lost Contact Countdown Screenshot" className="my-8" />
 
 ### Progressive Immersion into the Game's Universe
+
 The site offers an **interactive 3D animation** created using Three.js, displaying the Moon and Alex Carter's spaceship in the background. This scene reacts to scrolling and user interactions, providing a more engaging experience than a static website.
 
-<iframe class="w-full aspect-video my-8" width="1497" height="500" src="https://www.youtube.com/embed/4zMQV1zmA1w" title="Selenite Lost Contat - Main page" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe
+  class="w-full aspect-video my-8"
+  width="1497"
+  height="500"
+  src="https://www.youtube.com/embed/4zMQV1zmA1w"
+  title="Selenite Lost Contat - Main page"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>
 
 ### Presenting the Game
+
 The website highlights the key elements of the game:
+
 - **A captivating storyline**
 - **Intense gameplay**
 - **Innovative mechanics**
@@ -65,24 +91,27 @@ To ensure the website's visibility on search engines, several SEO strategies wer
 
 - **Optimized title and meta description tags** to enhance search result display.
 - **Open Graph tags configuration** for optimized display when shared on social media.
-- **Integration of strategic keywords** (e.g., *Selenite, space combat, alien shield*).
+- **Integration of strategic keywords** (e.g., _Selenite, space combat, alien shield_).
 - **Backlinking strategy** to obtain links from forums and specialized platforms.
 - **Monitoring via Google Search Console** to analyze performance and adjust strategies accordingly.
 
 <Image src={seoChart1} alt="SEO Strategy Chart 1" className="my-8" />
 <Image src={seoChart2} alt="SEO Strategy Chart 2" className="my-8" />
 
-
 ## Development Process
 
 ### Planning and Prototyping
-The development of the *Selenite: Lost Contact* website began with a meticulous **planning and prototyping phase**. Before writing a single line of code, we focused on:
+
+The development of the _Selenite: Lost Contact_ website began with a meticulous **planning and prototyping phase**. Before writing a single line of code, we focused on:
+
 - **Defining user experience (UX) principles** to ensure intuitive navigation.
 - **Creating wireframes and mockups** to establish a clear structure.
 - **Iterating on designs** with feedback from team members and potential users.
 
 ### Agile Development Approach
+
 We adopted an **agile methodology**, breaking development into several sprints. Each sprint focused on implementing key features:
+
 1. **Basic Structure & Navigation** - Setting up Next.js and Tailwind CSS.
 2. **3D Interactivity & Animations** - Integrating React Three Fiber for immersive elements.
 3. **Dynamic Content & Backend** - Connecting MongoDB with Prisma.
@@ -92,13 +121,16 @@ We adopted an **agile methodology**, breaking development into several sprints. 
 ## Accessibility and Multi-Device Adaptation
 
 ### A Responsive Design
+
 The website is designed to be **fluid and accessible across all screen sizes**, thanks to Tailwind CSS.
 
 - Elements dynamically adjust to various resolutions.
 - The download link adapts based on the user's platform (PC, Mac, or mobile).
 
 ### Ensuring Accessibility
+
 Accessibility was a priority, with features such as:
+
 - **Optimized contrast** for better readability.
 - **Proper text sizing** to reduce visual strain.
 - **Keyboard navigation support** for users with disabilities.
@@ -108,39 +140,47 @@ Accessibility was a priority, with features such as:
 We utilized a modern and high-performance tech stack:
 
 ### **Next.js**
+
 - Manages dynamic pages with **Server-Side Rendering (SSR)** and **Static Site Generation (SSG)**.
 - **Optimized performance and SEO** due to efficient page rendering.
 
 ### **Tailwind CSS**
+
 - Provides a flexible and quick styling system.
 - Utility-first approach for efficient design customization.
 - Simplifies responsive design implementation.
 
 ### **React Three Fiber / Three.js**
+
 - Enables immersive 3D animations of the Moon and spaceship.
 - Integrates seamlessly within the React ecosystem.
 
 ### **MongoDB and Prisma**
+
 - Flexible and scalable database.
 - Prisma used as ORM for efficient database interactions.
 - Dynamic wiki and game-related content management.
 
 ## Supporting Websites: A Complete Ecosystem
 
-To provide a seamless experience for players and enhance the visibility of *Selenite: Lost Contact*, we developed multiple interconnected websites, each serving a specific purpose.
+To provide a seamless experience for players and enhance the visibility of _Selenite: Lost Contact_, we developed multiple interconnected websites, each serving a specific purpose.
 
 ### **Download Portal**
+
 The download portal is designed to simplify access to the game. It automatically detects the user's platform (Windows, macOS, or mobile) and provides a direct download link tailored to their device. This ensures a frictionless experience, eliminating unnecessary steps and guiding players straight to the action.
 
 <Image src={download} alt="Selenite: Lost Contact Download Portal" className="my-8" />
 
 ### **The Wiki: A Living Knowledge Base**
-The *Selenite: Lost Contact* wiki is a comprehensive knowledge base powered by **MongoDB and Prisma**. It allows players to explore in-depth lore, mechanics, and strategies related to the game. The database-driven structure ensures that new content can be added dynamically without requiring manual updates to the site's code.
+
+The _Selenite: Lost Contact_ wiki is a comprehensive knowledge base powered by **MongoDB and Prisma**. It allows players to explore in-depth lore, mechanics, and strategies related to the game. The database-driven structure ensures that new content can be added dynamically without requiring manual updates to the site's code.
 
 <Image src={wiki} alt="Selenite: Lost Contact Wiki" className="my-8" />
 
 ### **Studio Website: A Showcase of Our Visual Identity**
+
 The studio's official website serves as a branding hub, showcasing the team's work, design philosophy, and the **visual identity of the game**. It features:
+
 - **A dedicated section on Selenite: Lost Contact**, with concept art, development insights, and team interviews.
 - **A breakdown of the studio's design choices**, including typography, color schemes, and UI inspirations.
 - **Other projects and upcoming developments**, ensuring long-term engagement with the studio's community.
@@ -150,27 +190,32 @@ The studio's official website serves as a branding hub, showcasing the team's wo
 ## Deployment and Maintenance
 
 ### **VPS Hosting**
+
 The website is hosted on a **VPS** (Virtual Private Server), providing:
+
 - **Full control over resources**.
 - **Scalability based on traffic demands**.
 - **Better performance compared to shared hosting**.
 
 ### **Automated Deployment**
+
 Integration of **GitHub and Webhooks** allows for automated deployment:
+
 - Each push to GitHub triggers a **pull and redeploy** on the server.
 - Ensures **fast and secure updates** without manual intervention.
 
 ### **Code Quality Monitoring with SonarQube**
+
 - Detects **bugs, security vulnerabilities, and bad practices**.
 - Ensures **clean, stable, and optimized code**.
 
-<Image src={sonar} alt="SonarQube Code Quality Monitoring" className="my-8" />
-> We continue to monitor and maintain the website to ensure optimal performance and user experience.
+<Image src={sonar} alt="SonarQube Code Quality Monitoring" className="my-8" />> We continue to monitor and maintain the
+website to ensure optimal performance and user experience.
 
 ## Conclusion
 
-The *Selenite: Lost Contact* website is more than just a showcase; it is an **immersive extension of the game**, designed to captivate players and streamline access to the game download. With a carefully crafted design, interactive experience, and a high-performance tech stack, we have built a crucial tool for the project's success.
+The _Selenite: Lost Contact_ website is more than just a showcase; it is an **immersive extension of the game**, designed to captivate players and streamline access to the game download. With a carefully crafted design, interactive experience, and a high-performance tech stack, we have built a crucial tool for the project's success.
 
 This journey doesn't end here: we will continue to enhance the site based on player feedback and game evolution.
 
-Check the links below to explore the website, download the game, and learn more about the *Selenite* universe!
+Check the links below to explore the website, download the game, and learn more about the _Selenite_ universe!

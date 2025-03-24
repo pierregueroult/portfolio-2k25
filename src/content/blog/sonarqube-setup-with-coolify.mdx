@@ -179,16 +179,15 @@ on:
     branches:
       - main
 
-
 jobs:
   build:
     name: Build and analyze
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
       - uses: SonarSource/sonarqube-scan-action@v4
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -202,6 +201,7 @@ jobs:
 ```
 
 The actual yaml can differ if you are using a specific framework or language, you can find more examples in the SonarQube documentation.
+
 > This one works perfectly with Javascript/Typescript projects !
 
 - Commit the changes to your repository and push them to trigger the GitHub Actions workflow.

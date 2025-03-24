@@ -38,4 +38,7 @@ export default defineConfig({
   devToolbar: {
     enabled: false,
   },
+  image: {
+    domains: ["i.scdn.co"],
+  }
 });
