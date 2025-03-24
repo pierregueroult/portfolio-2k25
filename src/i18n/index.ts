@@ -150,3 +150,5 @@ const getNestedValue = (obj: Texts, path: string): string => {
 export const useTranslation =
   (lang: (typeof LOCALES)[number]) => (key: NestedKeyOf<Texts>) =>
     getNestedValue(texts[lang], key);
+
+export type TranslationString = NestedKeyOf<Texts>;
