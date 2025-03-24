@@ -11,7 +11,7 @@ export const server = {
       userAgent: z.string().min(1),
     }),
     handler: async (input, context) => {
-      const ipAddress: string = context.request.headers.get("x-forwarded-for") || "No IP";
+      const ipAddress: string = context.request.headers.get("x-forwarded-for") ?? "No IP";
       const origin: string = context.url.toString();
       
       let country = "No Country";
