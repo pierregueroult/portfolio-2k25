@@ -11,6 +11,10 @@ const RATE_REQUEST_LIMIT = 20;
 const RATE_TIME_WINDOW = 60 * 1000;
 const requestCounts = new Map<string, { count: number; lastRequest: number }>();
 
+let cachedResponse: SpotifyInternalApiResponse | null = null;
+let cacheTimestamp = 0;
+const CACHE_DURATION = 20 * 1000;
+
 const getAccessToken = async (): Promise<SpotifyToken> => {
   const basicToken: string = Buffer.from(`${env.SPOTIFY_CLIENT_ID}:${env.SPOTIFY_CLIENT_SECRET}`).toString("base64");
 
@@ -40,6 +44,13 @@ export const GET: APIRoute = async ({ request }) => {
   if (!auth || auth !== `Bearer ${env.API_KEY}`) {
     return new Response(JSON.stringify({ error: "Invalid API key" }), {
       status: 403,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
+  if (cachedResponse && Date.now() - cacheTimestamp < CACHE_DURATION) {
+    return new Response(JSON.stringify(cachedResponse), {
+      status: 200,
       headers: { "Content-Type": "application/json" },
     });
   }
@@ -99,6 +110,9 @@ export const GET: APIRoute = async ({ request }) => {
     cover: song.album.images[0].url,
     url: song.external_urls.spotify,
   };
+
+  cachedResponse = response;
+  cacheTimestamp = Date.now();
 
   return new Response(JSON.stringify(response), { status: 200, headers: { "Content-Type": "application/json" } });
 };
