@@ -39,8 +39,8 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0
       tailwindcss:
-        specifier: ^4.0.15
-        version: 4.0.15
+        specifier: ^4.0.16
+        version: 4.0.16
       zod:
         specifier: ^3.24.2
         version: 3.24.2
@@ -77,7 +77,7 @@ importers:
         version: 1.1.5
       tailwind-scrollbar:
         specifier: ^4.0.1
-        version: 4.0.1(react@19.0.0)(tailwindcss@4.0.15)
+        version: 4.0.1(react@19.0.0)(tailwindcss@4.0.16)
       typescript-eslint:
         specifier: ^8.28.0
         version: 8.28.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.7.3)
@@ -2590,6 +2590,9 @@ packages:
 
   tailwindcss@4.0.15:
     resolution: {integrity: sha512-6ZMg+hHdMJpjpeCCFasX7K+U615U9D+7k5/cDK/iRwl6GptF24+I/AbKgOnXhVKePzrEyIXutLv36n4cRsq3Sg==}
+
+  tailwindcss@4.0.16:
+    resolution: {integrity: sha512-i/SbG7ThTIcLshcFJL+je7hCv9dPis4Xl4XNeel6iZNX42pp/BZ+la+SbZIPoYE+PN8zhKbnHblpQ/lhOWwIeQ==}
 
   tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
@@ -6066,14 +6069,16 @@ snapshots:
       '@pkgr/core': 0.1.1
       tslib: 2.8.1
 
-  tailwind-scrollbar@4.0.1(react@19.0.0)(tailwindcss@4.0.15):
+  tailwind-scrollbar@4.0.1(react@19.0.0)(tailwindcss@4.0.16):
     dependencies:
       prism-react-renderer: 2.4.1(react@19.0.0)
-      tailwindcss: 4.0.15
+      tailwindcss: 4.0.16
     transitivePeerDependencies:
       - react
 
   tailwindcss@4.0.15: {}
+
+  tailwindcss@4.0.16: {}
 
   tapable@2.2.1: {}
 
