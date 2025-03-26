@@ -1,4 +1,5 @@
 ---
+import { getLocale } from "@/utils/get-locale";
 import { useTranslation, type TranslationString } from "../i18n";
 
 type Link = {
@@ -25,7 +26,7 @@ const links: Link[] = [
   },
 ];
 
-const t = useTranslation(Astro.locals.locale);
+const t = useTranslation(getLocale(Astro.params.lang));
 ---
 
 <nav>

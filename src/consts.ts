@@ -1,5 +1,3 @@
-export const SITE: string = "https://pierregueroult.dev";
+export const SITE: string = import.meta.env.PROD ? "https://pierregueroult.dev" : "http://localhost:4321";
 
-export const LOCALES = ["en", "fr", "ar", "morse"] as const;
-
-export const IGNORED_LOCALES = ["morse"] as const;
+export const LOCALES = ["en", "fr", "ar"] as const;

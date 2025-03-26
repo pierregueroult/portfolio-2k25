@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { useTranslation } from "../../i18n";
+import { getLocale } from "@/utils/get-locale";
 
 interface Props {
   school: CollectionEntry<"schools">;
@@ -8,7 +9,7 @@ interface Props {
 const {
   school: { data },
 } = Astro.props;
-const locale = Astro.locals.locale;
+const locale = getLocale(Astro.params.lang);
 const t = useTranslation(locale);
 ---
 

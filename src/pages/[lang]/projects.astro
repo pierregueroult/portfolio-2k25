@@ -1,11 +1,11 @@
 ---
 import { getCollection } from "astro:content";
-import ProjectItem from "../components/items/ProjectItem.astro";
-import Layout from "../layouts/Layout.astro";
-import ListLayout from "../layouts/ListLayout.astro";
-import WithTitleLayout from "../layouts/WithTitleLayout.astro";
-import { useTranslation } from "../i18n";
-import TranslationAlert from "../components/TranslationAlert.astro";
+import ProjectItem from "@/components/items/ProjectItem.astro";
+import Layout from "@/layouts/Layout.astro";
+import ListLayout from "@/layouts/ListLayout.astro";
+import WithTitleLayout from "@/layouts/WithTitleLayout.astro";
+import { useTranslation } from "@/i18n";
+import TranslationAlert from "@/components/TranslationAlert.astro";
 
 const allProjects = await getCollection("projects");
 

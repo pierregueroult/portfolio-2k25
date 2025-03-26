@@ -1,11 +1,11 @@
 import type { APIRoute } from "astro";
-import { LOCALES, IGNORED_LOCALES } from "../consts";
+import { LOCALES } from "../consts";
 import { projects, pages, blog } from "../sitemap";
 
 const possibleIndexes = [
   "index",
   "base",
-  ...LOCALES.filter((locale) => !IGNORED_LOCALES.includes(locale as (typeof IGNORED_LOCALES)[number])),
+  ...LOCALES,
 ] as const;
 
 export const prerender = true;
@@ -71,8 +71,7 @@ export const GET: APIRoute = async ({ params: { index }, rewrite }) => {
   }
 
   if (
-    LOCALES.includes(index as (typeof LOCALES)[number]) &&
-    !IGNORED_LOCALES.includes(index as (typeof IGNORED_LOCALES)[number])
+    LOCALES.includes(index as (typeof LOCALES)[number]) 
   ) {
     xmlResponse = generateSitemap([...pages, ...projects, ...blog], index);
   }

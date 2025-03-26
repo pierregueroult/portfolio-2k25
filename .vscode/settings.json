@@ -11,6 +11,7 @@
     "lastmod",
     "lhci",
     "mongodb",
+    "nosniff",
     "partytown",
     "prisma",
     "Qube",
@@ -18,7 +19,8 @@
     "sonarqube",
     "spotify",
     "tailwindcss",
-    "Traefik"
+    "Traefik",
+    "tsconfigs"
   ],
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "astro"],
   "files.associations": {

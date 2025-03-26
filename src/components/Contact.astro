@@ -1,7 +1,8 @@
 ---
+import { getLocale } from "@/utils/get-locale";
 import { useTranslation } from "../i18n";
 
-const t = useTranslation(Astro.locals.locale);
+const t = useTranslation(getLocale(Astro.params.lang));
 ---
 
 <form data-form="contact" class="flex flex-col gap-2 mt-2">

@@ -1,14 +1,15 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Title from "../components/Title.astro";
+import Layout from "@/layouts/Layout.astro";
+import Title from "@/components/Title.astro";
 import type { Person, WithContext } from "schema-dts";
-import ListLayout from "../layouts/ListLayout.astro";
+import ListLayout from "@/layouts/ListLayout.astro";
 import { getCollection } from "astro:content";
-import WorkItem from "../components/items/WorkItem.astro";
-import SchoolItem from "../components/items/SchoolItem.astro";
-import { SITE } from "../consts";
-import { useTranslation } from "../i18n";
-import CertificationItem from "../components/items/CertificationItem.astro";
+import WorkItem from "@/components/items/WorkItem.astro";
+import SchoolItem from "@/components/items/SchoolItem.astro";
+import { SITE } from "@/consts";
+import { useTranslation } from "@/i18n";
+import CertificationItem from "@/components/items/CertificationItem.astro";
+import { getLocale } from "@/utils/get-locale";
 
 const jsonLd: WithContext<Person> = {
   "@context": "https://schema.org",
@@ -36,9 +37,9 @@ const works = await getCollection("works");
 const schools = await getCollection("schools");
 const certifications = await getCollection("certifications");
 
-const t = useTranslation(Astro.locals.locale);
+const t = useTranslation(getLocale(Astro.params.lang));
 
-const cvPath = `/documents/pierre%20gueroult%20-%20curriculum%20vitae%20-%20${Astro.locals.locale === "fr" ? "fr" : "en"}.pdf`;
+const cvPath = `/documents/pierre%20gueroult%20-%20curriculum%20vitae%20-%20${getLocale(Astro.params.lang) === "fr" ? "fr" : "en"}.pdf`;
 ---
 
 <Layout

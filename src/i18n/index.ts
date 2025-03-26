@@ -2,7 +2,6 @@ import { LOCALES } from "../consts";
 import { ar } from "./langs/ar";
 import { en } from "./langs/en";
 import { fr } from "./langs/fr";
-import { morse } from "./langs/morse";
 
 type NestedKeyOf<ObjectType extends object> = {
   [Key in keyof ObjectType & (string | number)]: ObjectType[Key] extends object
@@ -141,7 +140,6 @@ export const texts: TextsObject = {
   en: en,
   fr: fr,
   ar: ar,
-  morse: morse,
 };
 
 const getNestedValue = (obj: Texts, path: string): string => {

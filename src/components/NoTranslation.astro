@@ -1,12 +1,13 @@
 ---
+import { getLocale } from "@/utils/get-locale";
 import { useTranslation } from "../i18n";
 import TranslationAlert from "./TranslationAlert.astro";
 
-const t = useTranslation(Astro.locals.locale);
+const t = useTranslation(getLocale(Astro.params.lang));
 ---
 
 {
-  Astro.locals.locale !== "en" && (
+  getLocale(Astro.params.lang) !== "en" && (
     <TranslationAlert title={t("components.noTranslation.title")} text={t("components.noTranslation.text")} />
   )
 }

@@ -1,4 +1,5 @@
 ---
+import { getLocale } from "@/utils/get-locale";
 import { LOCALES } from "../consts";
 import { useTranslation } from "../i18n";
 
@@ -15,7 +16,7 @@ const labels = {
   ar: "العربية (work in progress, i'm not fluent yet)",
   morse: "- - .-. ... . (challenging but fun)",
 };
-const t = useTranslation(Astro.locals.locale);
+const t = useTranslation(getLocale(Astro.params.lang));
 const pathname = Astro.url.pathname.slice(1);
 ---
 
@@ -31,7 +32,7 @@ const pathname = Astro.url.pathname.slice(1);
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
-      class={`size-4 ${Astro.locals.locale === "ar" ? "ml-4" : "mr-4"}`}
+      class={`size-4 ${getLocale(Astro.params.lang) === "ar" ? "ml-4" : "mr-4"}`}
       ><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path
         d="M2 12h20"></path></svg
     >
@@ -58,7 +59,7 @@ const pathname = Astro.url.pathname.slice(1);
               {flags[locale]} {labels[locale]}
             </span>
             <span class="font-mono text-sm">
-              {Astro.locals.locale === locale && `(${t("components.lang.current")})`}
+              {getLocale(Astro.params.lang) === locale && `(${t("components.lang.current")})`}
             </span>
           </a>
         </li>

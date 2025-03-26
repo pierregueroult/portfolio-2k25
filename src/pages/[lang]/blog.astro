@@ -1,11 +1,12 @@
 ---
-import BlogItem from "../components/items/BlogItem.astro";
-import TranslationAlert from "../components/TranslationAlert.astro";
-import { useTranslation } from "../i18n";
-import Layout from "../layouts/Layout.astro";
-import ListLayout from "../layouts/ListLayout.astro";
-import WithTitleLayout from "../layouts/WithTitleLayout.astro";
-import { excludeDrafts } from "../utils/exclude-drafts";
+import BlogItem from "@/components/items/BlogItem.astro";
+import TranslationAlert from "@/components/TranslationAlert.astro";
+import { useTranslation } from "@/i18n";
+import Layout from "@/layouts/Layout.astro";
+import ListLayout from "@/layouts/ListLayout.astro";
+import WithTitleLayout from "@/layouts/WithTitleLayout.astro";
+import { excludeDrafts } from "@/utils/exclude-drafts";
+import { getLocale } from "@/utils/get-locale";
 import { getCollection } from "astro:content";
 
 const postsList = await getCollection("blog");
@@ -14,7 +15,7 @@ const posts = postsList.filter(excludeDrafts).sort((a, b) => {
   return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
 });
 
-const t = useTranslation(Astro.locals.locale);
+const t = useTranslation(getLocale(Astro.params.lang));
 ---
 
 <Layout
@@ -24,7 +25,7 @@ const t = useTranslation(Astro.locals.locale);
 >
   <WithTitleLayout title={t("pages.blog.title")} subtitle={t("pages.blog.subtitle")}>
     {
-      Astro.locals.locale !== "en" && (
+      getLocale(Astro.params.lang) !== "en" && (
         <TranslationAlert title={t("pages.blog.translation.title")} text={t("pages.blog.translation.text")} />
       )
     }
