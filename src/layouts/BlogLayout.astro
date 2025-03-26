@@ -21,7 +21,7 @@ const jsonLd: WithContext<BlogPosting> = {
   "@type": "BlogPosting",
   headline: post.data.title,
   description: post.data.summary,
-  url: `${SITE}/blog/${post.data.slug}`,
+  url: `${SITE}/en/blog/${post.data.slug}`,
   datePublished: post.data.date.toLocaleDateString(),
   author: {
     "@type": "Person",
@@ -38,7 +38,7 @@ const jsonLd: WithContext<BlogPosting> = {
   },
   mainEntityOfPage: {
     "@type": "WebPage",
-    "@id": `https://yourdomain.com/blog/${post.data.slug}`,
+    "@id": `${SITE}/en/blog/${post.data.slug}`,
   },
   keywords: post.data.tags,
 };

@@ -28,7 +28,7 @@ const t = useTranslation(locale);
               ? t("components.items.now")
               : data.period[1].toLocaleDateString(locale, { month: "long", year: "numeric" })}
           </date>
-          <span class="-ml-[1ch]">)</span>
+          <span>)</span>
         </p>
       </div>
       <p class="text-sm">{data.description[locale]}</p>

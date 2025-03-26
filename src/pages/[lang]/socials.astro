@@ -12,6 +12,7 @@ import { env } from "@/env";
 import type { SpotifyInternalApiResponse, SpotifyInternalApiResponseError } from "@/schemas/spotify";
 import { Image } from "astro:assets";
 import { getLocale } from "@/utils/get-locale";
+import { SITE } from "@/consts";
 
 const allSocials = await getCollection("socials");
 const featured = allSocials.filter((social) => social.data.isFeatured);
@@ -19,7 +20,7 @@ const socials = allSocials.filter((social) => !social.data.isFeatured);
 
 const t = useTranslation(getLocale(Astro.params.lang));
 
-const apiUrl: URL = new URL("/spotify", process.env.NODE_ENV === "development" ? "http://localhost:4321" : Astro.site);
+const apiUrl: URL = new URL("/spotify", SITE);
 
 const spotify = await fetch(apiUrl, {
   headers: {
