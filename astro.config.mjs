@@ -9,7 +9,7 @@ export default defineConfig({
   site: SITE,
   output: "server",
   integrations: [mdx(), robotsTxt({
-    transform: (content) => `# Dont try to find the private things \n\n${content}`,
+    transform: (content) => `# Don't try to find the private things \n\n${content}`,
     sitemapBaseFileName: "sitemap-index",
     policy: [
       {

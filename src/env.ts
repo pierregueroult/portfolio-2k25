@@ -11,7 +11,8 @@ const envSchema = z.object({
 const parsed = envSchema.safeParse(import.meta.env);
 
 if (!parsed.success) {
-  throw new Error(parsed.error.message);
+  console.error("Environment variable validation error:", parsed.error.message); // Optional: Log the detailed error message for debugging
+  throw new Error("Environment variable validation failed. Please check your configuration.");
 }
 
 export const env = parsed.data;
