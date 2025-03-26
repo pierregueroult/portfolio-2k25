@@ -1,7 +1,25 @@
 import { defineMiddleware } from "astro:middleware";
+import { LOCALES, SITE } from "@/consts";
+
+const doesntNeedLocale = ["rss.xml", "spotify"];
 
 export const onRequest = defineMiddleware(async (context, next) => {
   if (context.isPrerendered) return next();
+
+  const url = new URL(context.url);
+  const subdomain = url.hostname.split('.')[0] as typeof LOCALES[number];
+
+  if (LOCALES.includes(subdomain)) {
+    const newPath = `/${subdomain}${url.pathname}${url.search}`;
+    const newUrl = new URL(newPath, SITE);
+    return context.redirect(newUrl.toString());
+  }
+
+  if (!LOCALES.some((locale) => url.pathname.startsWith(`/${locale}`)) && !doesntNeedLocale.some(path => url.pathname.endsWith(path))) {
+    const newPath = `/fr${url.pathname}${url.search}`;
+    const newUrl = new URL(newPath, SITE);
+    return context.redirect(newUrl.toString());
+  }
 
   context.locals.theme = context.cookies.get("theme")?.value ?? "system";
   const response = await next();

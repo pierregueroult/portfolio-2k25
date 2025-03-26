@@ -1,21 +1,20 @@
 ---
 import { getLocale } from "@/utils/get-locale";
-import { LOCALES } from "../consts";
+import { LOCALES, SITE } from "../consts";
 import { useTranslation } from "../i18n";
 
 const flags = {
   en: "🇬🇧",
   fr: "🇫🇷",
   ar: "🇸🇦",
-  morse: "🔤",
 };
 
 const labels = {
   en: "English",
   fr: "Français",
   ar: "العربية (work in progress, i'm not fluent yet)",
-  morse: "- - .-. ... . (challenging but fun)",
 };
+
 const t = useTranslation(getLocale(Astro.params.lang));
 const pathname = Astro.url.pathname.slice(1);
 ---
@@ -49,11 +48,7 @@ const pathname = Astro.url.pathname.slice(1);
         <li>
           <a
             class="w-full h-full py-2 px-4 text-md text-left cursor-pointer rounded-sm bg-background text-foreground/80 hover:bg-foreground hover:text-background outline-none focus:bg-foreground focus:text-background flex gap-2 items-center"
-            href={`${
-              locale === "en"
-                ? `https://${Astro.site?.toString().replace(/^https?:\/\//, "")}${pathname}`
-                : `https://${locale}.${Astro.site?.toString().replace("https://", "")}${pathname}`
-            }`}
+            href={`${SITE}/${locale}/${pathname.replace(`${getLocale(Astro.params.lang)}/`, "")}`}
           >
             <span>
               {flags[locale]} {labels[locale]}

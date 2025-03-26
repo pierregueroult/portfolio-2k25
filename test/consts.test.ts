@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { SITE, LOCALES, IGNORED_LOCALES } from "../src/consts";
+import { SITE, LOCALES } from "../src/consts";
 
 describe("Constants", () => {
   describe("SITE", () => {
@@ -21,22 +21,6 @@ describe("Constants", () => {
       expect(LOCALES).toContain("en");
       expect(LOCALES).toContain("fr");
       expect(LOCALES).toContain("ar");
-      expect(LOCALES).toContain("morse");
-    });
-  });
-
-  describe("IGNORED_LOCALES", () => {
-    it("should be a readonly array of strings", () => {
-      expect(IGNORED_LOCALES).toBeInstanceOf(Array);
-      expect(IGNORED_LOCALES).toEqual(["morse"]);
-      expect(IGNORED_LOCALES).toHaveLength(1);
-      expect(IGNORED_LOCALES.every((locale: string) => typeof locale === "string")).toBe(true);
-    });
-
-    it("should only contain locales that are in LOCALES", () => {
-      expect(IGNORED_LOCALES.every((locale: string) => LOCALES.includes(locale as "en" | "fr" | "ar" | "morse"))).toBe(
-        true,
-      );
     });
   });
 });
