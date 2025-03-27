@@ -14,8 +14,8 @@
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "prod": "node ./dist/server/entry.mjs",
-    "lh:mobile": "lhci autorun --collect.url=http://localhost:4321/ --collect.startServerCommand='pnpm prod' --collect.numberOfRuns=3 --upload.target=temporary-public-storage",
-    "lh:desktop": "lhci autorun --collect.url=http://localhost:4321/ --collect.startServerCommand='pnpm prod' --collect.numberOfRuns=3 --upload.target=temporary-public-storage --collect.settings.preset=desktop",
+    "lh:mobile": "lhci autorun --collect.url=http://localhost:4321/en --collect.startServerCommand='pnpm prod' --collect.numberOfRuns=3 --upload.target=temporary-public-storage",
+    "lh:desktop": "lhci autorun --collect.url=http://localhost:4321/en --collect.startServerCommand='pnpm prod' --collect.numberOfRuns=3 --upload.target=temporary-public-storage --collect.settings.preset=desktop",
     "db:generate": "prisma generate --schema=./src/database/schema.prisma --no-hints",
     "db:push": "prisma db push --schema=./src/database/schema.prisma",
     "postinstall": "prisma generate --schema=./src/database/schema.prisma --no-hints"
