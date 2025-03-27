@@ -57,14 +57,14 @@ export const en: Texts = {
   pages: {
     blog: {
       meta: {
-        title: "Blog",
+        title: "Pierre Guéroult's Blog - Web Development, Software Engineering & Automation",
         description:
-          "Read my latest articles, thoughts, and tech tutorials. I write about web development, software engineering, automation, and tech culture.",
+          "Explore the latest articles by Pierre Guéroult on web development, software engineering, and automation. Insights and tutorials for developers and tech enthusiasts.",
         keywords:
-          "blog, articles, thoughts, tutorials, web development, software engineering, automation, tech culture",
+          "Pierre Guéroult, blog, web development, software engineering, automation, programming, developer insights",
       },
-      title: "Blog - Insights & Experiments",
-      subtitle: "Exploring web development, automation, and new technologies—one project at a time.",
+      title: "Pierre Guéroult's Blog - Web & Software Development Insights",
+      subtitle: "Thoughts on web development, software engineering, and automation by Pierre Guéroult.",
       articles: "Articles",
       translation: {
         title: "Translation in progress...",
@@ -73,14 +73,15 @@ export const en: Texts = {
     },
     socials: {
       meta: {
-        title: "Connect with me",
+        title: "Connect with Pierre Guéroult - Web Developer & Software Engineer",
         description:
-          "Find and follow me across social media and professional networks. Stay updated on my latest projects, blog posts, and tech insights.",
-        keywords: "socials, social media, professional networks, projects, blog posts, tech insights",
+          "Connect with Pierre Guéroult on social media and professional platforms. Stay updated on my latest web development and software engineering projects, blog posts, and tech insights.",
+        keywords:
+          "Pierre Guéroult, socials, social media, professional networks, web development, software engineering, projects, tech insights",
       },
-      title: "My Socials - Let's Stay Connected",
+      title: "Connect with Pierre Guéroult - Web Developer & Software Engineer",
       subtitle:
-        "Find me on social and professional platforms to follow my projects and connect over web development and automation.",
+        "Follow me on social media and professional platforms to stay updated on my web development and software engineering projects.",
       featured: "Featured",
       links: "Social Links",
       contact: {
@@ -96,12 +97,13 @@ export const en: Texts = {
     },
     projects: {
       meta: {
-        title: "Projects & Works",
+        title: "Pierre Guéroult - Web Developer & Software Engineer - Projects & Works",
         description:
-          "Explore my latest web development projects, automation tools, and tech experiments. Always building, always learning.",
-        keywords: "projects, works, web development, automation tools, tech experiments",
+          "Explore my latest web development projects, automation tools, and tech experiments. Always building, always learning. Discover the tools and applications I create to improve workflows and efficiency.",
+        keywords:
+          "Pierre Guéroult, projects, works, web development, automation tools, tech experiments, developer tools, software engineering",
       },
-      title: "Projects, Creations and contributions",
+      title: "Pierre Guéroult - Projects, Creations, and Contributions",
       subtitle:
         "Here are some of the projects I've led, built, or contributed to. I focus on creating developer tools, automation solutions, and innovative web applications that improve efficiency, streamline workflows, and push the boundaries of technology.",
       creations: "Creations",
@@ -115,15 +117,15 @@ export const en: Texts = {
     },
     index: {
       meta: {
-        title: "Web & Software Developer",
+        title: "Pierre Guéroult - Web & Software Developer | Full-Stack Engineer",
         description:
-          "20-year-old Web Developer & Computer Science Student passionate about building sleek, high-performance websites and automating workflows. Always exploring new technologies to solve problems and optimize efficiency.",
+          "I'm Pierre Guéroult, a passionate full-stack web developer and software engineer. At 20 years old, I specialize in creating high-performance websites and automating workflows. I'm constantly exploring new technologies to solve problems and improve efficiency.",
         keywords:
-          "web developer, software developer, computer science student, web development, automation, new technologies",
+          "Pierre Guéroult, web developer, software developer, full-stack engineer, computer science student, web development, automation, new technologies, clean code",
       },
       title: "Full-Stack Software Engineer - Pierre Guéroult - Paris, France",
       subtitle:
-        "20 year-old web developer & Computer Science Student. I love crafting sleek websites and automating workflows to make life easier. Passionate about clean code, problem-solving, and making tech work smarter, not harder. Always exploring new technologies, always up for a challenge. Whether it's web development, automation, or something completely out of my comfort zone - I'm in.",
+        "20-year-old web developer & Computer Science Student. I love crafting sleek websites and automating workflows to make life easier. Passionate about clean code, problem-solving, and making tech work smarter, not harder. Always exploring new technologies, always up for a challenge.",
       works: "Works",
       schools: "Schools",
       certifications: "Certifications",

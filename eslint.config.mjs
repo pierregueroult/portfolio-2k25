@@ -4,7 +4,7 @@ import esLintTypescript from "typescript-eslint";
 /** @type {import('eslint').Linter.Config} */
 const config = [
   { files: ["**/*.{mjs,ts,astro}"] },
-  { ignores: ["**/dist/*", ".astro/*"] },
+  { ignores: ["**/dist/*", ".astro/*", "**/coverage/*"] },
   ...esLintTypescript.configs.recommended,
   ...eslintPluginAstro.configs.recommended,
 ];

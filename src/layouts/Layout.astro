@@ -1,25 +1,22 @@
 ---
-import "../styles/global.css";
-import Header from "../components/Header.astro";
 import { ClientRouter } from "astro:transitions";
-import { SITE, LOCALES, IGNORED_LOCALES } from "../consts";
-import PostHog from "../components/PostHog.astro";
+import Header from "@/components/Header.astro";
+import PostHog from "@/components/PostHog.astro";
+import { LOCALES, SITE } from "@/consts";
+import { getDir, getLocale } from "@/utils/get-locale";
+import { removeTrailingSlash } from "@/utils/remove-trailing-slash";
+
+import "../styles/global.css";
 
 interface Props {
   title: string;
   description: string;
   keywords?: string[];
 }
-
-interface LocalAlternate {
-  hreflang: "x-default" | "en" | "fr" | "ar";
-  href: string;
-}
-
-const { theme, locale } = Astro.locals;
-
 const { title, description, keywords } = Astro.props;
-const defaultKeywords: string[] = [
+const { theme } = Astro.locals;
+
+const defaultKeywords = [
   "web development",
   "frontend developer",
   "backend developer",
@@ -31,89 +28,79 @@ const defaultKeywords: string[] = [
   "Tailwind CSS",
   "GitHub portfolio",
   "Pierre Guéroult",
-];
+] as const;
 
-let currentPage = Astro.url.toString();
+const isBlogOrProject = /^\/(?:[a-z]{2})\/(projects|blog)\/[^/]+/.test(Astro.url.pathname);
+const ogImage = ["home", "projects", "blog", "socials"].find((image) => Astro.originPathname.includes(image)) ?? "home";
+const currentLocale = getLocale(Astro.params.lang);
+const currentDir = getDir(Astro.params.lang);
+const keywordsContent = keywords ? [...keywords, ...defaultKeywords].join(", ") : defaultKeywords.join(", ");
+const ogImageUrl = `${SITE}/open-graph/banner-${ogImage}.png`;
 
-const untranslatedPaths = ["/projects/", "/blog/"]; // Détecter les pages non traduites
-const isUntranslated = untranslatedPaths.some((path) => currentPage.includes(path));
+const getAlternateLinks = () => {
+  if (!isBlogOrProject) {
+    const frHref = removeTrailingSlash(`${SITE}/fr${Astro.originPathname.replace(`/${Astro.params.lang}`, "")}`);
+    return [
+      ...LOCALES.map((locale) => ({
+        locale,
+        href: removeTrailingSlash(`${SITE}/${locale}${Astro.originPathname.replace(`/${Astro.params.lang}`, "")}`),
+        isDefault: locale === "fr"
+      })),
+      { locale: "x-default", href: frHref, isDefault: false }
+    ];
+  }
 
-if (currentPage.includes("localhost")) {
-  currentPage = currentPage.replace(/^https?:\/\/([a-z]{2}\.)?localhost(:\d+)?/, (match, subdomain) => {
-    return subdomain ? `https://${subdomain}${SITE.replace("https://", "")}` : SITE;
-  });
-}
+  const href = removeTrailingSlash(`${SITE}/en${Astro.originPathname.replace(`/${Astro.params.lang}`, "")}`);
+  return [
+    { locale: "en", href, isDefault: false },
+    { locale: "x-default", href, isDefault: false }
+  ];
+};
 
-if (currentPage.includes("www.")) {
-  currentPage = currentPage.replace("www.", "");
-}
-
-const localeAlternate: LocalAlternate[] = isUntranslated
-  ? []
-  : LOCALES.filter(
-      (l): l is Exclude<(typeof LOCALES)[number], (typeof IGNORED_LOCALES)[number]> =>
-        !IGNORED_LOCALES.includes(l as (typeof IGNORED_LOCALES)[number]),
-    ).map((l) => ({
-      hreflang: l,
-      href: currentPage.includes(`https://${locale}.`)
-        ? currentPage.replace(`https://${locale}.`, `https://${l}.`)
-        : currentPage.replace("https://", `https://${l}.`),
-    }));
-
-const canonicalUrl = isUntranslated
-  ? currentPage.replace(`https://${locale}.`, "https://") // Canonique sans sous-domaine
-  : currentPage;
-
-if (!isUntranslated) {
-  localeAlternate.push({
-    hreflang: "x-default",
-    href: currentPage.replace(`https://${locale}.`, "https://"),
-  });
-}
-
-const ogImage = ["home", "projects", "blog", "socials"].find((image) => Astro.originPathname.includes(image)) || "home";
+const alternateLinks = getAlternateLinks();
+const canonicalUrl = isBlogOrProject 
+  ? removeTrailingSlash(`/en${Astro.originPathname.replace(`/${Astro.params.lang}`, "")}`)
+  : Astro.url.href;
 ---
 
 <!doctype html>
-<html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
+<html lang={currentLocale} dir={currentDir}>
   <head>
-    <title>Pierre Guéroult - {title}</title>
+    <title>{title}</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pierre Guéroult" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <meta name="viewport" content="width=device-width" />
-    <meta
-      name="keywords"
-      content={keywords ? [...keywords, ...defaultKeywords].join(", ") : defaultKeywords.join(", ")}
-    />
-    <meta property="og:title" content={`Pierre Guéroult - ${title}`} />
+    <meta name="keywords" content={keywordsContent} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:title" content={title} />
     <meta property="og:type" content="website" />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content={`${SITE}/open-graph/banner-${ogImage}.png`} />
+    <meta property="og:image" content={ogImageUrl} />
     <meta property="og:site_name" content="Pierre Guéroult" />
-    <meta property="og:locale" content={locale} />
+    <meta property="og:locale" content={currentLocale} />
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content={`Pierre Guéroult - ${title}`} />
+    <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={`${SITE}/open-graph/banner-${ogImage}.png`} />
+    <meta property="twitter:image" content={ogImageUrl} />
     <meta property="twitter:site" content="@pierregueroult1" />
     <meta property="twitter:creator" content="@pierregueroult1" />
-    <meta name="robots" content={Astro.locals.locale === "morse" ? "noindex, nofollow" : "index, follow"} />
+    <meta name="robots" content="index, follow" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="canonical" href={canonicalUrl} />
-    {localeAlternate.map((l) => <link rel="alternate" hreflang={l.hreflang} href={l.href} />)}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://eu.i.posthog.com" crossorigin="anonymous" />
     <link rel="preconnect" href="https://eu-assets.i.posthog.com" crossorigin="anonymous" />
+    {alternateLinks.map(({ locale, href }) => (
+      <link rel="alternate" hreflang={locale} href={href} />
+    ))}
     <ClientRouter />
   </head>
   <body class="font-mono bg-background text-foreground" data-theme={theme}>
     <Header />
-    <main class={`mx-auto max-w-4xl w-full px-4 pb-8`}>
+    <main class="mx-auto max-w-4xl w-full px-4 pb-8">
       <slot />
     </main>
-    <PostHog />
+    {import.meta.env.PROD && <PostHog />}
   </body>
 </html>

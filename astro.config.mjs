@@ -8,23 +8,20 @@ import { SITE } from "./src/consts";
 export default defineConfig({
   site: SITE,
   output: "server",
-  integrations: [
-    mdx(),
-    robotsTxt({
-      transform: (content) => `# Dont try to find the private things \n\n${content}`,
-      sitemapBaseFileName: "sitemap-index",
-      policy: [
-        {
-          userAgent: "*",
-          disallow: ["/documents/private"],
-        },
-        {
-          userAgent: "Googlebot-Image",
-          disallow: ["/"],
-        },
-      ],
-    }),
-  ],
+  integrations: [mdx(), robotsTxt({
+    transform: (content) => `# Don't try to find the private things \n\n${content}`,
+    sitemapBaseFileName: "sitemap-index",
+    policy: [
+      {
+        userAgent: "*",
+        disallow: ["/documents/private"],
+      },
+      {
+        userAgent: "Googlebot-Image",
+        disallow: ["/"],
+      },
+    ],
+  })],
   vite: {
     plugins: [tailwindcss()],
   },

@@ -1,11 +1,12 @@
 ---
 import { getCollection } from "astro:content";
-import ProjectItem from "../components/items/ProjectItem.astro";
-import Layout from "../layouts/Layout.astro";
-import ListLayout from "../layouts/ListLayout.astro";
-import WithTitleLayout from "../layouts/WithTitleLayout.astro";
-import { useTranslation } from "../i18n";
-import TranslationAlert from "../components/TranslationAlert.astro";
+import ProjectItem from "@/components/items/ProjectItem.astro";
+import Layout from "@/layouts/Layout.astro";
+import ListLayout from "@/layouts/ListLayout.astro";
+import WithTitleLayout from "@/layouts/WithTitleLayout.astro";
+import { useTranslation } from "@/i18n";
+import TranslationAlert from "@/components/TranslationAlert.astro";
+import { getLocale } from "@/utils/get-locale";
 
 const allProjects = await getCollection("projects");
 
@@ -14,7 +15,7 @@ const schools = allProjects.filter((project) => project.data.kind === "school");
 const creations = allProjects.filter((project) => project.data.kind === "creation");
 const contributions = allProjects.filter((project) => project.data.kind === "contribution");
 
-const t = useTranslation(Astro.locals.locale);
+const t = useTranslation(getLocale(Astro.params.lang));
 ---
 
 <Layout
@@ -24,7 +25,7 @@ const t = useTranslation(Astro.locals.locale);
 >
   <WithTitleLayout title={t("pages.projects.title")} subtitle={t("pages.projects.subtitle")}>
     {
-      Astro.locals.locale !== "en" && (
+      getLocale(Astro.params.lang) !== "en" && (
         <TranslationAlert title={t("pages.projects.translation.title")} text={t("pages.projects.translation.text")} />
       )
     }

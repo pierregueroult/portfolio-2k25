@@ -10,7 +10,6 @@ describe("TranslationAlert", async () => {
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras diam lorem, fermentum eu feugiat at, porttitor nec enim. Sed maximus tincidunt ante. Etiam varius ultricies magna, nec porta erat convallis in. Pellentesque cursus, turpis sed placerat suscipit, lorem nulla efficitur ante, ac efficitur ante eros at elit. Pellentesque varius euismod ante, eget lacinia diam posuere id. Curabitur sagittis eros sapien, vel ullamcorper arcu mattis suscipit.",
     },
     locals: {
-      locale: "en",
       theme: "light",
     },
   });

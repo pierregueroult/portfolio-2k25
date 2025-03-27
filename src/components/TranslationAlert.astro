@@ -1,4 +1,6 @@
 ---
+import { getLocale } from '@/utils/get-locale';
+
 interface Props {
   title: string;
   text: string;
@@ -9,7 +11,7 @@ const { title, text } = Astro.props;
 <div
   role="alert"
   class="relative w-full rounded px-4 py-3 bg-accent/20 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground [&>svg~*]:pl-8 text-foreground"
-  lang={Astro.locals.locale}
+  lang={getLocale(Astro.params.lang)}
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"

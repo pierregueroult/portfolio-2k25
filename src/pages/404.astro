@@ -1,10 +1,22 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
 ---
 
 <Layout
   title="Pierre Guéroult - 404"
   description="Oops! The page you're looking for doesn't exist. Let's get you back on track."
 >
-  TODO: 404 page
+  <div class="min-h-[70vh] flex flex-col gap-4 items-center justify-center">
+    <div class="text-center">
+      <h1 class="text-4xl font-bold">404</h1>
+      <p class="text-lg">Oops! The page you're looking for doesn't exist. Let's get you back on track.</p>
+    </div>
+    <Image
+      src="/404.webp"
+      alt="Funny meme about 404 errors, with an empty slot of a distributor being labeled as '404'."
+      width={608 / 2}
+      height={763 / 2}
+    />
+  </div>
 </Layout>

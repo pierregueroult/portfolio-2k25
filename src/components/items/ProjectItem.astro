@@ -1,4 +1,5 @@
 ---
+import { getLocale } from "@/utils/get-locale";
 import { useTranslation } from "../../i18n";
 
 interface Props {
@@ -9,7 +10,7 @@ interface Props {
 }
 
 const { title, subtitle, text, slug } = Astro.props;
-const t = useTranslation(Astro.locals.locale);
+const t = useTranslation(getLocale(Astro.params.lang));
 ---
 
 <li>
@@ -21,7 +22,7 @@ const t = useTranslation(Astro.locals.locale);
   <p class="text-sm sm:text-md">{text}</p>
   <a
     class="text-sm text-accent-contrast font-semibold relative after:absolute after:w-0 after:-bottom-0 hover:after:w-full after:h-px after:bg-accent-contrast after:left-0"
-    href={`/projects/${slug}`}
+    href={`/${getLocale(Astro.params.lang)}/projects/${slug}`}
     title={`${t("components.items.more")} ${t("components.items.about")} ${title}`}
   >
     {t("components.items.more")}

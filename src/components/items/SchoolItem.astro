@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { useTranslation } from "../../i18n";
+import { getLocale } from "@/utils/get-locale";
 
 interface Props {
   school: CollectionEntry<"schools">;
@@ -8,7 +9,7 @@ interface Props {
 const {
   school: { data },
 } = Astro.props;
-const locale = Astro.locals.locale;
+const locale = getLocale(Astro.params.lang);
 const t = useTranslation(locale);
 ---
 
@@ -27,7 +28,7 @@ const t = useTranslation(locale);
               ? t("components.items.now")
               : data.period[1].toLocaleDateString(locale, { month: "long", year: "numeric" })}
           </date>
-          <span class="-ml-[1ch]">)</span>
+          <span>)</span>
         </p>
       </div>
       <p class="text-sm">{data.description[locale]}</p>

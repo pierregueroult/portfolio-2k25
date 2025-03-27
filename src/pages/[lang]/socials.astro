@@ -1,24 +1,26 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "../layouts/Layout.astro";
-import ListLayout from "../layouts/ListLayout.astro";
-import WithTitleLayout from "../layouts/WithTitleLayout.astro";
-import SocialItem from "../components/items/SocialItem.astro";
-import { useTranslation } from "../i18n";
-import FormLayout from "../layouts/FormLayout.astro";
-import MusicLayout from "../layouts/MusicLayout.astro";
-import Contact from "../components/Contact.astro";
-import { env } from "../env";
-import type { SpotifyInternalApiResponse, SpotifyInternalApiResponseError } from "../schemas/spotify";
+import Layout from "@/layouts/Layout.astro";
+import ListLayout from "@/layouts/ListLayout.astro";
+import WithTitleLayout from "@/layouts/WithTitleLayout.astro";
+import SocialItem from "@/components/items/SocialItem.astro";
+import { useTranslation } from "@/i18n";
+import FormLayout from "@/layouts/FormLayout.astro";
+import MusicLayout from "@/layouts/MusicLayout.astro";
+import Contact from "@/components/Contact.astro";
+import { env } from "@/env";
+import type { SpotifyInternalApiResponse, SpotifyInternalApiResponseError } from "@/schemas/spotify";
 import { Image } from "astro:assets";
+import { getLocale } from "@/utils/get-locale";
+import { SITE } from "@/consts";
 
 const allSocials = await getCollection("socials");
 const featured = allSocials.filter((social) => social.data.isFeatured);
 const socials = allSocials.filter((social) => !social.data.isFeatured);
 
-const t = useTranslation(Astro.locals.locale);
+const t = useTranslation(getLocale(Astro.params.lang));
 
-const apiUrl: URL = new URL("/spotify", process.env.NODE_ENV === "development" ? "http://localhost:4321" : Astro.site);
+const apiUrl: URL = new URL("/spotify", SITE);
 
 const spotify = await fetch(apiUrl, {
   headers: {
@@ -91,7 +93,7 @@ const data: SpotifyInternalApiResponse | SpotifyInternalApiResponseError = await
             <SocialItem
               link={social.data.link}
               title={social.data.title}
-              description={social.data.description[Astro.locals.locale]}
+              description={social.data.description[getLocale(Astro.params.lang)]}
             />
           ))}
         </ListLayout>
@@ -104,7 +106,7 @@ const data: SpotifyInternalApiResponse | SpotifyInternalApiResponseError = await
             <SocialItem
               link={social.data.link}
               title={social.data.title}
-              description={social.data.description[Astro.locals.locale]}
+              description={social.data.description[getLocale(Astro.params.lang)]}
             />
           ))}
         </ListLayout>

@@ -1,4 +1,5 @@
 ---
+import { getLocale } from "@/utils/get-locale";
 import { useTranslation } from "../i18n";
 
 interface Props {
@@ -6,7 +7,7 @@ interface Props {
 }
 
 const { id } = Astro.props;
-const t = useTranslation(Astro.locals.locale);
+const t = useTranslation(getLocale(Astro.params.lang));
 ---
 
 <button id={`${id}-trigger`} class="cursor-pointer" data-modal-trigger>
@@ -19,7 +20,7 @@ const t = useTranslation(Astro.locals.locale);
 >
   <button
     data-modal-close
-    class={`top-4 absolute cursor-pointer z-50 ${Astro.locals.locale === "ar" ? "left-4" : "right-4"}`}
+    class={`top-4 absolute cursor-pointer z-50 ${getLocale(Astro.params.lang) === "ar" ? "left-4" : "right-4"}`}
   >
     {t("components.modal.close")}
   </button>

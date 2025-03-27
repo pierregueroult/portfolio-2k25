@@ -1,12 +1,13 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { useTranslation } from "../../i18n";
+import { getLocale } from "@/utils/get-locale";
 
 interface Props {
   work: CollectionEntry<"works">;
 }
 const { work } = Astro.props;
-const locale = Astro.locals.locale;
+const locale = getLocale(Astro.params.lang);
 const t = useTranslation(locale);
 ---
 

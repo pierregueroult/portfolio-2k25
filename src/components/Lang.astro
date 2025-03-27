@@ -1,4 +1,5 @@
 ---
+import { getLocale } from "@/utils/get-locale";
 import { LOCALES } from "../consts";
 import { useTranslation } from "../i18n";
 
@@ -6,21 +7,21 @@ const flags = {
   en: "🇬🇧",
   fr: "🇫🇷",
   ar: "🇸🇦",
-  morse: "🔤",
 };
 
 const labels = {
   en: "English",
   fr: "Français",
-  ar: "العربية (work in progress, i'm not fluent yet)",
-  morse: "- - .-. ... . (challenging but fun)",
+  ar: "العربية (work in progress, I'm not fluent yet)",
 };
-const t = useTranslation(Astro.locals.locale);
-const pathname = Astro.url.pathname.slice(1);
+
+const currentLocale = getLocale(Astro.params.lang);
+const t = useTranslation(currentLocale);
+const pathname = Astro.url.pathname;
 ---
 
 <div class="flex flex-col h-full">
-  <div class="w-full flex items-center px-4 border-b border-foreground">
+  <header class="w-full flex items-center px-4 border-b border-foreground">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -31,38 +32,33 @@ const pathname = Astro.url.pathname.slice(1);
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
-      class={`size-4 ${Astro.locals.locale === "ar" ? "ml-4" : "mr-4"}`}
-      ><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path
-        d="M2 12h20"></path></svg
+      class={`size-4 ${currentLocale === "ar" ? "ml-4" : "mr-4"}`}
     >
-    <p
-      class="font-mono flex w-full rounded-md py-4 text-md outline-none disabled:cursor-not-allowed disabled:opacity-50 placeholder:text-foreground/70"
-    >
+      <circle cx="12" cy="12" r="10"></circle>
+      <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+      <path d="M2 12h20"></path>
+    </svg>
+    <p class="font-mono w-full py-4 text-md">
       {t("components.lang.choose")}
     </p>
-  </div>
+  </header>
 
-  <ul data-lang-result class="flex-1 overflow-y-auto py-1 px-2 flex flex-col gap-1">
-    {
-      LOCALES.map((locale) => (
+  <ul class="flex-1 overflow-y-auto py-1 px-2 flex flex-col gap-1">
+    {LOCALES.map((locale) => {
+      const href = pathname.replace(/^\/[^/]+/, `/${locale}`);
+      const isActive = currentLocale === locale;
+
+      return (
         <li>
           <a
-            class="w-full h-full py-2 px-4 text-md text-left cursor-pointer rounded-sm bg-background text-foreground/80 hover:bg-foreground hover:text-background outline-none focus:bg-foreground focus:text-background flex gap-2 items-center"
-            href={`${
-              locale === "en"
-                ? `https://${Astro.site?.toString().replace(/^https?:\/\//, "")}${pathname}`
-                : `https://${locale}.${Astro.site?.toString().replace("https://", "")}${pathname}`
-            }`}
+            href={href}
+            class={`w-full py-2 px-4 text-md flex items-center gap-2 rounded-sm cursor-pointer bg-background text-foreground/80 hover:bg-foreground hover:text-background focus:bg-foreground focus:text-background outline-none`}
           >
-            <span>
-              {flags[locale]} {labels[locale]}
-            </span>
-            <span class="font-mono text-sm">
-              {Astro.locals.locale === locale && `(${t("components.lang.current")})`}
-            </span>
+            <span>{flags[locale]} {labels[locale]}</span>
+            {isActive && <span class="font-mono text-sm">({t("components.lang.current")})</span>}
           </a>
         </li>
-      ))
-    }
+      );
+    })}
   </ul>
 </div>

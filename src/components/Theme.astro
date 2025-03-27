@@ -1,7 +1,8 @@
 ---
+import { getLocale } from "@/utils/get-locale";
 import { useTranslation } from "../i18n";
 
-const t = useTranslation(Astro.locals.locale);
+const t = useTranslation(getLocale(Astro.params.lang));
 ---
 
 <div class="flex flex-col h-full">
@@ -16,7 +17,7 @@ const t = useTranslation(Astro.locals.locale);
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
-      class={`size-4 ${Astro.locals.locale === "ar" ? "ml-4" : "mr-4"}`}
+      class={`size-4 ${getLocale(Astro.params.lang) === "ar" ? "ml-4" : "mr-4"}`}
       ><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg
     >
     <input

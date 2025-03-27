@@ -57,14 +57,14 @@ export const fr: Texts = {
   pages: {
     blog: {
       meta: {
-        title: "Blog",
+        title: "Blog de Pierre Guéroult - Développement Web, Ingénierie Logicielle & Automatisation",
         description:
-          "Lisez mes derniers articles, pensées et tutoriels techniques. J'écris sur le développement web, l'ingénierie logicielle, l'automatisation et la culture tech.",
+          "Découvrez les articles de Pierre Guéroult sur le développement web, l'ingénierie logicielle et l'automatisation. Conseils et tutoriels pour développeurs et passionnés de tech.",
         keywords:
-          "blog, articles, pensées, tutoriels, développement web, ingénierie logicielle, automatisation, culture tech",
+          "Pierre Guéroult, blog, développement web, ingénierie logicielle, automatisation, programmation, conseils développeurs",
       },
-      title: "Blog - Réflexions & Expérimentations",
-      subtitle: "Explorer le développement web, l'automatisation et les nouvelles technologies—un projet à la fois.",
+      title: "Blog - Expériences en Développement Web & Logiciel",
+      subtitle: "Réflexions sur le développement web, l'ingénierie logicielle et l'automatisation par Pierre Guéroult.",
       articles: "Articles",
       translation: {
         title: "Traduction en cours...",
@@ -73,14 +73,15 @@ export const fr: Texts = {
     },
     socials: {
       meta: {
-        title: "Connectons nous",
+        title: "Contactez Pierre Guéroult - Développeur Web & Ingénieur Logiciel",
         description:
-          "Trouvez et suivez-moi sur les réseaux sociaux et les réseaux professionnels. Restez informé de mes derniers projets, articles de blog et insights tech.",
-        keywords: "réseaux, réseaux sociaux, réseaux professionnels, projets, articles de blog, insights tech",
+          "Connectez-vous avec Pierre Guéroult sur les réseaux sociaux et professionnels. Suivez mes projets en développement web et ingénierie logicielle, mes articles de blog et mes insights sur la tech.",
+        keywords:
+          "Pierre Guéroult, réseaux sociaux, médias sociaux, réseaux professionnels, développement web, ingénierie logicielle, projets, tech insights",
       },
-      title: "Mes Réseaux - Restons Connectés",
+      title: "Contactez Pierre Guéroult - Développeur Web & Ingénieur Logiciel",
       subtitle:
-        "Retrouvez-moi sur les plateformes sociales et professionnelles pour suivre mes projets et échanger autour du développement web et de l'automatisation.",
+        "Suivez-moi sur les réseaux sociaux et plateformes professionnelles pour rester informé sur mes projets en développement web et ingénierie logicielle.",
       featured: "Mis en avant",
       links: "Liens de mes réseaux",
       contact: {
@@ -96,14 +97,15 @@ export const fr: Texts = {
     },
     projects: {
       meta: {
-        title: "Projets & Travaux",
+        title: "Pierre Guéroult - Développeur Web & Ingénieur Logiciel - Projets & Réalisations",
         description:
-          "Explorez mes derniers projets de développement web, outils d'automatisation et expérimentations tech. Toujours en construction, toujours en apprentissage.",
-        keywords: "projets, travaux, développement web, outils d'automatisation, expérimentations tech",
+          "Découvrez mes derniers projets en développement web, outils d'automatisation et expériences technologiques. Toujours en train de construire, toujours en train d'apprendre. Découvrez les outils et applications que je crée pour améliorer les flux de travail et l'efficacité.",
+        keywords:
+          "Pierre Guéroult, projets, réalisations, développement web, outils d'automatisation, expériences technologiques, outils pour développeurs, ingénierie logicielle",
       },
-      title: "Projets, Créations et contributions",
+      title: "Pierre Guéroult - Projets, Créations et Contributions",
       subtitle:
-        "Voici quelques-uns des projets que j'ai menés, construits ou auxquels j'ai contribué. Je me concentre sur la création d'outils pour développeurs, de solutions d'automatisation et d'applications web innovantes qui améliorent la vie et repoussent les limites de la technologie.",
+        "Voici quelques-uns des projets que j'ai dirigés, construits ou auxquels j'ai contribué. Je me concentre sur la création d'outils pour développeurs, de solutions d'automatisation et d'applications web innovantes qui améliorent l'efficacité, rationalisent les flux de travail et repoussent les limites de la technologie.",
       creations: "Créations",
       projects: "Projets",
       contributions: "Contributions",
@@ -115,15 +117,15 @@ export const fr: Texts = {
     },
     index: {
       meta: {
-        title: "Développeur Web & Logiciel",
+        title: "Pierre Guéroult - Développeur Web & Ingénieur Logiciel | Ingénieur Full-Stack",
         description:
-          "Développeur Web de 20 ans & Étudiant en Informatique passionné par la création de sites web élégants et performants et l'automatisation des workflows. Toujours à la recherche de nouvelles technologies pour résoudre des problèmes et optimiser l'efficacité.",
+          "Je suis Pierre Guéroult, un développeur web full-stack et ingénieur logiciel passionné. À 20 ans, je me spécialise dans la création de sites web haute performance et l'automatisation des flux de travail. J'explore sans cesse de nouvelles technologies pour résoudre des problèmes et améliorer l'efficacité.",
         keywords:
-          "développeur web, développeur logiciel, étudiant en informatique, développement web, automatisation, nouvelles technologies",
+          "Pierre Guéroult, développeur web, ingénieur logiciel, ingénieur full-stack, étudiant en informatique, développement web, automatisation, nouvelles technologies, code propre",
       },
-      title: "Ingénieur Logiciel Full-Stack - Pierre Guéroult - Paris, France",
+      title: "Ingénieur Full-Stack - Pierre Guéroult - Paris, France",
       subtitle:
-        "Développeur web de 20 ans & Étudiant en Informatique. J'adore créer des sites web élégants et automatiser les workflows pour faciliter la vie. Passionné par le code propre, la résolution de problèmes et la mise en place de technologies intelligentes. Toujours à la recherche de nouvelles technologies, toujours prêt à relever un défi. Que ce soit le développement web, l'automatisation ou quelque chose complètement hors de ma zone de confort - je suis partant.",
+        "Développeur web de 20 ans et étudiant en informatique. Passionné par la création de sites élégants et l’automatisation des flux de travail pour faciliter la vie. Passionné par le code propre, la résolution de problèmes, et rendre la technologie plus intelligente, pas plus complexe. Toujours en exploration de nouvelles technologies, toujours prêt à relever un défi.",
       works: "Emplois",
       schools: "Écoles",
       certifications: "Certifications",
