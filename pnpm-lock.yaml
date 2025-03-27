@@ -39,8 +39,8 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0
       tailwindcss:
-        specifier: ^4.0.16
-        version: 4.0.16
+        specifier: ^4.0.17
+        version: 4.0.17
       zod:
         specifier: ^3.24.2
         version: 3.24.2
@@ -77,7 +77,7 @@ importers:
         version: 1.1.5
       tailwind-scrollbar:
         specifier: ^4.0.1
-        version: 4.0.1(react@19.0.0)(tailwindcss@4.0.16)
+        version: 4.0.1(react@19.0.0)(tailwindcss@4.0.17)
       typescript-eslint:
         specifier: ^8.28.0
         version: 8.28.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.7.3)
@@ -640,16 +640,6 @@ packages:
     resolution: {integrity: sha512-m8W2UbxLDcmRKVjgl5J/k4B8d7qX2EcJve3Sut7YGrQoPtCIQGPH5AMzuFvYRWZi0FVS0zEY4c8uttPfX6bwYQ==}
     cpu: [x64]
     os: [darwin]
-
-  '@rollup/rollup-freebsd-arm64@4.34.8':
-    resolution: {integrity: sha512-IQNVXL9iY6NniYbTaOKdrlVP3XIqazBgJOVkddzJlqnCpRi/yAeSOa8PLcECFSQochzqApIOE1GHNu3pCz+BDA==}
-    cpu: [arm64]
-    os: [freebsd]
-
-  '@rollup/rollup-freebsd-arm64@4.37.0':
-    resolution: {integrity: sha512-FOMXGmH15OmtQWEt174v9P1JqqhlgYge/bUjIbiVD1nI1NeJ30HYT9SJlZMqdo1uQFyt9cz748F1BHghWaDnVA==}
-    cpu: [arm64]
-    os: [freebsd]
 
   '@rollup/rollup-freebsd-x64@4.34.8':
     resolution: {integrity: sha512-TYXcHghgnCqYFiE3FT5QwXtOZqDj5GmaFNTNt3jNC+vh22dc/ukG2cG+pi75QO4kACohZzidsq7yKTKwq/Jq7Q==}
@@ -2588,11 +2578,11 @@ packages:
     peerDependencies:
       tailwindcss: 4.x
 
-  tailwindcss@4.0.15:
-    resolution: {integrity: sha512-6ZMg+hHdMJpjpeCCFasX7K+U615U9D+7k5/cDK/iRwl6GptF24+I/AbKgOnXhVKePzrEyIXutLv36n4cRsq3Sg==}
-
   tailwindcss@4.0.16:
     resolution: {integrity: sha512-i/SbG7ThTIcLshcFJL+je7hCv9dPis4Xl4XNeel6iZNX42pp/BZ+la+SbZIPoYE+PN8zhKbnHblpQ/lhOWwIeQ==}
+
+  tailwindcss@4.0.17:
+    resolution: {integrity: sha512-OErSiGzRa6rLiOvaipsDZvLMSpsBZ4ysB4f0VKGXUrjw2jfkJRd6kjRKV2+ZmTCNvwtvgdDam5D7w6WXsdLJZw==}
 
   tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
@@ -3527,12 +3517,6 @@ snapshots:
     optional: true
 
   '@rollup/rollup-darwin-x64@4.37.0':
-    optional: true
-
-  '@rollup/rollup-freebsd-arm64@4.34.8':
-    optional: true
-
-  '@rollup/rollup-freebsd-arm64@4.37.0':
     optional: true
 
   '@rollup/rollup-freebsd-x64@4.34.8':
@@ -5840,7 +5824,6 @@ snapshots:
       '@rollup/rollup-android-arm64': 4.34.8
       '@rollup/rollup-darwin-arm64': 4.34.8
       '@rollup/rollup-darwin-x64': 4.34.8
-      '@rollup/rollup-freebsd-arm64': 4.34.8
       '@rollup/rollup-freebsd-x64': 4.34.8
       '@rollup/rollup-linux-arm-gnueabihf': 4.34.8
       '@rollup/rollup-linux-arm-musleabihf': 4.34.8
@@ -5865,7 +5848,6 @@ snapshots:
       '@rollup/rollup-android-arm64': 4.37.0
       '@rollup/rollup-darwin-arm64': 4.37.0
       '@rollup/rollup-darwin-x64': 4.37.0
-      '@rollup/rollup-freebsd-arm64': 4.37.0
       '@rollup/rollup-freebsd-x64': 4.37.0
       '@rollup/rollup-linux-arm-gnueabihf': 4.37.0
       '@rollup/rollup-linux-arm-musleabihf': 4.37.0
@@ -6069,16 +6051,16 @@ snapshots:
       '@pkgr/core': 0.1.1
       tslib: 2.8.1
 
-  tailwind-scrollbar@4.0.1(react@19.0.0)(tailwindcss@4.0.16):
+  tailwind-scrollbar@4.0.1(react@19.0.0)(tailwindcss@4.0.17):
     dependencies:
       prism-react-renderer: 2.4.1(react@19.0.0)
-      tailwindcss: 4.0.16
+      tailwindcss: 4.0.17
     transitivePeerDependencies:
       - react
 
-  tailwindcss@4.0.15: {}
-
   tailwindcss@4.0.16: {}
+
+  tailwindcss@4.0.17: {}
 
   tapable@2.2.1: {}
 
