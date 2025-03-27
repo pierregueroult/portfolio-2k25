@@ -39,18 +39,18 @@ const ogImageUrl = `${SITE}/open-graph/banner-${ogImage}.png`;
 
 const getAlternateLinks = () => {
   if (!isBlogOrProject) {
-    const frHref = removeTrailingSlash(`/fr${Astro.originPathname.replace(`/${Astro.params.lang}`, "")}`);
+    const frHref = removeTrailingSlash(`${SITE}/fr${Astro.originPathname.replace(`/${Astro.params.lang}`, "")}`);
     return [
       ...LOCALES.map((locale) => ({
         locale,
-        href: removeTrailingSlash(`/${locale}${Astro.originPathname.replace(`/${Astro.params.lang}`, "")}`),
+        href: removeTrailingSlash(`${SITE}/${locale}${Astro.originPathname.replace(`/${Astro.params.lang}`, "")}`),
         isDefault: locale === "fr"
       })),
       { locale: "x-default", href: frHref, isDefault: false }
     ];
   }
 
-  const href = removeTrailingSlash(`/en${Astro.originPathname.replace(`/${Astro.params.lang}`, "")}`);
+  const href = removeTrailingSlash(`${SITE}/en${Astro.originPathname.replace(`/${Astro.params.lang}`, "")}`);
   return [
     { locale: "en", href, isDefault: false },
     { locale: "x-default", href, isDefault: false }
