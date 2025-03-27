@@ -15,7 +15,7 @@ const applySecurityHeaders = (response: Response) => {
     "default-src 'self'; " +
       "frame-src 'self' https://www.youtube.com; " +
       "script-src 'self' https://use.typekit.net https://eu-assets.i.posthog.com 'unsafe-inline' 'unsafe-eval'; " +
-      "script-src-elem 'self' https://eu-assets.i.posthog.com 'unsafe-inline'; " +
+      "script-src-elem 'self' https://eu-assets.i.posthog.com https://unpkg.com/website-carbon-badges@1.1.3/b.min.js 'unsafe-inline'; " +
       "style-src 'self' 'unsafe-inline' https://eu.posthog.com; " +
       "img-src 'self' data: https:; " +
       "font-src 'self' https://use.typekit.net https://p.typekit.net; " +
@@ -23,7 +23,7 @@ const applySecurityHeaders = (response: Response) => {
       "base-uri 'self'; " +
       "form-action 'self'; " +
       "frame-ancestors 'none'; " +
-      "connect-src 'self' https://eu.i.posthog.com https://internal-t.posthog.com https://*.posthog.com; " +
+      "connect-src 'self' https://api.websitecarbon.com https://eu.i.posthog.com https://internal-t.posthog.com https://*.posthog.com; " +
       "block-all-mixed-content; " +
       "upgrade-insecure-requests;",
   );

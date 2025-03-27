@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
 import PostHog from "@/components/PostHog.astro";
 import { LOCALES, SITE } from "@/consts";
 import { getDir, getLocale } from "@/utils/get-locale";
@@ -101,6 +102,7 @@ const canonicalUrl = isBlogOrProject
     <main class="mx-auto max-w-4xl w-full px-4 pb-8">
       <slot />
     </main>
+    <Footer />
     {import.meta.env.PROD && <PostHog />}
   </body>
 </html>
