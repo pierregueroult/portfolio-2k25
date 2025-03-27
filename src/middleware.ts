@@ -1,13 +1,13 @@
 import { defineMiddleware } from "astro:middleware";
 import { DEFAULT_LOCALE, LOCALES, SITE } from "@/consts";
 
-const nonLocalizedPaths = new Set(["rss.xml", "spotify"]);
+const nonLocalizedPaths = new Set(["rss.xml", "spotify", "_actions", "_image"]);
 
 const getSubdomain = (hostname: string) => hostname.split(".")[0] as (typeof LOCALES)[number];
 
 const shouldRedirectToLocale = (pathname: string): boolean =>
   !LOCALES.some((locale) => pathname.startsWith(`/${locale}`)) &&
-  ![...nonLocalizedPaths].some((path) => pathname.endsWith(path));
+  ![...nonLocalizedPaths].some((path) => pathname.endsWith(path) || pathname.startsWith(`/${path}`));
 
 const applySecurityHeaders = (response: Response) => {
   response.headers.set(
@@ -50,8 +50,6 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
   const url = new URL(context.url);
   const subdomain = getSubdomain(url.hostname);
-
-  console.log(context.request.headers.get("Accept-Language"));
 
   if (LOCALES.includes(subdomain)) {
     return context.redirect(new URL(`/${subdomain}${url.pathname}${url.search}`, SITE).toString());

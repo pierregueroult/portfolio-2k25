@@ -16,7 +16,7 @@ interface Props {
 const { title, description, keywords } = Astro.props;
 const { theme } = Astro.locals;
 
-const defaultKeywords: string[] = [
+const defaultKeywords = [
   "web development",
   "frontend developer",
   "backend developer",
@@ -28,36 +28,59 @@ const defaultKeywords: string[] = [
   "Tailwind CSS",
   "GitHub portfolio",
   "Pierre Guéroult",
-];
+] as const;
 
-// TODO: Handle alternate, canonical, and hreflang
+const isBlogOrProject = /^\/(?:[a-z]{2})\/(projects|blog)\/[^/]+/.test(Astro.url.pathname);
+const ogImage = ["home", "projects", "blog", "socials"].find((image) => Astro.originPathname.includes(image)) ?? "home";
+const currentLocale = getLocale(Astro.params.lang);
+const currentDir = getDir(Astro.params.lang);
+const fullTitle = `Pierre Guéroult - ${title}`;
+const keywordsContent = keywords ? [...keywords, ...defaultKeywords].join(", ") : defaultKeywords.join(", ");
+const ogImageUrl = `${SITE}/open-graph/banner-${ogImage}.png`;
 
-const ogImage = ["home", "projects", "blog", "socials"].find((image) => Astro.originPathname.includes(image)) || "home";
+const getAlternateLinks = () => {
+  if (!isBlogOrProject) {
+    const frHref = removeTrailingSlash(`/fr${Astro.originPathname.replace(`/${Astro.params.lang}`, "")}`);
+    return [
+      ...LOCALES.map((locale) => ({
+        locale,
+        href: removeTrailingSlash(`/${locale}${Astro.originPathname.replace(`/${Astro.params.lang}`, "")}`),
+        isDefault: locale === "fr"
+      })),
+      { locale: "x-default", href: frHref, isDefault: false }
+    ];
+  }
+
+  const href = removeTrailingSlash(`/en${Astro.originPathname.replace(`/${Astro.params.lang}`, "")}`);
+  return [
+    { locale: "en", href, isDefault: false },
+    { locale: "x-default", href, isDefault: false }
+  ];
+};
+
+const alternateLinks = getAlternateLinks();
 ---
 
 <!doctype html>
-<html lang={getLocale(Astro.params.lang)} dir={getDir(Astro.params.lang)}>
+<html lang={currentLocale} dir={currentDir}>
   <head>
-    <title>Pierre Guéroult - {title}</title>
+    <title>{fullTitle}</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pierre Guéroult" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <meta name="viewport" content="width=device-width" />
-    <meta
-      name="keywords"
-      content={keywords ? [...keywords, ...defaultKeywords].join(", ") : defaultKeywords.join(", ")}
-    />
-    <meta property="og:title" content={`Pierre Guéroult - ${title}`} />
+    <meta name="keywords" content={keywordsContent} />
+    <meta property="og:title" content={fullTitle} />
     <meta property="og:type" content="website" />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={`${SITE}/open-graph/banner-${ogImage}.png`} />
+    <meta property="og:image" content={ogImageUrl} />
     <meta property="og:site_name" content="Pierre Guéroult" />
-    <meta property="og:locale" content={getLocale(Astro.params.lang)} />
+    <meta property="og:locale" content={currentLocale} />
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content={`Pierre Guéroult - ${title}`} />
+    <meta property="twitter:title" content={fullTitle} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={`${SITE}/open-graph/banner-${ogImage}.png`} />
+    <meta property="twitter:image" content={ogImageUrl} />
     <meta property="twitter:site" content="@pierregueroult1" />
     <meta property="twitter:creator" content="@pierregueroult1" />
     <meta name="robots" content="index, follow" />
@@ -65,22 +88,14 @@ const ogImage = ["home", "projects", "blog", "socials"].find((image) => Astro.or
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://eu.i.posthog.com" crossorigin="anonymous" />
     <link rel="preconnect" href="https://eu-assets.i.posthog.com" crossorigin="anonymous" />
-    {
-      LOCALES.map((locale) => {
-        const href = removeTrailingSlash(`/${locale}${Astro.originPathname.replace(`/${Astro.params.lang}`, "")}`);
-        return (
-          <>
-            <link rel="alternate" hreflang={locale} {href} />
-            {locale === "fr" && <link rel="alternate" hreflang="x-default" {href} />}
-          </>
-        );
-      })
-    }
+    {alternateLinks.map(({ locale, href }) => (
+      <link rel="alternate" hreflang={locale} href={href} />
+    ))}
     <ClientRouter />
   </head>
   <body class="font-mono bg-background text-foreground" data-theme={theme}>
     <Header />
-    <main class={`mx-auto max-w-4xl w-full px-4 pb-8`}>
+    <main class="mx-auto max-w-4xl w-full px-4 pb-8">
       <slot />
     </main>
     {import.meta.env.PROD && <PostHog />}
