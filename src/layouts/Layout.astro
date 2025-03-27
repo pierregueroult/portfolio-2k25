@@ -58,6 +58,9 @@ const getAlternateLinks = () => {
 };
 
 const alternateLinks = getAlternateLinks();
+const canonicalUrl = isBlogOrProject 
+  ? removeTrailingSlash(`/en${Astro.originPathname.replace(`/${Astro.params.lang}`, "")}`)
+  : Astro.url.href;
 ---
 
 <!doctype html>
@@ -70,6 +73,7 @@ const alternateLinks = getAlternateLinks();
     <meta name="generator" content={Astro.generator} />
     <meta name="viewport" content="width=device-width" />
     <meta name="keywords" content={keywordsContent} />
+    <link rel="canonical" href={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:type" content="website" />
     <meta property="og:description" content={description} />
