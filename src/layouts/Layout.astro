@@ -2,8 +2,9 @@
 import { ClientRouter } from "astro:transitions";
 import Header from "@/components/Header.astro";
 import PostHog from "@/components/PostHog.astro";
-import { SITE } from "@/consts";
+import { LOCALES, SITE } from "@/consts";
 import { getDir, getLocale } from "@/utils/get-locale";
+import { removeTrailingSlash } from "@/utils/remove-trailing-slash";
 
 import "../styles/global.css";
 
@@ -64,6 +65,17 @@ const ogImage = ["home", "projects", "blog", "socials"].find((image) => Astro.or
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://eu.i.posthog.com" crossorigin="anonymous" />
     <link rel="preconnect" href="https://eu-assets.i.posthog.com" crossorigin="anonymous" />
+    {
+      LOCALES.map((locale) => {
+        const href = removeTrailingSlash(`/${locale}${Astro.originPathname.replace(`/${Astro.params.lang}`, "")}`);
+        return (
+          <>
+            <link rel="alternate" hreflang={locale} {href} />
+            {locale === "fr" && <link rel="alternate" hreflang="x-default" {href} />}
+          </>
+        );
+      })
+    }
     <ClientRouter />
   </head>
   <body class="font-mono bg-background text-foreground" data-theme={theme}>

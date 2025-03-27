@@ -39,7 +39,10 @@ const applySecurityHeaders = (response: Response) => {
 
 const applyOtherHeaders = (response: Response, pathname: string) => {
   const locale = pathname.split("/")[1] || DEFAULT_LOCALE;
-  response.headers.set("Content-Language", LOCALES.includes(locale as (typeof LOCALES)[number]) ? locale : DEFAULT_LOCALE);
+  response.headers.set(
+    "Content-Language",
+    LOCALES.includes(locale as (typeof LOCALES)[number]) ? locale : DEFAULT_LOCALE,
+  );
 };
 
 export const onRequest = defineMiddleware(async (context, next) => {
@@ -48,12 +51,25 @@ export const onRequest = defineMiddleware(async (context, next) => {
   const url = new URL(context.url);
   const subdomain = getSubdomain(url.hostname);
 
+  console.log(context.request.headers.get("Accept-Language"));
+
   if (LOCALES.includes(subdomain)) {
     return context.redirect(new URL(`/${subdomain}${url.pathname}${url.search}`, SITE).toString());
   }
 
   if (shouldRedirectToLocale(url.pathname)) {
-    return context.redirect(new URL(`/${DEFAULT_LOCALE}${url.pathname}${url.search}`, SITE).toString());
+    const acceptedLocale: string | undefined = context.request.headers
+      .get("Accept-Language")
+      ?.split(",")[0]
+      ?.split("-")[0];
+    return context.redirect(
+      new URL(
+        `/${
+          LOCALES.includes(acceptedLocale as (typeof LOCALES)[number]) ? acceptedLocale : DEFAULT_LOCALE
+        }${url.pathname}${url.search}`,
+        SITE,
+      ).toString(),
+    );
   }
 
   context.locals.theme = context.cookies.get("theme")?.value ?? "system";
