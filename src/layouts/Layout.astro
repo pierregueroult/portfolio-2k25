@@ -34,7 +34,6 @@ const isBlogOrProject = /^\/(?:[a-z]{2})\/(projects|blog)\/[^/]+/.test(Astro.url
 const ogImage = ["home", "projects", "blog", "socials"].find((image) => Astro.originPathname.includes(image)) ?? "home";
 const currentLocale = getLocale(Astro.params.lang);
 const currentDir = getDir(Astro.params.lang);
-const fullTitle = `Pierre Guéroult - ${title}`;
 const keywordsContent = keywords ? [...keywords, ...defaultKeywords].join(", ") : defaultKeywords.join(", ");
 const ogImageUrl = `${SITE}/open-graph/banner-${ogImage}.png`;
 
@@ -64,21 +63,21 @@ const alternateLinks = getAlternateLinks();
 <!doctype html>
 <html lang={currentLocale} dir={currentDir}>
   <head>
-    <title>{fullTitle}</title>
+    <title>{title}</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pierre Guéroult" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <meta name="viewport" content="width=device-width" />
     <meta name="keywords" content={keywordsContent} />
-    <meta property="og:title" content={fullTitle} />
+    <meta property="og:title" content={title} />
     <meta property="og:type" content="website" />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:site_name" content="Pierre Guéroult" />
     <meta property="og:locale" content={currentLocale} />
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content={fullTitle} />
+    <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImageUrl} />
     <meta property="twitter:site" content="@pierregueroult1" />
