@@ -46,7 +46,7 @@
     "prettier-plugin-astro": "^0.14.1",
     "prisma": "^6.5.0",
     "schema-dts": "^1.1.5",
-    "tailwind-scrollbar": "^4.0.1",
+    "tailwind-scrollbar": "^4.0.2",
     "typescript-eslint": "^8.28.0",
     "vitest": "^3.0.8"
   }
