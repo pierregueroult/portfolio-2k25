@@ -1,16 +1,5 @@
 [
   {
-    "id": 0,
-    "type": "looking",
-    "role": {
-      "en": "a Software Engineer or Computer Engineer School",
-      "fr": "d'une École d'ingénieur en informatique ou d'ingénieur en informatique",
-      "ar": "مدرسة هندسة برمجيات أو هندسة حاسوب",
-      "morse": ".- / ... — ..-. - .- .- .-. . / . -. -. .. -. . . .-. / — .-. / -.-. — - .-. ..- - . .-. / . -. -. .. -. . . .-. / ... -.-. .... — — .-.."
-    },
-    "city": "Rouen / Paris"
-  },
-  {
     "id": 1,
     "name": "BUT Métiers du Multimédia et de l'Internet",
     "school": "Université de Rouen",
@@ -21,8 +10,7 @@
     "description": {
       "en": "I specialize in Web Development and Interactive Systems, focusing on front-end and back-end development, UI/UX design, and interactive media.",
       "fr": "Je me spécialise dans le développement web et les systèmes interactifs, en me concentrant sur le développement front-end et back-end, le design UI/UX et les médias interactifs.",
-      "ar": "أتخصص في تطوير الويب والأنظمة التفاعلية، مركزًا على تطوير الواجهة الأمامية والخلفية، تصميم واجهة المستخدم/تجربة المستخدم، ووسائط تفاعلية.",
-      "morse": ".. / ... .-. . -.-. .. .- .-.. .. -.. . / .. -. / .- . -... / -.. . ...- . .-.. — .-. - . -. - / .- -. -.. / .. -. - . .-. .- -.-. - .. ...- . / ... -.- ... - . - ... -..- / ..-. — -.-. ..- ... .. -. -. / — -. / ..-. .-. — -. - / . -.. / .- -. -.. / -... .- -.-. -.- / . -.. / -.. . ...- . .-.. — .-. - . -. - -..- / ..- .. / ..- -... / -.. . ... .. -. -. -..- / .- -. -.. / .. -. - . .-. .- -.-. - .. ...- . / - . -.. .. .- .-.."
+      "ar": "أتخصص في تطوير الويب والأنظمة التفاعلية، مركزًا على تطوير الواجهة الأمامية والخلفية، تصميم واجهة المستخدم/تجربة المستخدم، ووسائط تفاعلية."
     }
   }
 ]
