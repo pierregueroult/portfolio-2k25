@@ -53,6 +53,12 @@ export const en: Texts = {
       privacy: "privacy policy",
       consent2: "for more information.",
     },
+    banner: {
+      title: "Looking for a software engineering apprenticeship - Paris or Rouen",
+      description:
+        "I am currently applying to join a computer engineering school and I am seeking a software engineering apprenticeship starting in September 2025, preferably in the Paris region or Rouen.",
+      button: "Hire me now!",
+    },
   },
   pages: {
     blog: {

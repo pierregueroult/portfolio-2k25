@@ -5,6 +5,7 @@ import { useTranslation } from "@/i18n";
 import Layout from "@/layouts/Layout.astro";
 import ListLayout from "@/layouts/ListLayout.astro";
 import WithTitleLayout from "@/layouts/WithTitleLayout.astro";
+import ApprenticeShipBanner from "@/components/ApprenticeShipBanner.astro";
 import { excludeDrafts } from "@/utils/exclude-drafts";
 import { getLocale } from "@/utils/get-locale";
 import { getCollection } from "astro:content";
@@ -24,6 +25,7 @@ const t = useTranslation(getLocale(Astro.params.lang));
   keywords={t("pages.blog.meta.keywords").split(", ")}
 >
   <WithTitleLayout title={t("pages.blog.title")} subtitle={t("pages.blog.subtitle")}>
+    <ApprenticeShipBanner />
     {
       getLocale(Astro.params.lang) !== "en" && (
         <TranslationAlert title={t("pages.blog.translation.title")} text={t("pages.blog.translation.text")} />

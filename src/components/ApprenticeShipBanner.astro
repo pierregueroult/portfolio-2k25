@@ -1,0 +1,68 @@
+---
+import { getLocale } from "@/utils/get-locale";
+import { useTranslation } from "@/i18n";
+
+const t = useTranslation(getLocale(Astro.params.lang));
+---
+
+<div
+  class="relative w-full rounded-lg border px-4 py-3 text-sm [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground [&>svg~*]:pl-7 bg-background text-foreground border-accent mb-8 fade-in-up mt-4 md:md-0"
+  role="alert"
+>
+  <h3 class="mb-4 font-medium leading-none tracking-light text-lg text-center">
+    {t("components.banner.title")}
+  </h3>
+  <div class="text-sm flex items-center gap-6 flex-col md:flex-row">
+    <p>
+      {t("components.banner.description")}
+    </p>
+    <a
+      class="sm:col-start-3 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-foreground bg-foreground shadow-sm hover:bg-accent hover:text-foreground h-9 px-4 py-2 focus-visible:border-0 font-mono text-background focus-visible:bg-accent focus-visible:text-foreground animate-pulse-button group w-full md:w-auto"
+      href="mailto:contact@pierregueroult.dev"
+    >
+      {t("components.banner.button")}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-arrow-right-icon lucide-arrow-right transition-transform group-hover:translate-x-1"
+        ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
+      >
+    </a>
+  </div>
+</div>
+
+<style>
+  @keyframes pulseButton {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 10px 4px rgba(255, 255, 255, 0.2);
+    }
+  }
+  .animate-pulse-button {
+    animation: pulseButton 2s infinite;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease-out both;
+  }
+</style>

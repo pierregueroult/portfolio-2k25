@@ -5,6 +5,7 @@ import type { Person, WithContext } from "schema-dts";
 import ListLayout from "@/layouts/ListLayout.astro";
 import { getCollection } from "astro:content";
 import WorkItem from "@/components/items/WorkItem.astro";
+import ApprenticeShipBanner from "@/components/ApprenticeShipBanner.astro";
 import SchoolItem from "@/components/items/SchoolItem.astro";
 import { SITE } from "@/consts";
 import { useTranslation } from "@/i18n";
@@ -51,6 +52,7 @@ const cvPath = `/documents/pierre%20gueroult%20-%20curriculum%20vitae%20-%20${ge
   <h1 class="sr-only">
     {t("pages.index.title")}
   </h1>
+  <ApprenticeShipBanner />
   <h2 class="leading-relaxed text-sm md:text-base">
     {t("pages.index.subtitle")}
     <a href={`${cvPath}`} class="relative underline text-accent-contrast font-semibold" target="_blank">

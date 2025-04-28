@@ -53,6 +53,12 @@ export const fr: Texts = {
       privacy: "politique de confidentialité",
       consent2: "pour plus d'informations.",
     },
+    banner: {
+      title: "À la recherche d'une alternance en ingénierie informatique - Paris ou Rouen",
+      description:
+        "Actuellement en candidature pour intégrer une cécole d'ingénieurs en informatique, je suis à la recherche d'une alternance en développement logiciel ou ingénierie informatique à partir de Septembre 2025, idéalement en région parisienne ou à Rouen.",
+      button: "M'embaucher !",
+    },
   },
   pages: {
     blog: {
