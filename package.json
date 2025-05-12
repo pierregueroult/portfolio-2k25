@@ -30,7 +30,7 @@
     "astro": "^5.7.5",
     "astro-robots-txt": "^1.0.0",
     "fontfaceobserver": "^2.3.0",
-    "tailwindcss": "^4.1.4",
+    "tailwindcss": "^4.1.6",
     "typescript": "^5.8.3",
     "zod": "^3.24.3"
   },
