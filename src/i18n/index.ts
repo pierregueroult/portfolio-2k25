@@ -62,6 +62,11 @@ export type Texts = {
       privacy: string;
       consent2: string;
     };
+    banner: {
+      title: string;
+      description: string;
+      button: string;
+    }
   };
   pages: {
     blog: {
