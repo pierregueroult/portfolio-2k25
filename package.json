@@ -47,7 +47,7 @@
     "prisma": "^6.5.0",
     "schema-dts": "^1.1.5",
     "tailwind-scrollbar": "^4.0.2",
-    "typescript-eslint": "^8.32.1",
+    "typescript-eslint": "^8.33.0",
     "vitest": "^3.0.8"
   }
 }
