@@ -36,8 +36,8 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0
       tailwindcss:
-        specifier: ^4.1.7
-        version: 4.1.8
+        specifier: ^4.1.10
+        version: 4.1.10
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
@@ -80,7 +80,7 @@ importers:
         version: 1.1.5
       tailwind-scrollbar:
         specifier: ^4.0.2
-        version: 4.0.2(react@19.0.0)(tailwindcss@4.1.8)
+        version: 4.0.2(react@19.0.0)(tailwindcss@4.1.10)
       typescript-eslint:
         specifier: ^8.32.1
         version: 8.33.0(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3)
@@ -1378,8 +1378,8 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  cssstyle@4.3.1:
-    resolution: {integrity: sha512-ZgW+Jgdd7i52AaLYCriF8Mxqft0gD/R9i9wi6RWBhs1pqdPEzPjym7rvRKi397WmQFf3SlyUsszhw+VVCbx79Q==}
+  cssstyle@4.4.0:
+    resolution: {integrity: sha512-W0Y2HOXlPkb2yaKrCVRjinYKciu/qSLEmK0K9mcfDei3zwlnHFEHAs/Du3cIRwPqY+J4JsiBzUjoHyc8RsJ03A==}
     engines: {node: '>=18'}
 
   data-urls@5.0.0:
@@ -1713,8 +1713,8 @@ packages:
     resolution: {integrity: sha512-gIXjKqtFuWEgzFRJA9WCQeSJLZDjgJUOMCMzxtvFq/37KojM1BFGufqsCy0r4qSQmYLsZYMeyRqzIWOMup03sw==}
     engines: {node: '>=14'}
 
-  form-data@4.0.2:
-    resolution: {integrity: sha512-hGfm/slu0ZabnNt4oaRZ6uREyfCj6P4fT/n6A1rGV+Z0VdGXjfOhVUpkn6qVQONHGIFwmveGXyDs75+nr6FM8w==}
+  form-data@4.0.3:
+    resolution: {integrity: sha512-qsITQPfmvMOSAdeyZ+12I1c+CKSstAFAwu+97zrnWAbIr5u8wfsExUzCesVLC8NgHuRUqNN4Zy6UPWUTRGslcA==}
     engines: {node: '>= 6'}
 
   fresh@2.0.0:
@@ -2794,6 +2794,9 @@ packages:
     engines: {node: '>=12.13.0'}
     peerDependencies:
       tailwindcss: 4.x
+
+  tailwindcss@4.1.10:
+    resolution: {integrity: sha512-P3nr6WkvKV/ONsTzj6Gb57sWPMX29EPNPopo7+FcpkQaNsrNpZ1pv8QmrYI2RqEKD7mlGqLnGovlcYnBK0IqUA==}
 
   tailwindcss@4.1.8:
     resolution: {integrity: sha512-kjeW8gjdxasbmFKpVGrGd5T4i40mV5J2Rasw48QARfYeQ8YS9x02ON9SFWax3Qf616rt4Cp3nVNIj6Hd1mP3og==}
@@ -4742,7 +4745,7 @@ snapshots:
 
   cssesc@3.0.0: {}
 
-  cssstyle@4.3.1:
+  cssstyle@4.4.0:
     dependencies:
       '@asamuzakjp/css-color': 3.2.0
       rrweb-cssom: 0.8.0
@@ -5117,11 +5120,12 @@ snapshots:
       cross-spawn: 7.0.6
       signal-exit: 4.1.0
 
-  form-data@4.0.2:
+  form-data@4.0.3:
     dependencies:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       es-set-tostringtag: 2.1.0
+      hasown: 2.0.2
       mime-types: 2.1.35
     optional: true
 
@@ -5484,10 +5488,10 @@ snapshots:
 
   jsdom@26.0.0:
     dependencies:
-      cssstyle: 4.3.1
+      cssstyle: 4.4.0
       data-urls: 5.0.0
       decimal.js: 10.5.0
-      form-data: 4.0.2
+      form-data: 4.0.3
       html-encoding-sniffer: 4.0.0
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.6
@@ -6665,12 +6669,14 @@ snapshots:
       '@pkgr/core': 0.1.1
       tslib: 2.8.1
 
-  tailwind-scrollbar@4.0.2(react@19.0.0)(tailwindcss@4.1.8):
+  tailwind-scrollbar@4.0.2(react@19.0.0)(tailwindcss@4.1.10):
     dependencies:
       prism-react-renderer: 2.4.1(react@19.0.0)
-      tailwindcss: 4.1.8
+      tailwindcss: 4.1.10
     transitivePeerDependencies:
       - react
+
+  tailwindcss@4.1.10: {}
 
   tailwindcss@4.1.8: {}
 
